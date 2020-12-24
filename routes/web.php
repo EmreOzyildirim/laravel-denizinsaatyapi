@@ -16,3 +16,15 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/contact/{name?}/{surname?}',function ($ad=null,$surname=null){
+    return $ad." ".$surname;
+});
+
+Route::get('/regex/{name?}/{surname?}',function ($ad=null,$surname=null){
+    return $ad." ".$surname;
+})->where('name','[0-9]+');
+
+Route::get('/contact',function (){
+    return view('contact');
+});
