@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\admin\AdminPageController;
+use App\Http\Controllers\frontend\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,7 +25,16 @@ Route::group(['namespace'=>'admin'], function(){
 //Frontend Panel Routes
 Route::group(['namespace'=>'frontend'], function(){
 
+    Route::get('/',[HomeController::class,'index']);
+    Route::get('/anasayfa',[HomeController::class,'index']);
+
+
 });
+
+
+
+
+
 
 
 
