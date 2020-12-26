@@ -16,7 +16,7 @@ class CreateProvincesTable extends Migration
         Schema::create('provinces', function (Blueprint $table) {
             $table->integer('sehir_id')->autoIncrement();
             $table->string('sehir_title');
-            $table->integer('sehir')->index();
+            $table->integer('sehir_key')->index();
         });
     }
 
