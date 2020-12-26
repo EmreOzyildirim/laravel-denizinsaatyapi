@@ -20,19 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/developer_tools/advertisements.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/developer_tools/districts.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/developer_tools/neighborhoods.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/developer_tools/provinces.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/developer_tools/types.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test-laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test-laravel.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_provinces_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_provinces_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/advertisements_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/advertisements_table_seeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/districts_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/districts_table_seeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/neighborhoods_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/neighborhoods_table_seeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/provinces_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/provinces_table_seeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/types_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/types_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/js/bootstrap.js" beforeDir="false" afterPath="$PROJECT_DIR$/resources/js/bootstrap.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webpack.mix.js" beforeDir="false" afterPath="$PROJECT_DIR$/webpack.mix.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -154,6 +151,7 @@
       <path value="$PROJECT_DIR$/vendor/league/commonmark" />
       <path value="$PROJECT_DIR$/vendor/brick/math" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
+      <path value="$PROJECT_DIR$/vendor/laravel/ui" />
     </include_path>
   </component>
   <component name="ProjectId" id="1m3Kq9HgdbPd487sjZ7iOXw7plj" />
@@ -205,7 +203,7 @@
       <workItem from="1608720613680" duration="2238000" />
       <workItem from="1608836798710" duration="8484000" />
       <workItem from="1608980922172" duration="16324000" />
-      <workItem from="1609000557438" duration="9766000" />
+      <workItem from="1609000557438" duration="14486000" />
     </task>
     <servers />
   </component>
@@ -250,9 +248,9 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609009916347" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1609001637873">
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1609012916328">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1609001637873" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1609012916328" />
   </component>
 </project>
