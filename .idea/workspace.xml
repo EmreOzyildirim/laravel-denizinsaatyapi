@@ -160,6 +160,9 @@
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\test-laravel\app\Http\Controllers\admin" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\test-laravel\resources\views" />
     </key>
@@ -183,7 +186,8 @@
       <workItem from="1608717674749" duration="83000" />
       <workItem from="1608717781927" duration="2709000" />
       <workItem from="1608720613680" duration="2238000" />
-      <workItem from="1608836798710" duration="7668000" />
+      <workItem from="1608836798710" duration="8484000" />
+      <workItem from="1608980922172" duration="1898000" />
     </task>
     <servers />
   </component>
@@ -200,6 +204,7 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
     <ignored-roots>

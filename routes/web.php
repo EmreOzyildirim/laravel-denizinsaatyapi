@@ -13,6 +13,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+//Admin Panel Routes
+Route::group(['namespace'=>'admin'], function(){
+
+    Route::get('/admin','admin\AdminPageController@index');
+
+});
+
+
+
+
+
+
+
+
+
+
 Route::get('/welcome', 'App\Http\Controllers\PageController@index');
 
 Route::get('/show', 'App\Http\Controllers\PageController@show');
