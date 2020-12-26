@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\admin\AdminPageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,11 +17,14 @@ use Illuminate\Support\Facades\Route;
 //Admin Panel Routes
 Route::group(['namespace'=>'admin'], function(){
 
-    Route::get('/admin','admin\AdminPageController@index');
+    Route::get('/admin/home',[AdminPageController::class,'index']);
 
 });
 
+//Frontend Panel Routes
+Route::group(['namespace'=>'frontend'], function(){
 
+});
 
 
 

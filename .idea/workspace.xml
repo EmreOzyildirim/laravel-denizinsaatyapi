@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminPageController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminPageController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -161,6 +162,7 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\test-laravel\app\Http\Controllers\frontend" />
       <recent name="C:\xampp\htdocs\test-laravel\app\Http\Controllers\admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
@@ -187,7 +189,7 @@
       <workItem from="1608717781927" duration="2709000" />
       <workItem from="1608720613680" duration="2238000" />
       <workItem from="1608836798710" duration="8484000" />
-      <workItem from="1608980922172" duration="1898000" />
+      <workItem from="1608980922172" duration="3230000" />
     </task>
     <servers />
   </component>
