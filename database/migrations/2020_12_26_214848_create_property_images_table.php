@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdvertisementImagesTable extends Migration
+class CreatePropertyImagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,9 @@ class CreateAdvertisementImagesTable extends Migration
      */
     public function up()
     {
-        Schema::create('advertisement_images', function (Blueprint $table) {
+        Schema::create('property_images', function (Blueprint $table) {
             $table->id();
-            $table->integer('advertisement_id')->index();
+            $table->integer('property_id')->index();
             $table->string('image_path');
         });
     }
@@ -27,6 +27,6 @@ class CreateAdvertisementImagesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisement_images');
+        Schema::dropIfExists('property_images');
     }
 }

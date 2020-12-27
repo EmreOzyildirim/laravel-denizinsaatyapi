@@ -5,7 +5,7 @@ namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use DB;
 
-class advertisements_table_seeder extends Seeder
+class properties_table_seeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -15,7 +15,7 @@ class advertisements_table_seeder extends Seeder
     public function run()
     {
 
-        $path = 'app/developer_tools/advertisements.sql';
+        $path = 'app/developer_tools/properties.sql';
         DB::unprepared(file_get_contents($path));
         $this->command->info($path." basariyla veritabanina kaydedildi.");
 
