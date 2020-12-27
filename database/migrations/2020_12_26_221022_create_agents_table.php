@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAdvertisementsTable extends Migration
+class CreateAgentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,15 @@ class CreateAdvertisementsTable extends Migration
      */
     public function up()
     {
-        Schema::create('advertisements', function (Blueprint $table) {
-            $table->integer('id')->autoIncrement();
+        Schema::create('agents', function (Blueprint $table) {
+            $table->id();
+            $table->string('name_surname');
+            $table->string('profile_image');
+            $table->string('email');
+            $table->string('phone_number');
             $table->string('title');
-            $table->integer('type')->index();
-            $table->double('price');
-            $table->integer('agent_id')->default('1')->index();
+            $table->string('description');
+
             $table->timestamps();
         });
     }
@@ -30,6 +33,6 @@ class CreateAdvertisementsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('advertisements');
+        Schema::dropIfExists('agents');
     }
 }
