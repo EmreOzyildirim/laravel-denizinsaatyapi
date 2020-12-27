@@ -18,7 +18,7 @@ use App\Http\Controllers\frontend\HomeController;
 //Admin Panel Routes
 Route::group(['namespace'=>'admin'], function(){
 
-    Route::get('/admin/home',[AdminPageController::class,'index']);
+    Route::get('/admin/index',[AdminPageController::class,'index']);
 
 });
 
