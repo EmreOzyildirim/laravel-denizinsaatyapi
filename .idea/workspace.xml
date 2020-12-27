@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +196,7 @@
       <workItem from="1608836798710" duration="8484000" />
       <workItem from="1608980922172" duration="16324000" />
       <workItem from="1609000557438" duration="25543000" />
-      <workItem from="1609064441214" duration="3686000" />
+      <workItem from="1609064441214" duration="4374000" />
     </task>
     <servers />
   </component>

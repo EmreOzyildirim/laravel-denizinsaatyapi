@@ -16,10 +16,10 @@ class CreatePropertyDetails extends Migration
         Schema::create('property_details', function (Blueprint $table) {
             $table->id();
             $table->integer('property_id')->index();
-            $table->int('property_type')->index();
-            $table->int('year_built');
-            $table->int('type_id')->index();
-            $table->int('agent_id')->index();
+            $table->integer('property_type')->index();
+            $table->integer('year_built');
+            $table->integer('type_id')->index();
+            $table->integer('agent_id')->index();
             $table->integer('home_area');
             $table->integer('rooms');
             $table->integer('bedrooms');
