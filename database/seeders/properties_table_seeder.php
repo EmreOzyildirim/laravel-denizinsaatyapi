@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Database\Eloquent\Model as Eloquent;
 use DB;
 
 class properties_table_seeder extends Seeder

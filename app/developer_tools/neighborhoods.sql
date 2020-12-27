@@ -6400,7 +6400,7 @@ INSERT INTO `neighborhoods` (`mahalle_id`, `mahalle_title`, `mahalle_key`, `maha
 (6394, 'YAYLA', 855, 1239),
 (6395, 'YENİ', 865, 1239),
 (6396, 'YENİ', 848, 1239),
-(6397, 'YEŞİLEVLER',139901, 1239),
+(6397, 'YEŞİLEVLER', 139901, 1239),
 (6398, 'YEŞİLYURT', 5070, 1239),
 (6399, 'YUKARI', 849, 1239),
 (6400, 'YUKARI', 861, 1239),

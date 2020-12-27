@@ -20,8 +20,32 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/home_slider.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/contact_infos.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/contact_infos.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/main_menu.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/main_menu.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/neighborhoods.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/neighborhoods.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/properties.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/properties.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/property_details.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/property_details.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/property_type.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/property_type.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/social_media.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/social_media.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/types.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/types.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_neighborhoods_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_neighborhoods_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_221022_create_agents_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_221022_create_agents_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_230406_create_main_menu_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_230406_create_main_menu_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_000524_create_home_slider_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_000524_create_home_slider_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_010505_create_property_type_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_27_010505_create_property_type_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/agents_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/agents_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/contact_infos_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/contact_infos_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/home_slider_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/home_slider_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/main_menu_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/main_menu_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/properties_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/properties_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/property_details_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/property_details_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/property_images_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/property_images_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/property_type_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/property_type_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/social_media_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/social_media_table_seeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -196,7 +220,7 @@
       <workItem from="1608836798710" duration="8484000" />
       <workItem from="1608980922172" duration="16324000" />
       <workItem from="1609000557438" duration="25543000" />
-      <workItem from="1609064441214" duration="4374000" />
+      <workItem from="1609064441214" duration="17064000" />
     </task>
     <servers />
   </component>
@@ -245,10 +269,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="0" y="0" width="1172" height="574" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1609031196495" />
-    <state x="456" y="195" key="run.anything.popup" timestamp="1609066694735">
+    <state x="456" y="195" key="run.anything.popup" timestamp="1609097512092">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609066694735" />
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609097512092" />
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1609012916328">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

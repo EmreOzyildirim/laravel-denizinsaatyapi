@@ -14,7 +14,7 @@ class CreateNeighborhoodsTable extends Migration
     public function up()
     {
         Schema::create('neighborhoods', function (Blueprint $table) {
-            $table->integer('mahalle_id')->autoIncrement();
+            $table->id('mahalle_id');
             $table->string('mahalle_title');
             $table->integer('mahalle_key');
             $table->integer('mahalle_ilcekey')->index();
@@ -28,6 +28,8 @@ class CreateNeighborhoodsTable extends Migration
      */
     public function down()
     {
+        DB::statement('SET FOREIGN_KEY_CHECKS = 0');
         Schema::dropIfExists('neighborhoods');
+        DB::statement('SET FOREIGN_KEY_CHECKS = 1');
     }
 }

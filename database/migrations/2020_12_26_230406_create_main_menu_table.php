@@ -17,7 +17,7 @@ class CreateMainMenuTable extends Migration
             $table->id();
             $table->string('name');
             $table->string('url');
-            $table->integer('alignment')->unique();
+            $table->integer('alignment');
             $table->integer('parent_id');
         });
     }

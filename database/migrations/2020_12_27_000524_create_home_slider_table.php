@@ -15,7 +15,7 @@ class CreateHomeSliderTable extends Migration
     {
         Schema::create('home_slider', function (Blueprint $table) {
             $table->id();
-            $table->integer('advertisement_id')->index();
+            $table->integer('property_id')->index();
             $table->timestamps();
         });
     }
