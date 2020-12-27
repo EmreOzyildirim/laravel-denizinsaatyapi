@@ -20,8 +20,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/agents.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/contact_infos.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/main_menu.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/property_details.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/social_media.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_advertisements_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_advertisements_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_provinces_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_provinces_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_types_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_types_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_225136_create_social_media_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_225136_create_social_media_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/agents_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/agents_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/contact_infos_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/contact_infos_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/main_menu_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/main_menu_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/social_media_table_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/social_media_table_seeder.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -195,7 +206,7 @@
       <workItem from="1608720613680" duration="2238000" />
       <workItem from="1608836798710" duration="8484000" />
       <workItem from="1608980922172" duration="16324000" />
-      <workItem from="1609000557438" duration="21543000" />
+      <workItem from="1609000557438" duration="24973000" />
     </task>
     <servers />
   </component>
@@ -228,6 +239,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="567" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.860@0.0.1600.860" timestamp="1608985711986" />
+    <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609031182745">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1609031182745" />
     <state x="823" y="409" key="NewPhpFileDialog" timestamp="1608991930342">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -236,10 +251,14 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="226" y="0" width="1219" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1609001527996" />
-    <state x="456" y="195" key="run.anything.popup" timestamp="1609024311091">
+    <state x="0" y="0" width="1172" height="574" key="dock-window-1" timestamp="1609031196495">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609024311091" />
+    <state x="0" y="0" width="1172" height="574" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1609031196495" />
+    <state x="456" y="195" key="run.anything.popup" timestamp="1609030719648">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609030719648" />
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1609012916328">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

@@ -13,6 +13,8 @@ class main_menu_table_seeder extends Seeder
      */
     public function run()
     {
-        //
+        $path = 'app/developer_tools/main_menu.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info($path." basariyla veritabanina kaydedildi.");
     }
 }

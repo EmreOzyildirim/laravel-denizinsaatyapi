@@ -13,6 +13,8 @@ class contact_infos_seeder extends Seeder
      */
     public function run()
     {
-        //
+        $path = 'app/developer_tools/contact_infos.sql';
+        DB::unprepared(file_get_contents($path));
+        $this->command->info($path." basariyla veritabanina kaydedildi.");
     }
 }
