@@ -5,10 +5,10 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class AdminController extends Controller
+class MenuController extends Controller
 {
     public function index()
     {
-        return "admin controller home";
+        return "MenuController";
     }
 }
