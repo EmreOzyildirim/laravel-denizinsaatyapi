@@ -235,10 +235,10 @@ desired effect
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
 
-                <li class="active"><a href="#"><i class="fa fa-link"></i> <span>Admin</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Site Başlığı</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Menü</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Gözde İlanlar</span></a></li>
+                <li class="active"><a href="/admin/index"><i class="fa fa-link"></i> <span>Admin</span></a></li>
+                <li><a href="/admin/page-header"><i class="fa fa-link"></i> <span>Site Başlığı</span></a></li>
+                <li><a href="/admin/menu"><i class="fa fa-link"></i> <span>Menü</span></a></li>
+                <li><a href="/admin/featured-properties"><i class="fa fa-link"></i> <span>Gözde İlanlar</span></a></li>
                 <li class="treeview">
                     <a href="#"><i class="fa fa-link"></i> <span>Kategoriler</span>
                         <span class="pull-right-container">
@@ -246,8 +246,8 @@ desired effect
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">Kategoriler</a></li>
-                        <li><a href="#">Kategori Ekle</a></li>
+                        <li><a href="/admin/categories">Kategoriler</a></li>
+                        <li><a href="/admin/create-category">Kategori Ekle</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -257,17 +257,17 @@ desired effect
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="#">İlanlar</a></li>
-                        <li><a href="#">İlan Ekle</a></li>
+                        <li><a href="/admin/properties">İlanlar</a></li>
+                        <li><a href="/admin/create-property">İlan Ekle</a></li>
                     </ul>
                 </li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Neden Biz?</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Danışmanlarımız</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <sp2016 an>Müşteri Görüşleri</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a></li>
-                <li><a href="#"><i class="fa fa-link"></i> <span>Footer</span></a></li>
+                <li><a href="/admin/why-choose-us"><i class="fa fa-link"></i> <span>Neden Biz?</span></a></li>
+                <li><a href="/admin/agents"><i class="fa fa-link"></i> <span>Danışmanlarımız</span></a></li>
+                <li><a href="/admin/customer-feedback"><i class="fa fa-link"></i><span>Müşteri Görüşleri</span></a></li>
+                <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
+                <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
+                <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a></li>
+                <li><a href="/admin/footer"><i class="fa fa-link"></i> <span>Footer</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>

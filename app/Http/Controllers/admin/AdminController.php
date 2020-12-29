@@ -9,6 +9,6 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return "admin controller home";
+        return view('/admin/index');
     }
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\frontend\HomeController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\PageHeaderController;
 use App\Http\Controllers\admin\MenuController;
+use App\Http\Controllers\admin\PropertiesController;
 use App\Http\Controllers\admin\FeaturedPropertiesController;
 use App\Http\Controllers\admin\CategoriesController;
 use App\Http\Controllers\admin\WhyChooseUsController;
@@ -34,6 +35,7 @@ Route::group(['namespace'=>'admin'], function(){
     Route::get('/admin/index',[AdminController::class,'index']);
     Route::get('/admin/page-header',[PageHeaderController::class,'index']);
     Route::get('/admin/menu',[MenuController::class,'index']);
+    Route::get('/admin/featured-properties',[PropertiesController::class,'index']);
     Route::get('/admin/featured-properties',[FeaturedPropertiesController::class,'index']);
     Route::get('/admin/categories',[CategoriesController::class,'index']);
     Route::get('/admin/why-choose-us',[WhyChooseUsController::class,'index']);
