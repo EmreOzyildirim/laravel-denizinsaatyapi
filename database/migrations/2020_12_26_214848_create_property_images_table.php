@@ -17,6 +17,7 @@ class CreatePropertyImagesTable extends Migration
             $table->id();
             $table->integer('property_id')->index();
             $table->string('image_path');
+            $table->string('image_alt_text');
         });
     }
 

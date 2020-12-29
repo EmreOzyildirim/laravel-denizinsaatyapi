@@ -20,9 +20,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/packages/denizinsaatyapi/MetaTag/src/routes.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/test-laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test-laravel.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/SEOController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/properties.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/properties.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/property_details.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/property_details.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/property_images.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/property_images.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_properties_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_214848_create_property_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_214848_create_property_images_table.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/property_details_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/property_details_table_seeder.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -162,18 +174,20 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/backend" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\test-laravel\packages\denizinsaatyapi\MetaTag\src" />
+      <recent name="C:\xampp\htdocs\test-laravel\packages\denizinsaatyapi\MetaTag" />
+      <recent name="C:\xampp\htdocs\test-laravel\packages\denizinsaatyapi\meta_tag\src" />
+      <recent name="C:\xampp\htdocs\test-laravel" />
+      <recent name="C:\xampp\htdocs\test-laravel\app" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\xampp\htdocs\test-laravel\resources\backend" />
       <recent name="C:\xampp\htdocs\test-laravel\resources\views" />
-    </key>
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\test-laravel\app\Http\Controllers\admin" />
-      <recent name="C:\xampp\htdocs\test-laravel\app\developer_tools" />
-      <recent name="C:\xampp\htdocs\test-laravel\app\Http\Controllers\frontend" />
     </key>
   </component>
   <component name="RunManager">
@@ -200,8 +214,19 @@
       <workItem from="1609000557438" duration="25543000" />
       <workItem from="1609064441214" duration="23769000" />
       <workItem from="1609165003320" duration="3380000" />
-      <workItem from="1609236744505" duration="6058000" />
+      <workItem from="1609236744505" duration="9496000" />
+      <workItem from="1609248448728" duration="15000" />
+      <workItem from="1609252083084" duration="627000" />
+      <workItem from="1609265408789" duration="17414000" />
     </task>
+    <task id="LOCAL-00001">
+      <created>1609243250029</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1609243250029</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -223,6 +248,8 @@
     <ignored-roots>
       <path value="$PROJECT_DIR$/laravel" />
     </ignored-roots>
+    <MESSAGE value="controllers added" />
+    <option name="LAST_COMMIT_MESSAGE" value="controllers added" />
   </component>
   <component name="WindowStateProjectService">
     <state x="555" y="254" key="#Notifications" timestamp="1608717947356">
@@ -237,25 +264,37 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1609031182745" />
+    <state x="587" y="343" key="ComposerInitDialogKey" timestamp="1609265833075">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="587" y="343" key="ComposerInitDialogKey/0.0.1600.860@0.0.1600.860" timestamp="1609265833075" />
     <state x="823" y="409" key="NewPhpFileDialog" timestamp="1608991930342">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="823" y="409" key="NewPhpFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1608991930342" />
-    <state x="226" y="0" width="1219" height="860" key="SettingsEditor" timestamp="1609068708814">
+    <state x="226" y="0" width="1219" height="860" key="SettingsEditor" timestamp="1609270972892">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="226" y="0" width="1219" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1609068708814" />
+    <state x="226" y="0" width="1219" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1609270972892" />
+    <state width="524" height="445" key="SwitcherDM" timestamp="1609278403865">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state width="524" height="445" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1609278403865" />
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2" timestamp="1609243122217">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1609243122217" />
     <state x="0" y="0" width="1172" height="574" key="dock-window-1" timestamp="1609031196495">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="0" y="0" width="1172" height="574" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1609031196495" />
-    <state x="456" y="195" key="run.anything.popup" timestamp="1609241747260">
+    <state x="456" y="195" key="run.anything.popup" timestamp="1609284117221">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609241747260" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1609012916328">
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609284117221" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1609280468731">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1609012916328" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1609280468731" />
   </component>
 </project>

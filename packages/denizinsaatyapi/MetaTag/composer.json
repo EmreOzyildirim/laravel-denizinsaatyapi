@@ -1,0 +1,13 @@
+{
+    "name": "emre/meta_tag",
+    "description": "my first package for meta tags",
+    "type": "meta_tags_package",
+    "authors": [
+        {
+            "name": "EmreOzyildirim",
+            "email": "emreozyildirim@outlook.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {}
+}
