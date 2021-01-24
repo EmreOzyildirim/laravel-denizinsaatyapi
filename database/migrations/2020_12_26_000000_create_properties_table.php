@@ -15,13 +15,14 @@ class CreatePropertiesTable extends Migration
     {
         Schema::create('properties', function (Blueprint $table) {
             $table->id();
-            $table->integer('property_detail_id');
             $table->string('title');
             $table->integer('type')->index();
-            $table->double('price');
+            $table->integer('price');
             $table->integer('agent_id')->default('1')->index();
             $table->string('image_path');
             $table->string('image_alt_text');
+            $table->boolean('status');
+            $table->integer('category_id');
             $table->timestamps();
         });
     }

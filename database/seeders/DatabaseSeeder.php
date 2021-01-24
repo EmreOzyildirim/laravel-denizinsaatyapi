@@ -21,9 +21,15 @@ class DatabaseSeeder extends Seeder
         $this->call(contact_infos_seeder::class);
         $this->call(home_slider_table_seeder::class);
         $this->call(property_details_table_seeder::class);
+        $this->call(property_images_table_seeder::class);
         $this->call(property_type_table_seeder::class);
         $this->call(social_media_table_seeder::class);
+        $this->call(page_header_seeder::class);
         $this->call(main_menu_table_seeder::class);
+        $this->call(categories_table_seeder::class);
+        $this->call(statuses_table_seeder::class);
+        $this->call(why_choose_us_table_seeder::class);
+        $this->call(why_choose_us_icon_items_table_seeder::class);
         $this->call(neighborhoods_table_seeder::class);
         //neighborhoods sıkıntılı oldugu için sona alindi
     }

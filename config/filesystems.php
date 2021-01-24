@@ -56,6 +56,29 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | FTP
+    |--------------------------------------------------------------------------
+    |
+    | Here you may configure the FTP credentials.
+    |
+    */
+
+    'ftp' => [
+        'driver' => 'ftp',
+        'host' => 'ftp.denizinsaatyapi.com',
+        'username' => 'admin',
+        'password' => 'denizinsaatyapi546.',
+
+        // Optional FTP Settings...
+        // 'port' => 21,
+        // 'root' => '',
+        // 'passive' => true,
+        // 'ssl' => true,
+        // 'timeout' => 30,
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
     | Symbolic Links
     |--------------------------------------------------------------------------
     |
@@ -67,6 +90,9 @@ return [
 
     'links' => [
         public_path('storage') => storage_path('app/public'),
+        public_path('img') => storage_path('app/img'),
+        public_path('property_images') => storage_path('app/property_images'),
+        public_path('blog_images') => storage_path('app/blog_images')
     ],
 
 ];

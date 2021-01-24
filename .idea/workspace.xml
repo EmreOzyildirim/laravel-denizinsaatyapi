@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
   <component name="BranchesTreeState">
     <expand>
       <path>
@@ -20,22 +23,45 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/packages/denizinsaatyapi/MetaTag/src/routes.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/categories.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/page_header.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/statuses.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/why_choose_us.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/why_choose_us_icon_items.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/categories.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/category_update.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/create_category.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/menu.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/page_header.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/properties.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/property_create.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/property_update.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/why_choose_us.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/why_choose_us_icon_item.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/storage/app/public/property_images/share_image_619.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/php.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/php.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/test-laravel.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/test-laravel.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/SEOController.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/FeaturedPropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/FeaturedPropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/MenuController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/PageHeaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/PageHeaderController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/WhyChooseUsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/WhyChooseUsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/developer_tools/properties.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/properties.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/developer_tools/property_details.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/property_details.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/developer_tools/property_images.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/property_images.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.json" beforeDir="false" afterPath="$PROJECT_DIR$/composer.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/composer.lock" beforeDir="false" afterPath="$PROJECT_DIR$/composer.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/config/app.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/app.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/filesystems.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/filesystems.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_properties_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_000000_create_properties_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_214848_create_property_images_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_214848_create_property_images_table.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_232842_create_property_details.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/property_details_seeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/property_details_table_seeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/denizinsaatyapi/MetaTag/src/MetaTagController.php" beforeDir="false" afterPath="$PROJECT_DIR$/packages/denizinsaatyapi/MetaTag/src/MetaTagController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/storage/app/public/.gitignore" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -158,6 +184,8 @@
       <path value="$PROJECT_DIR$/vendor/brick/math" />
       <path value="$PROJECT_DIR$/vendor/league/flysystem" />
       <path value="$PROJECT_DIR$/vendor/laravel/ui" />
+      <path value="$PROJECT_DIR$/vendor/intervention/image" />
+      <path value="$PROJECT_DIR$/vendor/unisharp/laravel-filemanager" />
     </include_path>
   </component>
   <component name="ProjectId" id="1m3Kq9HgdbPd487sjZ7iOXw7plj" />
@@ -172,20 +200,22 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/backend" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/storage/property_images" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\test-laravel\storage\app\public" />
       <recent name="C:\xampp\htdocs\test-laravel\packages\denizinsaatyapi\MetaTag\src" />
       <recent name="C:\xampp\htdocs\test-laravel\packages\denizinsaatyapi\MetaTag" />
       <recent name="C:\xampp\htdocs\test-laravel\packages\denizinsaatyapi\meta_tag\src" />
       <recent name="C:\xampp\htdocs\test-laravel" />
-      <recent name="C:\xampp\htdocs\test-laravel\app" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\test-laravel\public\storage\property_images" />
+      <recent name="C:\xampp\htdocs\test-laravel\storage\app\public\property_images" />
       <recent name="C:\xampp\htdocs\test-laravel\resources\backend" />
       <recent name="C:\xampp\htdocs\test-laravel\resources\views" />
     </key>
@@ -217,7 +247,32 @@
       <workItem from="1609236744505" duration="9496000" />
       <workItem from="1609248448728" duration="15000" />
       <workItem from="1609252083084" duration="627000" />
-      <workItem from="1609265408789" duration="17414000" />
+      <workItem from="1609265408789" duration="17587000" />
+      <workItem from="1609338372924" duration="1347000" />
+      <workItem from="1609410564138" duration="801000" />
+      <workItem from="1609412365650" duration="42000" />
+      <workItem from="1609677878048" duration="9130000" />
+      <workItem from="1609785941538" duration="9384000" />
+      <workItem from="1609846572315" duration="5531000" />
+      <workItem from="1609875858912" duration="4126000" />
+      <workItem from="1609935887838" duration="20691000" />
+      <workItem from="1609971093325" duration="1555000" />
+      <workItem from="1610013473110" duration="10118000" />
+      <workItem from="1610192435845" duration="28924000" />
+      <workItem from="1610278831172" duration="20454000" />
+      <workItem from="1610362880203" duration="8982000" />
+      <workItem from="1610451223444" duration="7873000" />
+      <workItem from="1610530604398" duration="16538000" />
+      <workItem from="1610610159583" duration="12096000" />
+      <workItem from="1610707116562" duration="44305000" />
+      <workItem from="1610979621784" duration="304000" />
+      <workItem from="1611048340942" duration="8952000" />
+      <workItem from="1611134046455" duration="509000" />
+      <workItem from="1611234209813" duration="5744000" />
+      <workItem from="1611419660432" duration="1974000" />
+      <workItem from="1611429197553" duration="974000" />
+      <workItem from="1611436888250" duration="6658000" />
+      <workItem from="1611493704143" duration="300000" />
     </task>
     <task id="LOCAL-00001">
       <created>1609243250029</created>
@@ -256,26 +311,30 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="555" y="254" key="#Notifications/0.0.1600.860@0.0.1600.860" timestamp="1608717947356" />
-    <state x="567" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1608985711986">
+    <state x="567" y="234" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1611049395901">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="567" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.860@0.0.1600.860" timestamp="1608985711986" />
+    <state x="567" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.860@0.0.1600.860" timestamp="1611049395901" />
     <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609031182745">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1609031182745" />
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1610319272371">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1610319272371" />
     <state x="587" y="343" key="ComposerInitDialogKey" timestamp="1609265833075">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="587" y="343" key="ComposerInitDialogKey/0.0.1600.860@0.0.1600.860" timestamp="1609265833075" />
-    <state x="823" y="409" key="NewPhpFileDialog" timestamp="1608991930342">
+    <state x="823" y="409" key="NewPhpFileDialog" timestamp="1609789888140">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="823" y="409" key="NewPhpFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1608991930342" />
-    <state x="226" y="0" width="1219" height="860" key="SettingsEditor" timestamp="1609270972892">
+    <state x="823" y="409" key="NewPhpFileDialog/0.0.1600.860@0.0.1600.860" timestamp="1609789888140" />
+    <state x="226" y="0" width="1219" height="860" key="SettingsEditor" timestamp="1609677912851">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="226" y="0" width="1219" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1609270972892" />
+    <state x="226" y="0" width="1219" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1609677912851" />
     <state width="524" height="445" key="SwitcherDM" timestamp="1609278403865">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -284,17 +343,23 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1609243122217" />
+    <state x="448" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1610713177128">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="448" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.0.1600.860@0.0.1600.860" timestamp="1610713177128" />
     <state x="0" y="0" width="1172" height="574" key="dock-window-1" timestamp="1609031196495">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="0" y="0" width="1172" height="574" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1609031196495" />
-    <state x="456" y="195" key="run.anything.popup" timestamp="1609284117221">
+    <state x="456" y="195" key="run.anything.popup" timestamp="1611235074853">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1609284117221" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1609280468731">
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1610617351147" />
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860/1600.-104.1920.1040@0.0.1600.860" timestamp="1610627706861" />
+    <state x="456" y="195" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1611235074853" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1611439426011">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1609280468731" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1611439426011" />
   </component>
 </project>

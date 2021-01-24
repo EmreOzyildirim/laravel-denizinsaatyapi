@@ -9,12 +9,10 @@ use App\Http\Controllers\Controller;
 class MetaTagController extends Controller
 {
 
-    public function meta_tag($name,$content){
-        return '<meta name="'.$name.'" content="'.$content.'" />';
+    public function meta_tag($attribute_key = "name", $attribute_value = null, $content = null)
+    {
+        return '<meta ' . $attribute_key . '"=' . $attribute_value . '" content="' . $content . '" />';
     }
-
-
-
 
     public function toplama($a, $b)
     {

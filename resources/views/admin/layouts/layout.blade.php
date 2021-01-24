@@ -28,8 +28,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+@yield('head')
 
-    <!-- Google Font -->
+@yield('css')
+<!-- Google Font -->
     <link rel="stylesheet"
           href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
@@ -92,7 +94,8 @@ desired effect
                                         <a href="#">
                                             <div class="pull-left">
                                                 <!-- User Image -->
-                                                <img src="/backend/dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
+                                                <img src="/backend/dist/img/user2-160x160.jpg" class="img-circle"
+                                                     alt="User Image">
                                             </div>
                                             <!-- Message title and timestamp -->
                                             <h4>
@@ -153,7 +156,8 @@ desired effect
                                             <!-- The progress bar -->
                                             <div class="progress xs">
                                                 <!-- Change the css width attribute to simulate progress -->
-                                                <div class="progress-bar progress-bar-aqua" style="width: 20%" role="progressbar"
+                                                <div class="progress-bar progress-bar-aqua" style="width: 20%"
+                                                     role="progressbar"
                                                      aria-valuenow="20" aria-valuemin="0" aria-valuemax="100">
                                                     <span class="sr-only">20% Complete</span>
                                                 </div>
@@ -190,10 +194,10 @@ desired effect
                             <!-- Menu Footer-->
                             <li class="user-footer">
                                 <div class="pull-left">
-                                    <a href="#" class="btn btn-default btn-flat">Profil</a>
+                                    <a href="/profile" class="btn btn-default btn-flat">Profil</a>
                                 </div>
                                 <div class="pull-right">
-                                    <a href="#" class="btn btn-default btn-flat">Çıkış Yap</a>
+                                    <a href="/logout" class="btn btn-default btn-flat">Çıkış Yap</a>
                                 </div>
                             </li>
                         </ul>
@@ -234,12 +238,15 @@ desired effect
             <ul class="sidebar-menu" data-widget="tree">
                 <li class="header">HEADER</li>
                 <!-- Optionally, you can add icons to the links -->
-
-                <li class="active"><a href="/admin/index"><i class="fa fa-link"></i> <span>Admin</span></a></li>
-                <li><a href="/admin/page-header"><i class="fa fa-link"></i> <span>Site Başlığı</span></a></li>
-                <li><a href="/admin/menu"><i class="fa fa-link"></i> <span>Menü</span></a></li>
-                <li><a href="/admin/featured-properties"><i class="fa fa-link"></i> <span>Gözde İlanlar</span></a></li>
-                <li class="treeview">
+                <li class="{{ Request::path()=='admin/index' ? 'active' : '' }}"><a href="/admin/index"><i
+                            class="fa fa-link"></i> <span>Admin</span></a></li>
+                <li class="{{ Request::path()=='admin/page-header' ? 'active' : '' }}"><a href="/admin/page-header"><i
+                            class="fa fa-link"></i> <span>Site Başlığı</span></a></li>
+                <li class="{{ Request::path()=='admin/menu' ? 'active' : '' }}"><a href="/admin/menu"><i
+                            class="fa fa-link"></i> <span>Menü</span></a></li>
+                <li class="{{ Request::path()=='admin/featured-properties' ? 'active' : '' }}"><a
+                        href="/admin/featured-properties"><i class="fa fa-link"></i> <span>Gözde İlanlar</span></a></li>
+                <li class="treeview{{ Request::path()=='admin/kategoriler' ? ' active' : '' }}">
                     <a href="#"><i class="fa fa-link"></i> <span>Kategoriler</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -266,7 +273,8 @@ desired effect
                 <li><a href="/admin/customer-feedback"><i class="fa fa-link"></i><span>Müşteri Görüşleri</span></a></li>
                 <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
                 <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
-                <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a></li>
+                <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a>
+                </li>
                 <li><a href="/admin/footer"><i class="fa fa-link"></i> <span>Footer</span></a></li>
             </ul>
             <!-- /.sidebar-menu -->
@@ -283,8 +291,8 @@ desired effect
                 <small>@yield('optional_description')</small>
             </h1>
             <ol class="breadcrumb">
-                <li><a href="#"><i class="fa fa-dashboard"></i> Level</a></li>
-                <li class="active">Here</li>
+                <li><a href="{{request('url')}}"><i class="fa fa-dashboard"></i> {{request('url')}}</a></li>
+                <li class="active">@yield('page_title')</li>
             </ol>
         </section>
 
@@ -295,12 +303,12 @@ desired effect
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>150</h3>
+                            <h3>13</h3>
 
                             <p>Mevcut İlan</p>
                         </div>
                         <div class="icon">
-                            <i class="ion ion-bag"></i>
+                            <i class="ion ion-home"></i>
                         </div>
                         <a href="#" class="small-box-footer">İlanları Gör <i class="fa fa-arrow-circle-right"></i></a>
                     </div>
@@ -309,14 +317,15 @@ desired effect
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>3</h3>
+                            <h3>4</h3>
 
                             <p>Danışman</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Danışmanları Gör <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">Danışmanları Gör <i
+                                class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -324,14 +333,15 @@ desired effect
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>65</h3>
+                            <h3>7</h3>
 
                             <p>İlan Kategorisi</p>
                         </div>
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">İlan Kategorilerini Gör <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="#" class="small-box-footer">İlan Kategorilerini Gör <i
+                                class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <!-- ./col -->
@@ -354,7 +364,8 @@ desired effect
             Anything you want by Emre Özyildirim
         </div>
         <!-- Default to the left -->
-        <strong>Copyright &copy; 2020 <a href="https://www.denizinsaatyapi.com" target="_blank">Deniz Gayrimenkul</a>.</strong> All rights reserved.
+        <strong>Copyright &copy; 2020 <a href="https://www.denizinsaatyapi.com" target="_blank">Deniz
+                Gayrimenkul</a>.</strong> All rights reserved.
     </footer>
     <!-- Add the sidebar's background. This div must be placed
     immediately after the control sidebar -->
@@ -374,5 +385,6 @@ desired effect
 <!-- Optionally, you can add Slimscroll and FastClick plugins.
      Both of these plugins are recommended to enhance the
      user experience. -->
+@yield('js')
 </body>
 </html>

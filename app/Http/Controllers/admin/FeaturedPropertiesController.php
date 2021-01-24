@@ -11,4 +11,8 @@ class FeaturedPropertiesController extends Controller
     {
         return "FeaturedPropertiesController";
     }
+
+    //property status 1 = yayinda,
+    //property status 2 = satildi,
+    //property status 3 = yayinda degil.
 }
