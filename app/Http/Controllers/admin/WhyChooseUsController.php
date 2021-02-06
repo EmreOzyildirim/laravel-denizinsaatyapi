@@ -71,7 +71,7 @@ class WhyChooseUsController extends Controller
     public function icon_item($id)
     {
         $why_choose_us_icon_item = why_choose_us_icon_items::find($id);
-        return view('.admin.why_choose_us_icon_item', ['icon_items' => $why_choose_us_icon_item]);
+        return view('.admin.update_why_choose_us_icon_item', ['icon_items' => $why_choose_us_icon_item]);
     }
 
     public function update_icon_item(Request $request)
@@ -93,11 +93,35 @@ class WhyChooseUsController extends Controller
 
         $why_choose_us_icon_items = why_choose_us_icon_items::all();
 
-        if (!$saved)
+        if (!$saved) {
             return view('.admin.update_why_choose_us_icon_item', ['icon_items' => $why_choose_us_icon_items, 'status' => false, 'message' => 'Neden Biz? modülü için madde güncellenirken bir hata oluştu.']);
+        }
 
 
-        return view('.admin.update_why_choose_us_icon_item');
+        $why_choose_us = why_choose_us::find(1);
+        $why_choose_us_icon_items = why_choose_us_icon_items::all()->where('why_choose_us_id', '=', $why_choose_us['id'])->toArray();
+
+        return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'message' => 'Neden Biz? modülü için madde başarıyla güncellendi']);
+    }
+
+    public function delete_icon_item($id)
+    {
+
+        $item = why_choose_us_icon_items::find($id);
+
+        if (!empty($item)) {
+            $item->delete();
+        }
+
+
+        $why_choose_us = why_choose_us::find(1);
+        $why_choose_us_icon_items = why_choose_us_icon_items::all()->where('why_choose_us_id', '=', $why_choose_us['id'])->toArray();
+
+        if ($item == null)
+            return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'status' => false, 'message' => 'Belirttiğiniz madde silinirken bir hata oluştu.']);
+
+
+        return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'status' => true, 'message' => 'Belirttiğiniz madde başarıyla silindi.']);
     }
 
 }

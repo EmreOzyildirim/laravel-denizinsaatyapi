@@ -21,6 +21,10 @@ class CreateAgentsTable extends Migration
             $table->string('phone_number');
             $table->string('title');
             $table->string('description');
+            $table->string('facebook');
+            $table->string('twitter');
+            $table->timestamps();
+
         });
     }
 

@@ -13,21 +13,20 @@ class MenuController extends Controller
 
         function parseMenu($id = 0)
         {
-
             $main_menu = main_menu::all()->where('parent_id', '=', $id)->toArray();
-            echo '<ul class="sortable" style="list-style-type: none;">';
+
+            $html_output = '';
+            $html_output .= '<ul class="sortable" style="list-style-type: none;">';
 
             foreach ($main_menu as $item) {
-                echo "<li>" . '<div class="input-group">
-                <input type="text" class="form-control" value="'.$item['name'].'" disabled>
-                <span class="input-group-addon"><i class="fa fa-close"></i></span>
-              </div>';
-                parseMenu($item['id']);
-                echo "</li>";
+                $html_output .= "<li>" . '<div class="input-group"><input type="text" class="form-control" value="'.$item['name'].'" disabled><span class="input-group-addon"><i class="fa fa-close"></i></span></div>';
+                $html_output .= parseMenu($item['id']);
+                $html_output .= "</li>";
             }
 
-            echo "</ul>";
+            $html_output .= "</ul>";
 
+            return $html_output;
         }
 
         $menu = parseMenu(0);

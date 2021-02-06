@@ -1,5 +1,6 @@
 @extends('admin.layouts.layout')
-
+@section('page_title','Footer Düzenle')
+@section('optional_description','Buradan Websitenizin en alt kısmındaki alanı yönetebilirsiniz.')
 @section('head')
     @csrf
 @endsection
@@ -9,7 +10,7 @@
             <section class="content" style="min-height: 0;">
                 <div class="row">
                     <div class="col-md-12">
-                        <img src="/backend/know-how/site-basligi.PNG" width="100%">
+                        <img src="/backend/know-how/footer.PNG" width="100%">
                     </div>
                 </div>
                 <!-- /.row -->
@@ -38,26 +39,18 @@
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Site Başlığı</h3>
+                <h3 class="box-title">Footer Düzenle</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form id="ajaxform" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" method="post">
                 <div class="box-body">
-                    <div class="form-group">
-                        <label for="logo" class="col-sm-2 control-label">Logo</label>
-                        <div class="col-sm-10">
-                            <img src="" width="180px">
-                            <input type="file" class="form-control" id="logo" placeholder="Logo">
-                        </div>
-                    </div>
                     <div class="form-group">
                         <label for="mail_address" class="col-sm-2 control-label">E-mail</label>
 
                         <div class="col-sm-10">
                             <input type="email" name="mail_address" class="form-control" id="mail_address"
-                                   value="{{$mail_address}}"
-                                   placeholder="Site başlığında görünecek mail adresi">
+                                   placeholder="">
                         </div>
                     </div>
                     <div class="form-group">
@@ -65,7 +58,6 @@
 
                         <div class="col-sm-10">
                             <input type="phone_number" name="phone_number" class="form-control" id="phone_number"
-                                   value="{{$phone_number}}"
                                    placeholder="Site başlığında görünecek telefon numarası">
                         </div>
                     </div>
@@ -74,7 +66,6 @@
 
                         <div class="col-sm-10">
                             <input type="call_us_button" name="call_us_button" class="form-control" id="call_us_button"
-                                   value="{{$call_us_button}}"
                                    placeholder="Site başlığında görünecek bizi arayın butonu">
                         </div>
                     </div>

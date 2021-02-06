@@ -9,7 +9,7 @@
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-header with-border">
-                <h3 class="box-title">Site Başlığı</h3>
+                <h3 class="box-title">Kategori Oluştur</h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

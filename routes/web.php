@@ -16,7 +16,7 @@ use App\Http\Controllers\admin\CustomerFeedbackController;
 use App\Http\Controllers\admin\ReferencesController;
 use App\Http\Controllers\admin\SEOController;
 use App\Http\Controllers\admin\SocialMediaController;
-use App\Http\Controllers\admin\FooterbackController;
+use App\Http\Controllers\admin\FooterController;
 
 use App\Models\categories;
 use App\Models\properties;
@@ -90,7 +90,28 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('/admin/why-choose-us/update-icon-item/{id}', [WhyChooseUsController::class, 'icon_item']);
     Route::post('/admin/why-choose-us/update-icon-item', [WhyChooseUsController::class, 'update_icon_item']);
 
+    Route::get('/admin/why-choose-us/delete-icon-item/{id}', [WhyChooseUsController::class, 'delete_icon_item']);
+
     Route::get('/admin/agents', [AgentsController::class, 'index']);
+
+    Route::get('/admin/create-agent', [AgentsController::class, 'create_agent']);
+    Route::post('/admin/create-agent', [AgentsController::class, 'create_agent_post']);
+
+    Route::get('/admin/update-agent/{id}', [AgentsController::class, 'update_agent']);
+    Route::post('/admin/update-agent', [AgentsController::class, 'update_agent_post']);
+
+    Route::get('/admin/delete-agent/{id}', [AgentsController::class, 'delete_agent']);
+
+    Route::get('/admin/customer-feedbacks',[CustomerFeedbackController::class, 'index']);
+
+
+
+
+    Route::get('/admin/footer',[FooterController::class, 'index']);
+
+
+
+
     Route::get('/admin/customer-feedback', [CustomerFeedbackController::class, 'index']);
     Route::get('/admin/references', [ReferencesController::class, 'index']);
     Route::get('/admin/seo-options', [SEOController::class, 'index']);

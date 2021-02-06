@@ -18,27 +18,30 @@
         </div>
         <!-- /.box -->
     </div>
-    <div class="modal modal-success fade in hidden" id="modal-success" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog mt-4">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">İşlem başarılı</h4>
+    @if(isset($message))
+        <div class="modal modal-success fade in" id="modal-success" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog mt-4">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">İşlem başarılı</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{$message}}</p>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>{{isset($message)}}</p>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
+    @endif
 
 
 
-    <form action="/admin/why-choose-us/create-icon-item" method="POST" class="form-horizontal">
+    <form action="/admin/why-choose-us/update-icon-item" method="post" class="form-horizontal">
         @csrf
+        <input type="text" class="hidden" name="id" value="{{$icon_items['id']}}" hidden>
         <div class="col-md-12">
             <div class="box box-default">
                 <div class="box-header with-border">
@@ -76,7 +79,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button class="btn btn-default save-data">Kaydet</button>
+                    <button class="btn btn-default" type="submit">Kaydet</button>
                 </div>
                 <!-- /.box-footer -->
             </div>
@@ -91,13 +94,13 @@
 @endsection
 @section('js')
     <script>
-        /*success: function (response) {
-            console.log(response);
-            if (response) {
-                $('.modal-success').removeClass('hidden').fadeIn();
-                $('.modal-success').delay(2000).fadeOut();
-                $('.callout-success').text(response.message);
-            }
-        },*/
+
+        $(window).ready(function(){
+            setInterval(function(){
+                $('.modal-success').addClass("hidden")
+            }, 2000);
+
+        });
+
     </script>
 @endsection

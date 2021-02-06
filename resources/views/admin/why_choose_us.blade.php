@@ -19,23 +19,24 @@
         </div>
         <!-- /.box -->
     </div>
-    <div class="modal modal-success fade in hidden" id="modal-success" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog mt-4">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">İşlem başarılı</h4>
+    @if(isset($message))
+        <div class="modal modal-{{$status ? 'success' : 'danger'}} fade in" id="modal-{{$status ? 'success' : 'danger'}}" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog mt-4">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">{{$status ? 'İşlem başarılı' : 'Hata'}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{$message}}</p>
+                    </div>
                 </div>
-                <div class="modal-body">
-                    <p>{{isset($message)}}</p>
-                </div>
+                <!-- /.modal-content -->
             </div>
-            <!-- /.modal-content -->
+            <!-- /.modal-dialog -->
         </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <!-- logo -->
+    @endif
     <form method="post" class="form-horizontal">
         @csrf
         <div class="col-md-12">
@@ -46,14 +47,14 @@
                 <!-- /.box-header -->
                 <!-- form start -->
 
-                <div class="box-body"><!----
+                <div class="box-body">
                     <div class="form-group">
-                        <label for="logo" class="col-sm-2 control-label">Logo</label>
+                        <label for="logo" class="col-sm-2 control-label">Arkaplan Resmi</label>
                         <div class="col-sm-10">
                             <img src="" width="180px">
-                            <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
+                            <input type="file" class="form-control" id="background_image" placeholder="Arkaplan Resmi">
                         </div>
-                    </div>---->
+                    </div>
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">Başlık</label>
 
@@ -87,7 +88,7 @@
         <div class="col-md-12">
             <div class="box box-default">
                 <div class="box-header with-border">
-                    <h3 class="box-title">İkon Oluştur</h3>
+                    <h3 class="box-title">İkonlu Madde Oluştur</h3>
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
@@ -149,8 +150,9 @@
                             <td>{{strlen($item['title']) > 30 ? substr($item['title'],0,50).'...' : $item['title'] }}</td>
                             <td>{{strlen($item['description']) > 30 ? substr($item['description'],0,70).'...' : $item['description'] }}</td>
                             <td>
-                                <a href="/admin/why-choose-us/update-icon-item/{{$item['id']}}" class="btn btn-xs btn-primary">Düzenle</a>
-                                <a href="#" class="btn btn-xs btn-danger">Sil</a>
+                                <a href="/admin/why-choose-us/update-icon-item/{{$item['id']}}"
+                                   class="btn btn-xs btn-primary">Düzenle</a>
+                                <a href="/admin/why-choose-us/delete-icon-item/{{$item['id']}}" class="btn btn-xs btn-danger">Sil</a>
                             </td>
                         </tr>
                     @endforeach
@@ -159,6 +161,9 @@
             </div>
             <!-- /.box-body -->
         </div>
+        <p>
+            "Neden Biz?" modülü için eklediğiniz maddelerin maksimum 4 tanesi websayfanızda görünecektir.
+        </p>
     </div>
 
 @endsection
@@ -168,6 +173,13 @@
 @endsection
 @section('js')
     <script>
+
+        $(window).ready(function () {
+            setInterval(function () {
+                $('.modal').addClass("hidden")
+            }, 2000);
+
+        });
         /*success: function (response) {
             console.log(response);
             if (response) {

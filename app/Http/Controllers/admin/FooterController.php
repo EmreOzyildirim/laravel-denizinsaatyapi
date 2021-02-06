@@ -9,6 +9,7 @@ class FooterController extends Controller
 {
     public function index()
     {
-        return "FooterController";
+
+        return view('.admin.footer');
     }
 }

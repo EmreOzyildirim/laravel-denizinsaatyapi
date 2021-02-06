@@ -15,14 +15,14 @@
             <!-- form start -->
             <form id="ajaxform" class="form-horizontal">
                 @csrf
-                <div class="box-body"><!----
+                <div class="box-body">
                     <div class="form-group">
-                        <label for="logo" class="col-sm-2 control-label">Logo</label>
+                        <label for="logo" class="col-sm-2 control-label">İlan Resimleri</label>
                         <div class="col-sm-10">
                             <img src="" width="180px">
-                            <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
+                            <input type="file" class="form-control" id="logo" placeholder="İlan Resimleri">
                         </div>
-                    </div>---->
+                    </div>
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">İlan Başlığı</label>
 

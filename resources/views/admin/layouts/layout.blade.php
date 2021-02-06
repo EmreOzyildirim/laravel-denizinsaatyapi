@@ -57,7 +57,6 @@ desired effect
 -->
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
-
     <!-- Main Header -->
     <header class="main-header">
 
@@ -246,15 +245,17 @@ desired effect
                             class="fa fa-link"></i> <span>Menü</span></a></li>
                 <li class="{{ Request::path()=='admin/featured-properties' ? 'active' : '' }}"><a
                         href="/admin/featured-properties"><i class="fa fa-link"></i> <span>Gözde İlanlar</span></a></li>
-                <li class="treeview{{ Request::path()=='admin/kategoriler' ? ' active' : '' }}">
+                <li class="treeview{{ Request::path()=='admin/categories' ? ' active' : '' }}">
                     <a href="#"><i class="fa fa-link"></i> <span>Kategoriler</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li><a href="/admin/categories">Kategoriler</a></li>
-                        <li><a href="/admin/create-category">Kategori Ekle</a></li>
+                        <li class="{{ Request::path()=='admin/categories' ? 'active' : '' }}"><a
+                                href="/admin/categories">Kategoriler</a></li>
+                        <li class="{{ Request::path()=='admin/create-category' ? 'active' : '' }}"><a
+                                href="/admin/create-category">Kategori Ekle</a></li>
                     </ul>
                 </li>
                 <li class="treeview">
@@ -263,13 +264,29 @@ desired effect
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     </a>
-                    <ul class="treeview-menu">
-                        <li><a href="/admin/properties">İlanlar</a></li>
-                        <li><a href="/admin/create-property">İlan Ekle</a></li>
+                    <ul class="treeview-menu" {{ Request::path()=='admin/properties' ? ' style=display:block;':'' }}{{ Request::path()=='admin/create-property' ? 'style=display:block;':'' }}>
+                        <li class="{{ Request::path()=='admin/properties' ? 'active' : '' }}"><a
+                                href="/admin/properties">İlanlar</a></li>
+                        <li class="{{ Request::path()=='admin/create-property' ? 'active' : '' }}"><a
+                                href="/admin/create-property">İlan Ekle</a></li>
                     </ul>
                 </li>
-                <li><a href="/admin/why-choose-us"><i class="fa fa-link"></i> <span>Neden Biz?</span></a></li>
-                <li><a href="/admin/agents"><i class="fa fa-link"></i> <span>Danışmanlarımız</span></a></li>
+                <li class="{{ Request::path()=='admin/why-choose-us' ? 'active' : '' }}"><a
+                        href="/admin/why-choose-us"><i class="fa fa-link"></i><span>Neden Biz?</span></a></li>
+                <li class="treeview">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Danışmanlar</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu" {{ Request::path()=='admin/agents' ? ' style=display:block;':'' }}{{ Request::path()=='admin/create-agent' ? ' style=display:block;':'' }}>
+                        <li class="{{ Request::path()=='admin/agents' ? ' active' : '' }} "><a href="/admin/agents">
+                                Danışmanlar</a></li>
+                        <li class="{{ Request::path()=='admin/create-agent' ? ' active' : '' }}"><a
+                                href="/admin/create-agent"> Danışman Ekle</a></li>
+                    </ul>
+                </li>
                 <li><a href="/admin/customer-feedback"><i class="fa fa-link"></i><span>Müşteri Görüşleri</span></a></li>
                 <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
                 <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
@@ -310,7 +327,8 @@ desired effect
                         <div class="icon">
                             <i class="ion ion-home"></i>
                         </div>
-                        <a href="#" class="small-box-footer">İlanları Gör <i class="fa fa-arrow-circle-right"></i></a>
+                        <a href="/admin/properties" class="small-box-footer">İlanları Gör <i
+                                class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
                 <div class="col-lg-4 col-xs-6">
@@ -324,7 +342,7 @@ desired effect
                         <div class="icon">
                             <i class="ion ion-person-add"></i>
                         </div>
-                        <a href="#" class="small-box-footer">Danışmanları Gör <i
+                        <a href="/admin/agents" class="small-box-footer">Danışmanları Gör <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
@@ -340,7 +358,7 @@ desired effect
                         <div class="icon">
                             <i class="ion ion-pie-graph"></i>
                         </div>
-                        <a href="#" class="small-box-footer">İlan Kategorilerini Gör <i
+                        <a href="/admin/categories" class="small-box-footer">İlan Kategorilerini Gör <i
                                 class="fa fa-arrow-circle-right"></i></a>
                     </div>
                 </div>
