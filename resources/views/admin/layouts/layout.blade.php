@@ -245,7 +245,7 @@ desired effect
                             class="fa fa-link"></i> <span>Menü</span></a></li>
                 <li class="{{ Request::path()=='admin/featured-properties' ? 'active' : '' }}"><a
                         href="/admin/featured-properties"><i class="fa fa-link"></i> <span>Gözde İlanlar</span></a></li>
-                <li class="treeview{{ Request::path()=='admin/categories' ? ' active' : '' }}">
+                <li class="treeview{{ Request::path()=='admin/categories' ? ' menu-open' : '' }}">
                     <a href="#"><i class="fa fa-link"></i> <span>Kategoriler</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -258,7 +258,7 @@ desired effect
                                 href="/admin/create-category">Kategori Ekle</a></li>
                     </ul>
                 </li>
-                <li class="treeview">
+                <li class="treeview{{ Request::path()=='admin/properties' ? ' menu-open':'' }}{{ Request::path()=='admin/create-property' ? ' menu-open':'' }}">
                     <a href="#"><i class="fa fa-link"></i> <span>İlanlar</span>
                         <span class="pull-right-container">
                 <i class="fa fa-angle-left pull-right"></i>
@@ -273,7 +273,7 @@ desired effect
                 </li>
                 <li class="{{ Request::path()=='admin/why-choose-us' ? 'active' : '' }}"><a
                         href="/admin/why-choose-us"><i class="fa fa-link"></i><span>Neden Biz?</span></a></li>
-                <li class="treeview">
+                <li class="treeview{{ Request::path()=='admin/agents' ? ' menu-open':'' }}{{ Request::path()=='admin/create-agent' ? ' menu-open':'' }}">
                     <a href="#">
                         <i class="fa fa-link"></i> <span>Danışmanlar</span>
                         <span class="pull-right-container">
@@ -287,12 +287,41 @@ desired effect
                                 href="/admin/create-agent"> Danışman Ekle</a></li>
                     </ul>
                 </li>
-                <li><a href="/admin/customer-feedback"><i class="fa fa-link"></i><span>Müşteri Görüşleri</span></a></li>
+
+
+
+                <li class="treeview{{ Request::path()=='admin/customer-feedbacks' ? ' menu-open':'' }}{{ Request::path()=='admin/create-customer-feedbacks' ? ' menu-open':'' }}">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Müşteri Görüşleri</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu" {{ Request::path()=='admin/customer-feedbacks' ? ' style=display:block;':'' }}{{ Request::path()=='admin/customer-feedbacks' ? ' style=display:block;':'' }}>
+                        <li class="{{ Request::path()=='admin/customer-feedbacks' ? ' active' : '' }} "><a href="/admin/customer-feedbacks">
+                                Müşteri Görüşleri</a></li>
+                        <li class="{{ Request::path()=='admin/create-customer-feedbacks' ? ' active' : '' }}"><a
+                                href="/admin/create-customer-feedbacks"> Müşteri Görüşü Ekle</a></li>
+                    </ul>
+                </li>
                 <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
                 <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
                 <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a>
                 </li>
-                <li><a href="/admin/footer"><i class="fa fa-link"></i> <span>Footer</span></a></li>
+                <li class="treeview{{ Request::path()=='admin/footer' ? ' menu-open':'' }}{{ Request::path()=='admin/insert-useful-links' ? ' menu-open':'' }}">
+                    <a href="#">
+                        <i class="fa fa-link"></i> <span>Footer</span>
+                        <span class="pull-right-container">
+              <i class="fa fa-angle-left pull-right"></i>
+            </span>
+                    </a>
+                    <ul class="treeview-menu" {{ Request::path()=='admin/footer' ? ' style=display:block;':'' }}{{ Request::path()=='admin/useful-links' ? ' style=display:block;':'' }}>
+                        <li class="{{ Request::path()=='admin/footer' ? ' active' : '' }} "><a href="/admin/footer">
+                                Footer</a></li>
+                        <li class="{{ Request::path()=='admin/useful-links' ? ' active' : '' }}"><a
+                                href="/admin/useful-links"> Footer'a link ekle</a></li>
+                    </ul>
+                </li>
             </ul>
             <!-- /.sidebar-menu -->
         </section>

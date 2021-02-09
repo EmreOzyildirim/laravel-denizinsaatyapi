@@ -35,7 +35,7 @@
         </div>
         <!-- /.modal-dialog -->
     </div>
-    <!-- logo -->
+    @foreach($footer as $item)
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-header with-border">
@@ -43,41 +43,50 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form class="form-horizontal" method="post">
+            <form action="/admin/footer" class="form-horizontal" method="post">
+                @csrf
                 <div class="box-body">
                     <div class="form-group">
-                        <label for="mail_address" class="col-sm-2 control-label">E-mail</label>
-
+                        <label for="short_description" class="col-sm-2 control-label">Kısa Açıklama</label>
                         <div class="col-sm-10">
-                            <input type="email" name="mail_address" class="form-control" id="mail_address"
-                                   placeholder="">
+                            <textarea type="text" name="short_description" class="form-control" id="short_description" placeholder="Footer'da görünecek kısa açıklamayı girin">{{isset($item['short_description']) ? $item['short_description'] : ''}}</textarea>
                         </div>
+                        @error('short_description')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="phone_number" class="col-sm-2 control-label">Telefon</label>
-
+                        <label for="social_media_icons" class="col-sm-2 control-label">Sosyal Medya İkonları</label>
                         <div class="col-sm-10">
-                            <input type="phone_number" name="phone_number" class="form-control" id="phone_number"
-                                   placeholder="Site başlığında görünecek telefon numarası">
+                            <select class="form-control" id="social_media_icons" name="social_media_icons">
+                                <option value="1" @if ($item['social_media_icons'] == 1) selected="selected" @endif>Açık</option>
+                                <option value="0" @if ($item['social_media_icons'] == 0) selected="selected" @endif>Kapalı</option>
+                            </select>
                         </div>
+                        @error('social_media_icons')
+                        <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                     <div class="form-group">
-                        <label for="call_us_button" class="col-sm-2 control-label">Buton</label>
+                        <label for="copy_text" class="col-sm-2 control-label">Copyright</label>
 
                         <div class="col-sm-10">
-                            <input type="call_us_button" name="call_us_button" class="form-control" id="call_us_button"
-                                   placeholder="Site başlığında görünecek bizi arayın butonu">
+                            <input type="text" name="copy_text" class="form-control" id="copy_text"
+                                   value="{{isset($item['copy_text']) ? $item['copy_text'] : ''}}"
+                                   placeholder="Copyright satırını girin">
                         </div>
+                        @error('copy_text')
+                            <span class="text-danger">{{$message}}</span>
+                        @enderror
                     </div>
                 </div>
-                <!-- /.box-body -->
                 <div class="box-footer">
                     <button class="btn btn-default save-data">Kaydet</button>
                 </div>
-                <!-- /.box-footer -->
             </form>
         </div>
     </div>
+    @endforeach
     <!-- phone number ends -->
 
 @endsection
@@ -86,7 +95,8 @@
 
 @endsection
 @section('js')
-    <script>
+
+    <script>/*
         $(".save-data").click(function (event) {
             event.preventDefault();
 
@@ -113,6 +123,6 @@
                     }
                 },
             });
-        });
+        });*/
     </script>
 @endsection

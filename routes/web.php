@@ -108,6 +108,10 @@ Route::group(['namespace' => 'admin'], function () {
 
 
     Route::get('/admin/footer',[FooterController::class, 'index']);
+    Route::post('/admin/footer',[FooterController::class, 'footer']);
+
+    Route::get('/admin/useful-links',[FooterController::class, 'useful_links']);
+    Route::post('/admin/useful-links',[FooterController::class, 'useful_links_post']);
 
 
 

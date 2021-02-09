@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
         $this->call(why_choose_us_icon_items_table_seeder::class);
         $this->call(customer_feedbacks_table_seeder::class);
         $this->call(footer_table_seeder::class);
+        $this->call(footer_links_table_seeder::class);
         $this->call(neighborhoods_table_seeder::class);
         //neighborhoods sıkıntılı oldugu için sona alindi
     }
