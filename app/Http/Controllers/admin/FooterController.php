@@ -35,6 +35,8 @@ class FooterController extends Controller
             $footer->copy_text = $data['copy_text'];
             $footer->save();
 
+            $send = ['status' => true, 'message' => 'Footer başarıyla güncellendi.'];
+
         } else {
 
             $footer = new footer();
@@ -44,11 +46,12 @@ class FooterController extends Controller
             $footer->copy_text = $data['copy_text'];
             $footer->save();
 
+            $send = ['status' => true, 'message' => 'Footer başarıyla oluşturuldu.'];
+
         }
 
 
-        $f = footer::all();
-        return view('/admin/footer', ['footer' => $f]);
+        return redirect('/admin/footer')->with($send);
     }
 
     public function useful_links()
@@ -60,12 +63,42 @@ class FooterController extends Controller
 
     public function useful_links_post(Request $request)
     {
-        $footer =  footer_links::all();
+        $data = $request->validate([
+            '_token' => 'required',
+            'name' => 'required',
+            'url' => 'required'
+        ]);
 
-        return count($footer);
-        die();
 
-        return view('.admin.useful_links', ['footer_links' => footer_links::all()]);
+        $starts_with_slash = str_starts_with($data['url'], '/');
+        if (!$starts_with_slash) {
+            $send = ['status' => false, 'message' => 'Girdiğiniz URL "/" ile başlamalıdır .'];
+            return redirect('/admin/useful-links')
+                ->with($send);
+        }
+
+
+        $footer = footer_links::all();
+        if (count($footer) < 4) {
+
+
+            $useful_link = new footer_links();
+            $useful_link->name = $data['name'];
+            $useful_link->url = $data['url'];
+            $useful_link->save();
+
+            $send = ['status' => true, 'message' => "Link, Footer'a başarıyla eklendi . "];
+
+            return redirect('/admin/useful-links')
+                ->with($send);
+
+        } else {
+
+            $send = ['status' => false, 'message' => "Footer alanında 4'ten fazla link oluşturulamaz."];
+            return redirect('/admin/useful-links')
+                ->with($send);
+        }
+
     }
 
 }

@@ -23,6 +23,14 @@ class AgentsController extends Controller
     {
 
         //validate to be control
+        /*
+        $data = $request->validate([
+            'name_surname' => 'required',
+            'email' => 'required',
+            'phone_number' => 'required',
+            'description' => 'required'
+        ]);
+        */
 
         $agent = new agents();
 
@@ -32,11 +40,14 @@ class AgentsController extends Controller
         $agent->phone_number = $request['phone_number'];
         $agent->title = $request['title'];
         $agent->description = $request['description'];
-        $agent->updated_at = date('Y-m-d h:i:s');
+        $agent->facebook = $request['facebook'];
+        $agent->twitter = $request['twitter'];
         $agent->save();
 
-        $agents = agents::all();
-        return view('.admin.agents', ['agents' => $agents, 'status' => true, 'message' => 'Danışman başarıyla oluşturuldu.']);
+        $send = ['status' => true, 'message' => 'Danışman başarıyla oluşturuldu.'];
+
+        return redirect('/admin/agents')
+            ->with($send);
     }
 
     public function update_agent($id)

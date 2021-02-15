@@ -220,22 +220,9 @@ desired effect
                     <p>Murat Karakaya</p>
                 </div>
             </div>
-
-            <!-- search form (Optional) -->
-            <form action="#" method="get" class="sidebar-form">
-                <div class="input-group">
-                    <input type="text" name="q" class="form-control" placeholder="Search...">
-                    <span class="input-group-btn">
-              <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
-              </button>
-            </span>
-                </div>
-            </form>
-            <!-- /.search form -->
-
             <!-- Sidebar Menu -->
             <ul class="sidebar-menu" data-widget="tree">
-                <li class="header">HEADER</li>
+                <li class="header">MENU</li>
                 <!-- Optionally, you can add icons to the links -->
                 <li class="{{ Request::path()=='admin/index' ? 'active' : '' }}"><a href="/admin/index"><i
                             class="fa fa-link"></i> <span>Admin</span></a></li>
@@ -271,37 +258,41 @@ desired effect
                                 href="/admin/create-property">İlan Ekle</a></li>
                     </ul>
                 </li>
-                <li class="{{ Request::path()=='admin/why-choose-us' ? 'active' : '' }}"><a
-                        href="/admin/why-choose-us"><i class="fa fa-link"></i><span>Neden Biz?</span></a></li>
+                <li class="treeview{{ Request::path()=='admin/why-choose-us' ? ' menu-open' : '' }}{{ Request::path()=='admin/why-choose-us-icons' ? ' menu-open' : '' }}">
+                    <a href="#"><i class="fa fa-link"></i> <span>Neden Biz?</span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+                    </a>
+                    <ul class="treeview-menu" {{ Request::path()=='admin/why-choose-us' ? ' style=display:block;':'' }}{{ Request::path()=='admin/why-choose-us-icons' ? ' style=display:block;':'' }}>
+                        <li class="{{ Request::path()=='admin/why-choose-us' ? 'active' : '' }}"><a
+                                href="/admin/why-choose-us">Neden Biz?</a></li>
+                        <li class="{{ Request::path()=='admin/why-choose-us-icons' ? 'active' : '' }}"><a
+                                href="/admin/why-choose-us-icons">İkonlu Madde Ekle</a></li>
+                    </ul>
+                </li>
                 <li class="treeview{{ Request::path()=='admin/agents' ? ' menu-open':'' }}{{ Request::path()=='admin/create-agent' ? ' menu-open':'' }}">
                     <a href="#">
                         <i class="fa fa-link"></i> <span>Danışmanlar</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
+                        <span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
                     </a>
                     <ul class="treeview-menu" {{ Request::path()=='admin/agents' ? ' style=display:block;':'' }}{{ Request::path()=='admin/create-agent' ? ' style=display:block;':'' }}>
                         <li class="{{ Request::path()=='admin/agents' ? ' active' : '' }} "><a href="/admin/agents">
                                 Danışmanlar</a></li>
                         <li class="{{ Request::path()=='admin/create-agent' ? ' active' : '' }}"><a
-                                href="/admin/create-agent"> Danışman Ekle</a></li>
+                                href="/admin/create-agent">Danışman Ekle</a></li>
                     </ul>
                 </li>
-
-
-
-                <li class="treeview{{ Request::path()=='admin/customer-feedbacks' ? ' menu-open':'' }}{{ Request::path()=='admin/create-customer-feedbacks' ? ' menu-open':'' }}">
+                <li class="treeview{{ Request::path()=='admin/customer-feedbacks' ? ' menu-open':'' }}{{ Request::path()=='admin/create-customer-feedback' ? ' menu-open':'' }}">
                     <a href="#">
                         <i class="fa fa-link"></i> <span>Müşteri Görüşleri</span>
                         <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
-                    <ul class="treeview-menu" {{ Request::path()=='admin/customer-feedbacks' ? ' style=display:block;':'' }}{{ Request::path()=='admin/customer-feedbacks' ? ' style=display:block;':'' }}>
+                    <ul class="treeview-menu" {{ Request::path()=='admin/customer-feedbacks' ? ' style="display:block;"':'' }}{{ Request::path()=='admin/customer-feedbacks' ? ' style="display:block;"':'' }}>
                         <li class="{{ Request::path()=='admin/customer-feedbacks' ? ' active' : '' }} "><a href="/admin/customer-feedbacks">
                                 Müşteri Görüşleri</a></li>
-                        <li class="{{ Request::path()=='admin/create-customer-feedbacks' ? ' active' : '' }}"><a
-                                href="/admin/create-customer-feedbacks"> Müşteri Görüşü Ekle</a></li>
+                        <li class="{{ Request::path()=='admin/create-customer-feedback' ? ' active' : '' }}"><a
+                                href="/admin/create-customer-feedback"> Müşteri Görüşü Ekle</a></li>
                     </ul>
                 </li>
                 <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>

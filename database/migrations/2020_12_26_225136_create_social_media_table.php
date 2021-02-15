@@ -15,9 +15,11 @@ class CreateSocialMediaTable extends Migration
     {
         Schema::create('social_media', function (Blueprint $table) {
             $table->id();
-            $table->string('name')->nullable();
-            $table->string('url');
-            $table->string('icon');
+            $table->string('facebook_url');
+            $table->string('twitter_url');
+            $table->string('youtube_url');
+            $table->string('instagram_url');
+            $table->string('linkedin_url');
         });
     }
 

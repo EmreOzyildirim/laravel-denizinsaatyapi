@@ -3,6 +3,26 @@
 @section('optional_description','Müşteri görüşleri ile ilgili bilgileri buradan görebilir, düzenleyebilir ve silebilirsiniz.')
 
 @section('content')
+    @if(session('message'))
+        <div class="modal modal-{{session('status') === true ? 'success':'danger'}} fade in"
+             id="modal-{{session('status') === false ? 'success':'danger'}}"
+             style="display: block; padding-right: 17px;">
+            <div class="modal-dialog mt-4">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">{{session('status') ? 'İşlem başarılı' : 'İşlem başarısız' }}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{session('message')}}</p>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    @endif
     <div class="row">
         <div class="col-xs-12">
             <div class="box">
@@ -68,4 +88,18 @@
             <!-- /.box -->
         </div>
     </div>
+@endsection
+
+@section('css')
+
+@endsection
+@section('js')
+    <script>
+        $(window).ready(function () {
+            setInterval(function () {
+                $('.modal').addClass("hidden")
+            }, 2000);
+
+        });
+    </script>
 @endsection

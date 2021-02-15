@@ -13,7 +13,7 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form id="ajaxform" class="form-horizontal">
+            <form action="/admin/create-property" method="POST" class="form-horizontal" enctype="multipart/form-data">
                 @csrf
                 <div class="box-body">
                     <div class="form-group">
@@ -30,15 +30,18 @@
                             <input type="text" name="title" class="form-control" id="title"
                                    value=""
                                    placeholder="İlan başlığını girin">
+                            @error('title')
+                                <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-sm-2 control-label">Açıklama</label>
                         <div class="col-md-10">
-                    <textarea id="description" name="description" rows="10" cols="80"
-                              style="visibility: hidden; display: none;">
-
-                    </textarea>
+                            <textarea class="form-control" name="description" rows="10" cols="80" id="description"></textarea>
+                            @error('description')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -50,17 +53,23 @@
                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                 @endforeach
                             </select>
+                            @error('type')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="category" class="col-sm-2 control-label">Kategori</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="category" id="category">
+                            <select class="form-control" name="category_id" id="category">
 
                                 @foreach($categories as $item)
                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                 @endforeach
                             </select>
+                            @error('category_id')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -70,6 +79,9 @@
                             <input type="text" name="price" class="form-control" id="price"
                                    value=""
                                    placeholder="İlan fiyatını girin">
+                            @error('price')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -81,6 +93,9 @@
                                     <option value="{{$item['id']}}">{{$item['name_surname']}}</option>
                                 @endforeach
                             </select>
+                            @error('agent')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -90,6 +105,9 @@
                             <input type="text" name="year_built" class="form-control" id="year_built"
                                    value=""
                                    placeholder="Yapım yılı">
+                            @error('year_built')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -99,6 +117,9 @@
                             <input type="text" name="home_area" class="form-control" id="home_area"
                                    value=""
                                    placeholder="Metrekare cinsinden alan">
+                            @error('home_area')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -108,6 +129,9 @@
                             <input type="text" name="rooms" class="form-control" id="rooms"
                                    value=""
                                    placeholder="Oda sayısı">
+                            @error('rooms')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -117,6 +141,9 @@
                             <input type="text" name="bedrooms" class="form-control" id="bedrooms"
                                    value=""
                                    placeholder="Yatak oda sayısı">
+                            @error('bedrooms')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -127,6 +154,9 @@
                                 <option value="1">Evet</option>
                                 <option value="0">Hayır</option>
                             </select>
+                            @error('garage')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -138,6 +168,9 @@
                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                 @endforeach
                             </select>
+                            @error('status')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
@@ -150,46 +183,6 @@
         </div>
     </div>
     <!-- phone number ends -->
-
-
-
-
-    <div class="modal modal-success fade in hidden" id="modal-success" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog mt-4">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">İşlem Başarılı</h4>
-                </div>
-                <div class="modal-body callout-success">
-                    <p>
-                        Bilgileriniz başarıyla güncellendi
-                    </p>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <div class="modal modal-danger fade in hidden" id="modal-danger" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog mt-4">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Hata</h4>
-                </div>
-                <div class="modal-body callout-danger">
-                    <p>
-                        İşlem Başarısız
-                    </p>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
 @endsection
 
 
@@ -197,7 +190,6 @@
 
 @endsection
 @section('js')
-    <!-- CK Editor -->
     <script src="/backend/bower_components/ckeditor/ckeditor.js"></script>
     <script src="/backend/bower_components/ckeditor/adapters/jquery.js"></script>
 
@@ -208,68 +200,5 @@
             CKEDITOR.replace('description');
             var strNotes = CKEDITOR.instances["description"].getData();
         });
-    </script>
-    <script>
-
-        $(".save-data").click(function (event) {
-            event.preventDefault();
-
-            let id = $("#id").val();
-            let title = $("#title").val();
-            let description = 'strNotes';
-            let type = $("#type").val();
-            let category = $("#category").val();
-            let price = $("#price").val();
-            let agent = $("#agent").val();
-            let home_area = $("#home_area").val();
-            let rooms = $("#rooms").val();
-            let bedrooms = $("#bedrooms").val();
-            let garage = $("#garage").val();
-            let status = $("#status").val();
-            let year_built = $("#year_built").val();
-            let image_path = 'image_path_to_be_added';
-
-            let _token = $("input[name=_token]").attr('value');
-
-            $.ajax({
-                url: "/admin/create-property",
-                type: "POST",
-                data: {
-                    id: id,
-                    image_path: image_path,
-                    title: title,
-                    description: description,
-                    type: type,
-                    category: category,
-                    price: price,
-                    status: status,
-                    year_built: year_built,
-                    agent: agent,
-                    home_area: home_area,
-                    rooms: rooms,
-                    bedrooms: bedrooms,
-                    garage: garage,
-
-                    _token: _token
-                },
-                success: function (response) {
-
-                    if (response) {
-                        //console.log(response);
-                        $('.modal-success').removeClass('hidden').fadeIn();
-                        $('.modal-success').delay(2000).fadeOut();
-                        $('.callout-success').append(response.message);
-                    }
-
-                    setTimeout(window.location.replace("/admin/properties"), 3000);
-
-                },
-                error: function (data) {
-
-                    alert(data.message);
-                }
-            });
-        });
-
     </script>
 @endsection

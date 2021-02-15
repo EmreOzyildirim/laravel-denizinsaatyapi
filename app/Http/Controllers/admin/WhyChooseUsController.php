@@ -9,6 +9,13 @@ use Illuminate\Http\Request;
 
 class WhyChooseUsController extends Controller
 {
+    protected $icons = [
+        'icon1' => '/backend/know-how/chooseus-icon-1.png',
+        'icon2' => '/backend/know-how/chooseus-icon-2.png',
+        'icon3' => '/backend/know-how/chooseus-icon-3.png',
+        'icon4' => '/backend/know-how/chooseus-icon-4.png',
+    ];
+
     public function index()
     {
         $why_choose_us = why_choose_us::find(1)->toArray();
@@ -32,9 +39,14 @@ class WhyChooseUsController extends Controller
         $why_choose_us['description'] = $data['description'];
         $why_choose_us->save();
 
-        $why_choose_us_icon_items = why_choose_us_icon_items::all()->where('why_choose_us_id', '=', $why_choose_us['id'])->toArray();
+        $send = ['status' => true, 'message' => 'Güncelleme işlemi başarıyla gerçekleşti.'];
+        return redirect('/admin/why-choose-us')->with($send);
+    }
 
-        return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'status' => true, 'message' => 'Güncelleme işlemi başarıyla gerçekleşti.']);
+    public function why_choose_us_icons()
+    {
+        $icon_items = why_choose_us_icon_items::all();
+        return view('.admin.why_choose_us_icon_item', ['icons' => $this->icons, 'icon_items' => $icon_items]);
     }
 
     public function create_icon_item(Request $request)
@@ -46,32 +58,28 @@ class WhyChooseUsController extends Controller
             'description' => ['required']
         ]);
 
-
         $why_choose_us_icon_items = why_choose_us_icon_items::create([
             'why_choose_us_id' => 1,
             'icon_path' => 'image to be added',
             'title' => $data['title'],
             'description' => $data['description']
         ]);
-
         $saved = $why_choose_us_icon_items->save();
 
-
-        $why_choose_us = why_choose_us::find(1)->toArray();
-
-        $why_choose_us_icon_items = why_choose_us_icon_items::all();
-
-        if (!$saved)
-            return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'status' => false, 'message' => 'Neden Biz? modülü için madde oluşturulurken bir hata oluştu.']);
+        if (!$saved) {
+            $send = ['status' => false, 'message' => 'Neden Biz? modülü için madde oluşturulurken bir hata oluştu.'];
+        }
 
 
-        return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'status' => true, 'message' => 'Neden Biz? modülü için madde başarıyla oluşturuldu.']);
+        $send = ['status' => true, 'message' => 'Neden Biz? modülü için madde başarıyla oluşturuldu.'];
+        return redirect('.admin.why_choose_us_icons')->with($send);
     }
 
     public function icon_item($id)
     {
+
         $why_choose_us_icon_item = why_choose_us_icon_items::find($id);
-        return view('.admin.update_why_choose_us_icon_item', ['icon_items' => $why_choose_us_icon_item]);
+        return view('.admin.update_why_choose_us_icon_item', ['icon_items' => $why_choose_us_icon_item, 'icons' => $this->icons]);
     }
 
     public function update_icon_item(Request $request)
@@ -79,6 +87,7 @@ class WhyChooseUsController extends Controller
 
         $data = $request->validate([
             '_token' => ['required'],
+            'icon_path' => ['required'],
             'title' => ['required'],
             'id' => ['required'],
             'description' => ['required']
@@ -86,6 +95,7 @@ class WhyChooseUsController extends Controller
 
         $why_choose_us_item = why_choose_us_icon_items::find($data['id']);
 
+        $why_choose_us_item->icon_path = $data['icon_path'];
         $why_choose_us_item->title = $data['title'];
         $why_choose_us_item->description = $data['description'];
         $saved = $why_choose_us_item->save();
@@ -94,14 +104,11 @@ class WhyChooseUsController extends Controller
         $why_choose_us_icon_items = why_choose_us_icon_items::all();
 
         if (!$saved) {
-            return view('.admin.update_why_choose_us_icon_item', ['icon_items' => $why_choose_us_icon_items, 'status' => false, 'message' => 'Neden Biz? modülü için madde güncellenirken bir hata oluştu.']);
+            $send = ['status' => false, 'message' => 'Neden Biz? modülü için madde güncellenirken bir hata oluştu.'];
         }
 
-
-        $why_choose_us = why_choose_us::find(1);
-        $why_choose_us_icon_items = why_choose_us_icon_items::all()->where('why_choose_us_id', '=', $why_choose_us['id'])->toArray();
-
-        return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'message' => 'Neden Biz? modülü için madde başarıyla güncellendi']);
+        $send = ['status' => true, 'message' => 'Neden Biz? modülü için madde başarıyla güncellendi'];
+        return redirect('/admin/why-choose-us-icons')->with($send);
     }
 
     public function delete_icon_item($id)
@@ -113,15 +120,12 @@ class WhyChooseUsController extends Controller
             $item->delete();
         }
 
+        if ($item == null) {
+            $send = ['status' => false, 'message' => 'Belirttiğiniz madde silinirken bir hata oluştu.'];
+        }
 
-        $why_choose_us = why_choose_us::find(1);
-        $why_choose_us_icon_items = why_choose_us_icon_items::all()->where('why_choose_us_id', '=', $why_choose_us['id'])->toArray();
-
-        if ($item == null)
-            return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'status' => false, 'message' => 'Belirttiğiniz madde silinirken bir hata oluştu.']);
-
-
-        return view('.admin.why_choose_us', ['why_choose_us' => $why_choose_us, 'icon_items' => $why_choose_us_icon_items, 'status' => true, 'message' => 'Belirttiğiniz madde başarıyla silindi.']);
+        $send = ['status' => true, 'message' => 'Belirttiğiniz madde başarıyla silindi.'];
+        return redirect('/admin/why-choose-us-icons')->with($send);
     }
 
 }

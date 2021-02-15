@@ -1,6 +1,3 @@
 
-INSERT INTO `social_media` (`name`, `url`, `icon`) VALUES
-('','https://www.facebook.com/','fa fa-facebook'),
-('','https://www.twitter.com/','fa fa-twitter'),
-('','https://www.youtube.com/','fa fa-youtube'),
-('','https://www.instagram.com/','fa fa-instagram');
+INSERT INTO `social_media` (`id`,`facebook_url`,`twitter_url`,`youtube_url`,`instagram_url`,`linkedin_url`) VALUES
+(1,'https://www.facebook.com/','https://www.twitter.com/','https://www.youtube.com/','https://www.instagram.com/','https://www.linkedin.com/');

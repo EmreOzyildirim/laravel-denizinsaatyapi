@@ -86,6 +86,8 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('/admin/why-choose-us', [WhyChooseUsController::class, 'index']);
     Route::post('/admin/why-choose-us', [WhyChooseUsController::class, 'update']);
 
+    Route::get('/admin/why-choose-us-icons', [WhyChooseUsController::class, 'why_choose_us_icons']);
+
     Route::post('/admin/why-choose-us/create-icon-item', [WhyChooseUsController::class, 'create_icon_item']);
     Route::get('/admin/why-choose-us/update-icon-item/{id}', [WhyChooseUsController::class, 'icon_item']);
     Route::post('/admin/why-choose-us/update-icon-item', [WhyChooseUsController::class, 'update_icon_item']);
@@ -103,6 +105,8 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('/admin/delete-agent/{id}', [AgentsController::class, 'delete_agent']);
 
     Route::get('/admin/customer-feedbacks',[CustomerFeedbackController::class, 'index']);
+    Route::get('/admin/create-customer-feedback',[CustomerFeedbackController::class, 'create_customer_feedback']);
+    Route::post('/admin/create-customer-feedback',[CustomerFeedbackController::class, 'create_customer_feedback_post']);
 
 
 
@@ -114,12 +118,12 @@ Route::group(['namespace' => 'admin'], function () {
     Route::post('/admin/useful-links',[FooterController::class, 'useful_links_post']);
 
 
+    Route::get('/admin/social-media', [SocialMediaController::class, 'index']);
+    Route::post('/admin/social-media', [SocialMediaController::class, 'social_media_icons_update']);
 
 
-    Route::get('/admin/customer-feedback', [CustomerFeedbackController::class, 'index']);
     Route::get('/admin/references', [ReferencesController::class, 'index']);
     Route::get('/admin/seo-options', [SEOController::class, 'index']);
-    Route::get('/admin/social-media', [SocialMediaController::class, 'index']);
     Route::get('/admin/footer', [FooterController::class, 'index']);
 
 });

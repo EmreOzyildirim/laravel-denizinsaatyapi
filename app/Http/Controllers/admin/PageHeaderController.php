@@ -15,7 +15,7 @@ class PageHeaderController extends Controller
     public function index()
     {
         //standart veri çekme yöntemi.
-        //DB::table('page_header')-get();
+        //DB::table('page_header')->get();
 
         //modelli veri çekme yöntemi.
         $page_header = page_header::find(1);

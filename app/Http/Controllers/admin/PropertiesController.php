@@ -26,7 +26,7 @@ class PropertiesController extends Controller
             ->get();
 
 
-        return view('/admin/properties', ['properties' => $properties]);
+        return view('.admin.properties', ['properties' => $properties]);
     }
 
     public function create_property()
@@ -55,9 +55,11 @@ class PropertiesController extends Controller
             'home_area' => ['required', 'numeric'],
             'rooms' => ['required', 'numeric'],
             'bedrooms' => ['required', 'numeric'],
-            'garage' => ['required', 'numeric'],
-            '_token' => ['required']
+            'garage' => ['required', 'numeric']
         ]);
+
+        return dd($data);
+        exit();
 
         $property = new properties();
         $property->title = $data['title'];
@@ -67,21 +69,36 @@ class PropertiesController extends Controller
         $property->price = $data['price'];
         $property->agent_id = $data['agent'];
         $property->status = $data['status'];
-        $property->category_id = $data['category'];
+        $property->category_id = $data['category_id'];
         $property->save();
+
+        $property_details = new property_details();
+        $property_details->description = $data['description'];
+        $property_details->property_id = $property->id;
+        $property_details->category_id = $data['category_id'];
+        $property_details->year_built = $data['year_built'];
+        $property_details->type_id = $data['type_id'];
+        $property_details->agent_id = $data['agent_id'];
+        $property_details->home_area = $data['home_area'];
+        $property_details->rooms = $data['rooms'];
+        $property_details->bedrooms = $data['bedrooms'];
+        $property_details->garage = $data['garage'];
+        $property_details->save();
 
         $properties = DB::table('properties')
             ->join('agents', 'properties.agent_id', '=', 'agents.id')
             ->select('properties.*', 'agents.name_surname')
             ->get();
 
-        return view('.admin.properties', ['properties' => $properties]);
+        $send = ['status'=> true, 'message' => 'İlan başarıyla oluşturuldu.'];
+        return redirect('/admin/properties')->with($send);
     }
 
 
     public function update($id = null)
     {
-        if (!empty($id)) {
+
+        if (!empty($id)){
             $property = properties::find($id);
             $property_details = property_details::where('property_id', $id)->first();
             $property_images = property_images::select('image_path', 'image_alt_text')->where('property_id', $id)->get();
@@ -93,8 +110,7 @@ class PropertiesController extends Controller
 
             return view('/admin/property_update', ['property' => $property, 'details' => $property_details, 'agents' => $agents, 'types' => $types, 'categories' => $categories, 'statuses' => $statuses]);
         }
-        return view('/admin/property_update',
-            ['status' => false, 'message' => false]);
+        return view('/admin/property_update', ['status' => false, 'message' => false]);
     }
 
 
@@ -118,7 +134,6 @@ class PropertiesController extends Controller
             '_token' => ['required']
         ]);
 
-
         $property = properties::find($data['id']);
         $property->title = $data['title'];
         $property->type = $data['type'];
@@ -127,7 +142,6 @@ class PropertiesController extends Controller
         $property->status = $data['status'];
         $property->category_id = $data['category'];
         $property->save();
-
 
         property_details::where('property_id', $data['id'])
             ->update([
@@ -142,7 +156,6 @@ class PropertiesController extends Controller
                 'garage' => $data['garage']
             ]);
 
-
         $property_images = property_images::select('image_path', 'image_alt_text')->where('property_id', $data['id'])->get();
         $property_details = property_details::where('property_id', $data['id'])->first();
 
@@ -152,7 +165,6 @@ class PropertiesController extends Controller
         $statuses = statuses::all();
 
         return view('/admin/property_update', ['property' => $property, 'details' => $property_details, 'categories' => $categories, 'property_images' => $property_images, 'agents' => $categories, 'types' => $types, 'statuses' => $statuses]);
-
     }
 
     public function delete($id = null)

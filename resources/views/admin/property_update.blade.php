@@ -13,17 +13,17 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form id="ajaxform" class="form-horizontal">
+            <form action="/admin/update-property" method="POST" class="form-horizontal">
                 @csrf
                 <input type="text" name="id" value="{{$property['id']}}" id="id" hidden>
-                <div class="box-body"><!----
+                <div class="box-body">
                     <div class="form-group">
                         <label for="logo" class="col-sm-2 control-label">Logo</label>
                         <div class="col-sm-10">
                             <img src="" width="180px">
-                            <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
+                            <input type="file" class="form-control" id="logo" placeholder="Logo">
                         </div>
-                    </div>---->
+                    </div>
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">İlan Başlığı</label>
 
@@ -144,47 +144,6 @@
             </form>
         </div>
     </div>
-    <!-- phone number ends -->
-
-
-
-
-    <div class="modal modal-success fade in hidden" id="modal-success" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog mt-4">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">İşlem Başarılı</h4>
-                </div>
-                <div class="modal-body callout-success">
-                    <p>
-                        Bilgileriniz başarıyla güncellendi
-                    </p>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
-    <div class="modal modal-danger fade in hidden" id="modal-danger" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog mt-4">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">Hata</h4>
-                </div>
-                <div class="modal-body callout-danger">
-                    <p>
-                        İşlem Başarısız
-                    </p>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
-    </div>
 @endsection
 
 
@@ -195,74 +154,4 @@
     <!-- CK Editor -->
     <script src="/backend/bower_components/ckeditor/ckeditor.js"></script>
     <script src="/backend/bower_components/ckeditor/adapters/jquery.js"></script>
-
-    <script>
-        $(function () {
-            // Replace the <textarea id="editor1"> with a CKEditor
-            // instance, using default configuration.
-            CKEDITOR.replace('description');
-            var strNotes = CKEDITOR.instances["description"].getData();
-        });
-    </script>
-    <script>
-
-        $(".save-data").click(function (event) {
-            event.preventDefault();
-
-            let id = $("#id").val();
-            let title = $("#title").val();
-            let description = 'strNotes';
-            let type = $("#type").val();
-            let category = $("#category").val();
-            let price = $("#price").val();
-            let agent = $("#agent").val();
-            let home_area = $("#home_area").val();
-            let rooms = $("#rooms").val();
-            let bedrooms = $("#bedrooms").val();
-            let garage = $("#garage").val();
-            let status = $("#status").val();
-            let year_built = $("#year_built").val();
-            let image_path = 'image_path_to_be_added';
-
-            let _token = $("input[name=_token]").attr('value');
-
-            $.ajax({
-                url: "/admin/update-property",
-                type: "POST",
-                data: {
-                    id: id,
-                    image_path: image_path,
-                    title: title,
-                    description: description,
-                    type: type,
-                    category: category,
-                    price: price,
-                    status: status,
-                    year_built: year_built,
-                    agent: agent,
-                    home_area: home_area,
-                    rooms: rooms,
-                    bedrooms: bedrooms,
-                    garage: garage,
-
-                    _token: _token
-                },
-                success: function (response) {
-
-                    if (response) {
-                        //console.log(response);
-                        $('.modal-success').removeClass('hidden').fadeIn();
-                        $('.modal-success').delay(2000).fadeOut();
-                        $('.callout-success').append(response.message);
-                    }
-
-                },
-                error: function (data) {
-
-                    alert(data.message);
-                }
-            });
-        });
-
-    </script>
 @endsection
