@@ -22,35 +22,10 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="controllers added">
-      <change afterPath="$PROJECT_DIR$/public/backend/know-how/chooseus-bg.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/create_customer_feedback.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/admin/social_media.blade.php" afterDir="false" />
+    <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="admin panel updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AgentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AgentsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CustomerFeedbackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CustomerFeedbackController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/FooterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/FooterController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/PageHeaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/PageHeaderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/SocialMediaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/SocialMediaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/WhyChooseUsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/WhyChooseUsController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/developer_tools/footer_links.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/footer_links.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/developer_tools/social_media.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/social_media.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/developer_tools/why_choose_us_icon_items.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/why_choose_us_icon_items.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_26_225136_create_social_media_table.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/migrations/2020_12_26_225136_create_social_media_table.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/agent_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/agent_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/agents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/agents.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/customer_feedbacks.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/customer_feedbacks.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/footer.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/footer.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/properties.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/property_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/property_create.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/property_update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/property_update.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/update_why_choose_us_icon_item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/update_why_choose_us_icon_item.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/useful_links.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/useful_links.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/why_choose_us.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/why_choose_us.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/why_choose_us_icon_item.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/why_choose_us_icon_item.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -283,7 +258,8 @@
       <workItem from="1613031632614" duration="11906000" />
       <workItem from="1613204073437" duration="14803000" />
       <workItem from="1613304441321" duration="11520000" />
-      <workItem from="1613376528799" duration="15284000" />
+      <workItem from="1613376528799" duration="17286000" />
+      <workItem from="1613468986310" duration="86000" />
     </task>
     <task id="LOCAL-00001">
       <created>1609243250029</created>
@@ -306,7 +282,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612645802294</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="admin panel updated">
+      <created>1613424020248</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1613424020249</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -329,7 +312,8 @@
       <path value="$PROJECT_DIR$/laravel" />
     </ignored-roots>
     <MESSAGE value="controllers added" />
-    <option name="LAST_COMMIT_MESSAGE" value="controllers added" />
+    <MESSAGE value="admin panel updated" />
+    <option name="LAST_COMMIT_MESSAGE" value="admin panel updated" />
   </component>
   <component name="WindowStateProjectService">
     <state x="555" y="254" key="#Notifications" timestamp="1608717947356">
