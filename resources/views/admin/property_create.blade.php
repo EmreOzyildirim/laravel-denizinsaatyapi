@@ -6,6 +6,24 @@
 @section('optional_description','Yeni ilan oluştur')
 
 @section('content')
+    @if(session('message'))
+        <div class="modal modal-{{session('status') ? 'success' : 'danger'}} fade in" id="modal-{{session('status') ? 'success' : 'danger'}}" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog mt-4">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">{{session('status') ? 'İşlem başarılı' : 'İşlem başarısız'}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{session('message')}}</p>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    @endif
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-header with-border">
@@ -13,16 +31,16 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form action="/admin/create-property" method="POST" class="form-horizontal" enctype="multipart/form-data">
+            <form action="/admin/create-property" method="POST" class="form-horizontal">
                 @csrf
                 <div class="box-body">
-                    <div class="form-group">
+                    <!----<div class="form-group">
                         <label for="logo" class="col-sm-2 control-label">İlan Resimleri</label>
                         <div class="col-sm-10">
                             <img src="" width="180px">
                             <input type="file" class="form-control" id="logo" placeholder="İlan Resimleri">
                         </div>
-                    </div>
+                    </div>---->
                     <div class="form-group">
                         <label for="title" class="col-sm-2 control-label">İlan Başlığı</label>
 
@@ -47,7 +65,7 @@
                     <div class="form-group">
                         <label for="type" class="col-sm-2 control-label">İlan türü</label>
                         <div class="col-sm-10">
-                            <select class="form-control" name="type" id="type">
+                            <select class="form-control" name="type_id" id="type">
 
                                 @foreach($types as $item)
                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
@@ -100,7 +118,6 @@
                     </div>
                     <div class="form-group">
                         <label for="year_built" class="col-sm-2 control-label">Yapım Yılı</label>
-
                         <div class="col-sm-4">
                             <input type="text" name="year_built" class="form-control" id="year_built"
                                    value=""
@@ -163,7 +180,6 @@
                         <label for="status" class="col-sm-2 control-label">Durum</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="status" id="status">
-
                                 @foreach($statuses as $item)
                                     <option value="{{$item['id']}}">{{$item['name']}}</option>
                                 @endforeach
@@ -176,7 +192,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button class="btn btn-default save-data">Kaydet</button>
+                    <button type="submit" class="btn btn-default">Kaydet</button>
                 </div>
                 <!-- /.box-footer -->
             </form>

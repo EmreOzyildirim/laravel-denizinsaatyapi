@@ -15,7 +15,7 @@ class CreatePropertyDetails extends Migration
     {
         Schema::create('property_details', function (Blueprint $table) {
             $table->id();
-            $table->string('description');
+            $table->text('description');
             $table->integer('property_id')->index()->unique();
             $table->integer('category_id')->index();
             $table->integer('year_built');

@@ -260,6 +260,10 @@
       <workItem from="1613304441321" duration="11520000" />
       <workItem from="1613376528799" duration="17286000" />
       <workItem from="1613468986310" duration="86000" />
+      <workItem from="1613489255441" duration="2888000" />
+      <workItem from="1613549307717" duration="18000" />
+      <workItem from="1613655636134" duration="7000" />
+      <workItem from="1613668929844" duration="296000" />
     </task>
     <task id="LOCAL-00001">
       <created>1609243250029</created>
@@ -289,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613424020249</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="admin panel updated">
+      <created>1613489314568</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1613489314568</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,10 +359,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="524" height="445" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1611511016499" />
-    <state x="392" y="163" key="Vcs.Push.Dialog.v2" timestamp="1612645813841">
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2" timestamp="1613489323365">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1612645813841" />
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1613489323365" />
     <state x="448" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1612993422183">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

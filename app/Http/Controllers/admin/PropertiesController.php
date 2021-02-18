@@ -6,7 +6,6 @@ use App\Http\Controllers\Controller;
 use App\Models\categories;
 use App\Models\statuses;
 use Illuminate\Http\Request;
-use denizinsaatyapi\MetaTag;
 use App\Models\properties;
 use App\Models\property_details;
 use App\Models\property_images;
@@ -43,27 +42,29 @@ class PropertiesController extends Controller
     public function create_property_post(Request $request)
     {
 
+        //Featured Image and ALL IMAGES will be added after the image directory.
         $data = $request->validate([
+            '_token' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
-            'type' => ['required', 'numeric'],
-            'price' => ['required', 'numeric'],
-            'agent' => ['required', 'numeric'],
-            'status' => ['required', 'numeric'],
-            'category' => ['required', 'numeric'],
-            'year_built' => ['required', 'numeric'],
-            'home_area' => ['required', 'numeric'],
-            'rooms' => ['required', 'numeric'],
-            'bedrooms' => ['required', 'numeric'],
-            'garage' => ['required', 'numeric']
+            'type_id' => ['required'],
+            'price' => ['required'],
+            'agent' => ['required'],
+            'status' => ['required'],
+            'category_id' => ['required'],
+            'year_built' => ['required'],
+            'home_area' => ['required'],
+            'rooms' => ['required'],
+            'bedrooms' => ['required'],
+            'garage' => ['required']
         ]);
 
-        return dd($data);
-        exit();
+        return $data;
+        die();
 
         $property = new properties();
         $property->title = $data['title'];
-        $property->type = $data['type'];
+        $property->type = $data['type_id'];
         $property->image_path = 'image path to be added';
         $property->image_alt_text = 'image alt text to be added';
         $property->price = $data['price'];
@@ -78,7 +79,7 @@ class PropertiesController extends Controller
         $property_details->category_id = $data['category_id'];
         $property_details->year_built = $data['year_built'];
         $property_details->type_id = $data['type_id'];
-        $property_details->agent_id = $data['agent_id'];
+        $property_details->agent_id = $data['agent'];
         $property_details->home_area = $data['home_area'];
         $property_details->rooms = $data['rooms'];
         $property_details->bedrooms = $data['bedrooms'];
@@ -121,16 +122,16 @@ class PropertiesController extends Controller
             'id' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
-            'type' => ['required', 'numeric'],
-            'price' => ['required', 'numeric'],
-            'agent' => ['required', 'numeric'],
-            'status' => ['required', 'numeric'],
-            'category' => ['required', 'numeric'],
-            'year_built' => ['required', 'numeric'],
-            'home_area' => ['required', 'numeric'],
-            'rooms' => ['required', 'numeric'],
-            'bedrooms' => ['required', 'numeric'],
-            'garage' => ['required', 'numeric'],
+            'type' => ['required'],
+            'price' => ['required'],
+            'agent' => ['required'],
+            'status' => ['required'],
+            'category' => ['required'],
+            'year_built' => ['required'],
+            'home_area' => ['required'],
+            'rooms' => ['required'],
+            'bedrooms' => ['required'],
+            'garage' => ['required'],
             '_token' => ['required']
         ]);
 
