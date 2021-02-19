@@ -24,8 +24,11 @@
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="admin panel updated">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoriesController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/property_create.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/property_create.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/categories.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/categories.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/create_category.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/create_category.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/properties.blade.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -263,7 +266,7 @@
       <workItem from="1613489255441" duration="2888000" />
       <workItem from="1613549307717" duration="18000" />
       <workItem from="1613655636134" duration="7000" />
-      <workItem from="1613668929844" duration="296000" />
+      <workItem from="1613668929844" duration="2927000" />
     </task>
     <task id="LOCAL-00001">
       <created>1609243250029</created>
@@ -300,7 +303,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613489314568</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="admin panel updated">
+      <created>1613669455722</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1613669455722</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -359,10 +369,10 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="524" height="445" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1611511016499" />
-    <state x="392" y="163" key="Vcs.Push.Dialog.v2" timestamp="1613489323365">
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2" timestamp="1613669464587">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1613489323365" />
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1613669464587" />
     <state x="448" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1612993422183">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -371,12 +381,12 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="0" y="0" width="1172" height="574" key="dock-window-1/0.0.1600.860@0.0.1600.860" timestamp="1609031196495" />
-    <state x="456" y="195" width="672" height="677" key="run.anything.popup" timestamp="1613398680589">
+    <state x="456" y="195" width="672" height="677" key="run.anything.popup" timestamp="1613669648106">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1610617351147" />
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860/1600.-104.1920.1040@0.0.1600.860" timestamp="1610627706861" />
-    <state x="456" y="195" width="672" height="677" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1613398680589" />
+    <state x="456" y="195" width="672" height="677" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1613669648106" />
     <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1612997004357">
       <screen x="0" y="0" width="1600" height="860" />
     </state>

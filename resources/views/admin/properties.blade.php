@@ -8,7 +8,8 @@
 @section('content')
 
     @if(session('message'))
-        <div class="modal modal-{{session('status') ? 'success' : 'danger'}} fade in" id="modal-{{session('status') ? 'success' : 'danger'}}" style="display: block; padding-right: 17px;">
+        <div class="modal modal-{{session('status') ? 'success' : 'danger'}} fade in"
+             id="modal-{{session('status') ? 'success' : 'danger'}}" style="display: block; padding-right: 17px;">
             <div class="modal-dialog mt-4">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -72,4 +73,19 @@
             </div>
         </div>
     </div>
+@endsection
+
+
+@section('css')
+
+@endsection
+@section('js')
+    <script>
+        $(window).ready(function () {
+            setInterval(function () {
+                $('.modal').addClass("hidden")
+            }, 2000);
+
+        });
+    </script>
 @endsection

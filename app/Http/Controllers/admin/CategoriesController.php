@@ -28,35 +28,25 @@ class CategoriesController extends Controller
     {
 
 
-        // Setup the validator
-        $rules = array('name' => 'required', 'url' => 'required');
-        $validator = Validator::make($request->all(), $rules);
-
-// Validate the input and return correct response
-        if ($validator->fails()) {
-            return array(
-                'success' => false,
-                'errors' => $validator->getMessageBag()->toArray()
-            , 400); // 400 being the HTTP code for an invalid request.
-        }
-
         $data = $request->validate([
             //image to be added
             'name' => ['required'],
             'url' => ['required', 'unique:categories']
         ]);
 
+        if(!str_starts_with($data['url'], '/'))
+            return redirect('/admin/categories')->with(['status'=>false,'message'=>"Kategori URL'iniz / ile başlamalıdır."]);
+
 
         $category = new categories();
-
-        $category->name = $request->name;
-        $category->url = $request->url;
+        $category->name = $data['name'];
+        $category->url = $data['url'];
         $category->image_path = 'image_path to be added';
-
         $category->save();
 
 
-        return view('/admin/create_category', ['exception' => '$query_exception_errors']);
+        $send = ['status'=>true,'message'=>'Kategori başarıyla oluşturuldu'];
+        return redirect('/admin/categories')->with($send);
     }
 
 

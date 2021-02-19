@@ -59,9 +59,6 @@ class PropertiesController extends Controller
             'garage' => ['required']
         ]);
 
-        return $data;
-        die();
-
         $property = new properties();
         $property->title = $data['title'];
         $property->type = $data['type_id'];
@@ -85,6 +82,9 @@ class PropertiesController extends Controller
         $property_details->bedrooms = $data['bedrooms'];
         $property_details->garage = $data['garage'];
         $property_details->save();
+
+        $property_images = new property_images();
+        //TODO: image gallery will be updated after the image directory development|
 
         $properties = DB::table('properties')
             ->join('agents', 'properties.agent_id', '=', 'agents.id')

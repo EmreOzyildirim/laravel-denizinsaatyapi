@@ -95,39 +95,5 @@
 
 @endsection
 @section('js')
-    <script>
 
-        $(".save-data").click(function (event) {
-            event.preventDefault();
-
-            let name = $("input[name=name]").val();
-            let url = $("input[name=url]").val();
-            let _token = $("input[name=_token]").attr('value');
-
-            $.ajax({
-                url: "/admin/create-category",
-                type: "POST",
-                data: {
-                    name: name,
-                    url: url,
-                    _token: _token
-                },
-                success: function (response) {
-                    console.log(response);
-                    if (response) {
-                        $('.modal-success').removeClass('hidden').fadeIn();
-                        $('.modal-success').delay(2000).fadeOut();
-                        /*$('.callout-success').text(response.message);*/
-                    }
-                },
-                error: function (data) {
-
-                    $('.modal-danger').removeClass('hidden').fadeIn();
-                    $('.modal-danger').delay(2000).fadeOut();
-                    $('.modal-body').append(data.errors);
-                }
-            });
-        });
-
-    </script>
 @endsection
