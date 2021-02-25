@@ -8,6 +8,11 @@ use App\Models\agents;
 
 class AgentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $agents = agents::all();
@@ -22,26 +27,27 @@ class AgentsController extends Controller
     public function create_agent_post(Request $request)
     {
 
-        //validate to be control
-        /*
         $data = $request->validate([
-            'name_surname' => 'required',
-            'email' => 'required',
-            'phone_number' => 'required',
-            'description' => 'required'
+            'name_surname' => ['required'],
+            //'profile_image' => ['required'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'title' => ['required'],
+            'description' => ['required'],
+            'facebook' => ['required'],
+            'twitter' => ['required']
         ]);
-        */
 
         $agent = new agents();
 
-        $agent->name_surname = $request['name_surname'];
+        $agent->name_surname = $data['name_surname'];
         $agent->profile_image = 'profile image to be added';
-        $agent->email = $request['email'];
-        $agent->phone_number = $request['phone_number'];
-        $agent->title = $request['title'];
-        $agent->description = $request['description'];
-        $agent->facebook = $request['facebook'];
-        $agent->twitter = $request['twitter'];
+        $agent->email = $data['email'];
+        $agent->phone_number = $data['phone_number'];
+        $agent->title = $data['title'];
+        $agent->description = $data['description'];
+        $agent->facebook = $data['facebook'];
+        $agent->twitter = $data['twitter'];
         $agent->save();
 
         $send = ['status' => true, 'message' => 'Danışman başarıyla oluşturuldu.'];
@@ -104,13 +110,13 @@ class AgentsController extends Controller
             $agents = agents::all();
             $agent->delete();
 
-            $parameters = ['agents' => $agents,'status' => true,'message', 'Danışman başarıyla silindi'];
+            $parameters = ['agents' => $agents, 'status' => true, 'message', 'Danışman başarıyla silindi'];
             return redirect('admin/agents')
                 ->with($parameters);
 
         } else {
             $agents = agents::all();
-            return redirect('/admin/agents')->with('agents',$agents);
+            return redirect('/admin/agents')->with('agents', $agents);
         }
     }
 

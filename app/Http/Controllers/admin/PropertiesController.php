@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\categories;
+use App\Models\provinces;
 use App\Models\statuses;
 use Illuminate\Http\Request;
 use App\Models\properties;
@@ -11,11 +12,18 @@ use App\Models\property_details;
 use App\Models\property_images;
 use App\Models\agents;
 use App\Models\types;
+use App\Models\districts;
+use App\Models\neighborhoods;
 use DB;
 use phpDocumentor\Reflection\Types\Context;
 
 class PropertiesController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
 
@@ -36,7 +44,47 @@ class PropertiesController extends Controller
         $types = types::all();
         $statuses = statuses::all();
 
+        $provinces = provinces::all();
+
         return view('.admin.property_create', ['agents' => $agents, 'categories' => $categories, 'types' => $types, 'statuses' => $statuses]);
+    }
+
+    public function search_districts(Request $request)
+    {
+
+        $data = $request->validate([
+            '_token' => ['required'],
+            'province_id' => ['required'],
+        ]);
+
+        $districts = districts::where('ilce_sehirkey', $data['province_id'])->get();
+
+        $options = '';
+        foreach ($districts as $item) {
+            $options .= '<option value="' . $item['ilce_key'] . '">' . $item['ilce_title'] . '</option>' . PHP_EOL;
+        }
+
+        print_r($options);
+
+    }
+
+    public function search_neighborhoods(Request $request)
+    {
+
+        /*$data = $request->validate([
+            '_token' => ['required'],
+            'district_id' => ['required'],
+        ]);*/
+
+        $neighborhoods = neighborhoods::where('mahalle_ilcekey', $request['district_id'])->get();
+
+        $neighborhood = '';
+        foreach ($neighborhoods as $item) {
+            $neighborhood .= '<option value="' . $item['mahalle_id'] . '">' . $item['mahalle_title'] . '</option>' . PHP_EOL;
+        }
+
+        print_r($neighborhood);
+
     }
 
     public function create_property_post(Request $request)
@@ -50,6 +98,9 @@ class PropertiesController extends Controller
             'type_id' => ['required'],
             'price' => ['required'],
             'agent' => ['required'],
+            'province_id' => ['required'],
+            'district_id' => ['required'],
+            'neighborhood_id' => ['required'],
             'status' => ['required'],
             'category_id' => ['required'],
             'year_built' => ['required'],
@@ -62,6 +113,9 @@ class PropertiesController extends Controller
         $property = new properties();
         $property->title = $data['title'];
         $property->type = $data['type_id'];
+        $property->province_id = $data['province_id'];
+        $property->district_id = $data['district_id'];
+        $property->neighborhood_id = $data['neighborhood_id'];
         $property->image_path = 'image path to be added';
         $property->image_alt_text = 'image alt text to be added';
         $property->price = $data['price'];
@@ -91,7 +145,7 @@ class PropertiesController extends Controller
             ->select('properties.*', 'agents.name_surname')
             ->get();
 
-        $send = ['status'=> true, 'message' => 'İlan başarıyla oluşturuldu.'];
+        $send = ['status' => true, 'message' => 'İlan başarıyla oluşturuldu.'];
         return redirect('/admin/properties')->with($send);
     }
 
@@ -99,7 +153,7 @@ class PropertiesController extends Controller
     public function update($id = null)
     {
 
-        if (!empty($id)){
+        if (!empty($id)) {
             $property = properties::find($id);
             $property_details = property_details::where('property_id', $id)->first();
             $property_images = property_images::select('image_path', 'image_alt_text')->where('property_id', $id)->get();
@@ -109,9 +163,13 @@ class PropertiesController extends Controller
             $types = types::all();
             $statuses = statuses::all();
 
-            return view('/admin/property_update', ['property' => $property, 'details' => $property_details, 'agents' => $agents, 'types' => $types, 'categories' => $categories, 'statuses' => $statuses]);
+            $provinces = provinces::all();
+            $districts = districts::where('ilce_sehirkey',$property['province_id'])->get();
+            $neighborhoods = neighborhoods::where('mahalle_ilcekey',$property['district_id'])->get();
+
+            return view('/admin/property_update', ['property' => $property, 'details' => $property_details, 'agents' => $agents, 'types' => $types, 'categories' => $categories, 'statuses' => $statuses,'provinces'=>$provinces,'districts'=>$districts,'neighborhoods'=>$neighborhoods]);
         }
-        return view('/admin/property_update', ['status' => false, 'message' => false]);
+        return view('/admin/property_update', ['status' => false, 'message' => 'İşlem başarısız']);
     }
 
 
@@ -120,35 +178,42 @@ class PropertiesController extends Controller
 
         $data = $request->validate([
             'id' => ['required'],
+            '_token' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
-            'type' => ['required'],
+            'type_id' => ['required'],
             'price' => ['required'],
             'agent' => ['required'],
+            'province_id' => ['required'],
+            'district_id' => ['required'],
+            'neighborhood_id' => ['required'],
             'status' => ['required'],
-            'category' => ['required'],
+            'category_id' => ['required'],
             'year_built' => ['required'],
             'home_area' => ['required'],
             'rooms' => ['required'],
             'bedrooms' => ['required'],
-            'garage' => ['required'],
-            '_token' => ['required']
+            'garage' => ['required']
         ]);
+
 
         $property = properties::find($data['id']);
         $property->title = $data['title'];
-        $property->type = $data['type'];
+        $property->type = $data['type_id'];
+        $property->province_id = $data['province_id'];
+        $property->district_id = $data['district_id'];
+        $property->neighborhood_id = $data['neighborhood_id'];
         $property->price = $data['price'];
         $property->agent_id = $data['agent'];
         $property->status = $data['status'];
-        $property->category_id = $data['category'];
+        $property->category_id = $data['category_id'];
         $property->save();
 
         property_details::where('property_id', $data['id'])
             ->update([
                 'description' => $data['description'],
-                'type_id' => $data['type'],
-                'category_id' => $data['category'],
+                'type_id' => $data['type_id'],
+                'category_id' => $data['category_id'],
                 'year_built' => $data['year_built'],
                 'agent_id' => $data['agent'],
                 'home_area' => $data['home_area'],
@@ -165,7 +230,8 @@ class PropertiesController extends Controller
         $types = types::all();
         $statuses = statuses::all();
 
-        return view('/admin/property_update', ['property' => $property, 'details' => $property_details, 'categories' => $categories, 'property_images' => $property_images, 'agents' => $categories, 'types' => $types, 'statuses' => $statuses]);
+        $send = ['status' => true, 'message' => 'İlan başarıyla güncellendi.'];
+        return redirect('/admin/properties')->with($send);
     }
 
     public function delete($id = null)

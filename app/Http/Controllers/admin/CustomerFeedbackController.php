@@ -8,6 +8,10 @@ use App\models\customer_feedbacks;
 
 class CustomerFeedbackController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $customer_feedbacks = customer_feedbacks::all();

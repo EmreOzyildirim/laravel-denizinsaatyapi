@@ -4,6 +4,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+            <img src="/backend/know-how/deniz-insaat-yapi-logo.png" alt="" style="display:block;margin: 0 auto;margin-bottom:20px;">
             <div class="card">
                 <div class="card-header">{{ __('Login') }}</div>
 

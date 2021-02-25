@@ -8,30 +8,23 @@ use App\Models\main_menu;
 
 class MenuController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
-
-        function parseMenu($id = 0)
-        {
-            $main_menu = main_menu::all()->where('parent_id', '=', $id)->toArray();
-
-            $html_output = '';
-            $html_output .= '<ul class="sortable" style="list-style-type: none;">';
-
-            foreach ($main_menu as $item) {
-                $html_output .= "<li>" . '<div class="input-group"><input type="text" class="form-control" value="'.$item['name'].'" disabled><span class="input-group-addon"><i class="fa fa-close"></i></span></div>';
-                $html_output .= parseMenu($item['id']);
-                $html_output .= "</li>";
+        $main_menu = main_menu::where('parent_id', 0);
+        $html = '';
+        foreach ($main_menu as $menu) {
+            $html .= '<span>' . $menu['name'] . '</span>';
+            $parents = main_menu::where('parent_id', $menu['id']);
+            foreach ($parents as $parent) {
+                $html .= '<span>' . $parent['name'] . '</span>';
             }
-
-            $html_output .= "</ul>";
-
-            return $html_output;
         }
-
-        $menu = parseMenu(0);
-
-        return view('/admin/menu', ['menu' => $menu]);
+        return view('/admin/menu', ['menu' => $html]);
     }
 
 }

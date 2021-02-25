@@ -10,6 +10,11 @@ use Illuminate\Http\Request;
 
 class FooterController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $footer = footer::all();

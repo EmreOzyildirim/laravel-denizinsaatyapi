@@ -1,3 +1,4 @@
+
 INSERT INTO `districts` (`ilce_id`, `ilce_title`, `ilce_key`, `ilce_sehirkey`) VALUES
 (1, 'ADALAR', 1103, 34),
 (2, 'ARNAVUTKÖY', 2048, 34),

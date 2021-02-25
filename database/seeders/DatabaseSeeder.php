@@ -34,6 +34,6 @@ class DatabaseSeeder extends Seeder
         $this->call(footer_table_seeder::class);
         $this->call(footer_links_table_seeder::class);
         $this->call(neighborhoods_table_seeder::class);
-        //neighborhoods sıkıntılı oldugu için sona alindi
+        $this->call(street_and_avenues_table_seeder::class);
     }
 }

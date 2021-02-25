@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 
-
+use App\Http\Controllers\PageController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\PageHeaderController;
 use App\Http\Controllers\admin\MenuController;
@@ -45,6 +45,9 @@ Route::group(['namespace' => 'admin'], function () {
         exit();
     });
 
+    Route::get('/admin/mail-send', [PageController::class, 'send_mail']);
+    Route::post('/admin/mail-send', [PageController::class, 'send_mail_post']);
+
     Route::get('/admin/index', [AdminController::class, 'index']);
 
     Route::get('/admin/page-header', [PageHeaderController::class, 'index']);
@@ -60,6 +63,8 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('/admin/update-property/{id}', [PropertiesController::class, 'update']);
     Route::post('/admin/update-property', [PropertiesController::class, 'update_post']);
 
+    Route::post('/admin/search-districts',[PropertiesController::class,'search_districts']);
+    Route::post('/admin/search-neighborhoods',[PropertiesController::class,'search_neighborhoods']);
 
     Route::get('/admin/delete-property/{id}', [PropertiesController::class, 'delete']);
 
@@ -121,7 +126,6 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('/admin/social-media', [SocialMediaController::class, 'index']);
     Route::post('/admin/social-media', [SocialMediaController::class, 'social_media_icons_update']);
 
-
     Route::get('/admin/references', [ReferencesController::class, 'index']);
     Route::get('/admin/seo-options', [SEOController::class, 'index']);
     Route::get('/admin/footer', [FooterController::class, 'index']);
@@ -137,25 +141,14 @@ Route::group(['namespace' => 'frontend'], function () {
 });
 
 Route::get('/welcome', 'App\Http\Controllers\PageController@index');
-
 Route::get('/show', 'App\Http\Controllers\PageController@show');
-
 Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/contact/{name?}/{surname?}', function ($ad = null, $surname = null) {
-    return $ad . " " . $surname;
-});
-
-Route::get('/regex/{name?}/{surname?}', function ($ad = null, $surname = null) {
-    return $ad . " " . $surname;
-})->where('name', '[0-9]+');
-
-Route::get('/contact', function () {
-    return view('contact');
-});
-
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+    Route::get('/',[HomeController::class,'index']);
+    Route::get('/anasayfa',[HomeController::class,'index']);
+

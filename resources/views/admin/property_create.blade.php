@@ -1,13 +1,14 @@
 @extends('admin.layouts.layout')
+@section('page_title','İlan oluştur')
+@section('optional_description','Yeni ilan oluştur')
 @section('head')
 
 @endsection
-@section('page_title','İlan oluştur')
-@section('optional_description','Yeni ilan oluştur')
 
 @section('content')
     @if(session('message'))
-        <div class="modal modal-{{session('status') ? 'success' : 'danger'}} fade in" id="modal-{{session('status') ? 'success' : 'danger'}}" style="display: block; padding-right: 17px;">
+        <div class="modal modal-{{session('status') ? 'success' : 'danger'}} fade in"
+             id="modal-{{session('status') ? 'success' : 'danger'}}" style="display: block; padding-right: 17px;">
             <div class="modal-dialog mt-4">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -27,6 +28,7 @@
     <div class="col-md-12">
         <div class="box box-default">
             <div class="box-header with-border">
+                <h1 id="gel"></h1>
                 <h3 class="box-title">İlan Oluştur</h3>
             </div>
             <!-- /.box-header -->
@@ -49,19 +51,64 @@
                                    value=""
                                    placeholder="İlan başlığını girin">
                             @error('title')
-                                <span class="text-danger">{{$message}}</span>
+                            <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                     </div>
                     <div class="form-group">
                         <label for="description" class="col-sm-2 control-label">Açıklama</label>
                         <div class="col-md-10">
-                            <textarea class="form-control" name="description" rows="10" cols="80" id="description"></textarea>
+                            <textarea class="form-control" name="description" rows="10" cols="80"
+                                      id="description"></textarea>
                             @error('description')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
                         </div>
                     </div>
+                    <hr>
+                    <div style="margin:40px 0;">
+                        <h4>Adres Bilgileri</h4>
+                        <div class="form-group">
+                            <label for="provinces" class="col-sm-2 control-label">Şehir</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="province_id" id="provinces">
+                                    <option selected>Şehir seçin</option>
+                                    @foreach($provinces as $item)
+                                        <option value="{{$item['sehir_key']}}">{{$item['sehir_title']}}</option>
+                                    @endforeach
+                                </select>
+                                @error('province')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="districts" class="col-sm-2 control-label">İlçe</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="district_id" id="districts">
+                                    <option selected>Önce şehir seçin</option>
+                                </select>
+                                @error('province')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="neighborhoods" class="col-sm-2 control-label">Mahalle</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="neighborhood_id" id="neighborhoods">
+                                    <option selected>Önce ilçe seçin</option>
+                                </select>
+                                @error('neighborhoods')
+                                <span class="text-danger">{{$message}}</span>
+                                @enderror
+                            </div>
+                        </div>
+
+                    </div>
+                    <hr>
                     <div class="form-group">
                         <label for="type" class="col-sm-2 control-label">İlan türü</label>
                         <div class="col-sm-10">
@@ -208,13 +255,61 @@
 @section('js')
     <script src="/backend/bower_components/ckeditor/ckeditor.js"></script>
     <script src="/backend/bower_components/ckeditor/adapters/jquery.js"></script>
-
     <script>
         $(function () {
             // Replace the <textarea id="editor1"> with a CKEditor
             // instance, using default configuration.
             CKEDITOR.replace('description');
             var strNotes = CKEDITOR.instances["description"].getData();
+
+            $('#gel').text("başta degisti....");
+
+
+
+            $('#provinces').on('change', function () {
+                var province_id = $(this).val();
+                if (province_id) {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: '/admin/search-districts',
+                        data: {
+                            'province_id' : province_id,
+                            '_token' : $( "input[name=_token]" ).val()
+                        },
+                        success: function (html) {
+                            $('#districts').html(html);
+
+                        }
+                    });
+
+                    $('#districts').on('change',function(){
+
+                        var district_id = $('#districts').val();
+
+                        $('#gel').text(district_id);
+
+                        $.ajax({
+                            type:'POST',
+                            url:'/admin/search-neighborhoods',
+                            data:{
+                                '_token':$( "input[name=_token]" ).val(),
+                                'district_id':district_id,
+                            },
+                            success:function(html){
+                                $('#neighborhoods').html(html);
+                            }
+                        });
+
+                    });
+
+                } else {
+                    ('#districts').html('<option value="">Önce şehir seçiniz</option>');
+                    ('#neighborhoods').html('<option value="">Önce ilçe seçiniz</option>');
+                }
+            });
+
+
         });
     </script>
 @endsection

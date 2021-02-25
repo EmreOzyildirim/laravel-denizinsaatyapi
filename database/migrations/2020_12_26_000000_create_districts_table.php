@@ -14,7 +14,7 @@ class CreateDistrictsTable extends Migration
     public function up()
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->integer('ilce_id')->autoIncrement();
+            $table->id('ilce_id');
             $table->string('ilce_title');
             $table->integer('ilce_key')->index();
             $table->integer('ilce_sehirkey')->index();

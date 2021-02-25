@@ -18,6 +18,9 @@ class CreatePropertiesTable extends Migration
             $table->string('title');
             $table->integer('type')->index();
             $table->integer('price');
+            $table->integer('province_id');
+            $table->integer('district_id');
+            $table->integer('neighborhood_id');
             $table->integer('agent_id')->default('1')->index();
             $table->string('image_path');
             $table->string('image_alt_text');

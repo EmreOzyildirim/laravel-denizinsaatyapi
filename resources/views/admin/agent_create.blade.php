@@ -13,7 +13,7 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form action="/admin/create-agent" class="form-horizontal" method="post" enctype="multipart/form-data">
+        <form action="/admin/create-agent" class="form-horizontal" method="post">
             @csrf
             <div class="box-body">
                 <div class="form-group">

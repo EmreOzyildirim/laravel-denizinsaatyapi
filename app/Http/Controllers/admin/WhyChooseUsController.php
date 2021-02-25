@@ -9,6 +9,10 @@ use Illuminate\Http\Request;
 
 class WhyChooseUsController extends Controller
 {
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     protected $icons = [
         'icon1' => '/backend/know-how/chooseus-icon-1.png',
         'icon2' => '/backend/know-how/chooseus-icon-2.png',

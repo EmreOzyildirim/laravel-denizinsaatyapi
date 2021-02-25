@@ -8,6 +8,11 @@ use Illuminate\Http\Request;
 
 class SocialMediaController extends Controller
 {
+
+    public function __construct(){
+        $this->middleware('auth');
+    }
+
     public function index()
     {
         $social_medias = social_media::find(1);
