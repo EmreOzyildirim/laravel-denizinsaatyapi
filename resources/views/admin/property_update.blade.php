@@ -150,12 +150,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="rooms" class="col-sm-2 control-label">Oturma Odası</label>
+                        <label for="rooms" class="col-sm-2 control-label">Salon</label>
 
                         <div class="col-sm-4">
                             <input type="text" name="rooms" class="form-control" id="rooms"
                                    value="{{$details['rooms']}}"
-                                   placeholder="Oda sayısı (yatak odası hariç)">
+                                   placeholder="Salon sayısı">
                         </div>
                     </div>
                     <div class="form-group">
@@ -164,7 +164,7 @@
                         <div class="col-sm-4">
                             <input type="text" name="bedrooms" class="form-control" id="bedrooms"
                                    value="{{$details['bedrooms']}}"
-                                   placeholder="Oda sayısı (oda sayısı hariç)">
+                                   placeholder="Oda sayısı">
                         </div>
                     </div>
                     <div class="form-group">

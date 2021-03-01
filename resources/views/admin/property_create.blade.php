@@ -187,7 +187,7 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="rooms" class="col-sm-2 control-label">Oturma Odası</label>
+                        <label for="rooms" class="col-sm-2 control-label">Salon</label>
 
                         <div class="col-sm-4">
                             <input type="text" name="rooms" class="form-control" id="rooms"
@@ -199,12 +199,12 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="bedrooms" class="col-sm-2 control-label">Yatak Odası</label>
+                        <label for="bedrooms" class="col-sm-2 control-label">Oda</label>
 
                         <div class="col-sm-4">
                             <input type="text" name="bedrooms" class="form-control" id="bedrooms"
                                    value=""
-                                   placeholder="Yatak oda sayısı">
+                                   placeholder="Oda sayısı">
                             @error('bedrooms')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
