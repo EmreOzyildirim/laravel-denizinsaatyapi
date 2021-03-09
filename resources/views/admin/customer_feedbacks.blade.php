@@ -38,26 +38,26 @@
                             <th>İsim Soyisim</th>
                             <th>Meslek</th>
                             <th>Açıklama</th>
-                            <th>Oylama</th>
+                            <th>Puan</th>
                             <th>İşlem</th>
                         </tr>
                         @foreach($customer_feedbacks as $item)
                             <tr>
-                                <td><img src="{{$item['profile_image']}}" width="75px"></td>
-                                <td>{{$item['name_surname']}}</td>
-                                <td>{{$item['job']}}</td>
-                                <td>{{strlen($item['description']) > 50 ? substr($item['description'],0,50).'..' : $item['description'] }}</td>
-                                <td>{{$item['star']}}</td>
-                                <td><a href="/admin/update-customer-feedbacks/{{$item['id']}}"
+                                <td><img src="{{'/images/musteri-yorumlari/'.$item->image}}" width="100px"></td>
+                                <td>{{strlen($item->name_surname) > 20 ? substr($item->name_surname,0,20).'..' : $item->name_surname }}</td>
+                                <td>{{strlen($item->job) > 20 ? substr($item->job,0,20).'..' : $item->job }}</td>
+                                <td>{{strlen($item->description) > 50 ? substr($item->description,0,50).'..' : $item->description }}</td>
+                                <td>{{$item->star}}</td>
+                                <td><a href="/admin/update-customer-feedback/{{$item->id}}"
                                        class="btn btn-xs btn-primary">Düzenle</a>
                                     <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-                                            data-target="#modal-danger{{$item['id']}}">
+                                            data-target="#modal-danger{{$item->id}}">
                                         Sil
                                     </button>
                                 </td>
                             </tr>
 
-                            <div class="modal modal-danger fade" id="modal-danger{{$item['id']}}">
+                            <div class="modal modal-danger fade" id="modal-danger{{$item->id}}">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
                                         <div class="modal-header">
@@ -66,7 +66,7 @@
                                             <h4 class="modal-title">Danışman sil</h4>
                                         </div>
                                         <div class="modal-body">
-                                            <strong style="font-size: 16px;">{{ $item['name_surname']}}</strong>
+                                            <strong style="font-size: 16px;">{{ $item->name_surname}}</strong>
                                             <p>adlı Müşteri yorumunu silmek istediğinizden emin misiniz?</p>
                                         </div>
                                         <div class="modal-footer">
@@ -74,7 +74,7 @@
                                                     data-dismiss="modal">İptal
                                             </button>
                                             <a class="btn btn-outline pull-left"
-                                               href="/admin/delete-agent/{{$item['id']}}">Evet, sil.</a>
+                                               href="/admin/delete-agent/{{$item->id}}">Evet, sil.</a>
                                         </div>
                                     </div>
                                 </div>

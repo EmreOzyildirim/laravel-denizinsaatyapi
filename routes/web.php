@@ -14,12 +14,14 @@ use App\Http\Controllers\admin\WhyChooseUsController;
 use App\Http\Controllers\admin\AgentsController;
 use App\Http\Controllers\admin\CustomerFeedbackController;
 use App\Http\Controllers\admin\ReferencesController;
-use App\Http\Controllers\admin\SEOController;
+/*use App\Http\Controllers\admin\SEOController;*/
 use App\Http\Controllers\admin\SocialMediaController;
 use App\Http\Controllers\admin\FooterController;
+use App\Http\Controllers\admin\ContactAndMapController;
 
 use App\Models\categories;
 use App\Models\properties;
+use App\Models\property_images;
 use App\Models\agents;
 
 /*
@@ -40,10 +42,11 @@ Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']
 
 //Admin Panel Routes
 Route::group(['namespace' => 'admin'], function () {
-    Route::get('/admin',function (){
+    Route::get('/admin', function () {
         header('Location:/admin/index');
         exit();
     });
+
 
     Route::get('/admin/mail-send', [PageController::class, 'send_mail']);
     Route::post('/admin/mail-send', [PageController::class, 'send_mail_post']);
@@ -63,8 +66,17 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('/admin/update-property/{id}', [PropertiesController::class, 'update']);
     Route::post('/admin/update-property', [PropertiesController::class, 'update_post']);
 
-    Route::post('/admin/search-districts',[PropertiesController::class,'search_districts']);
-    Route::post('/admin/search-neighborhoods',[PropertiesController::class,'search_neighborhoods']);
+    Route::get('/admin/update-property/{id}/remove_image/{image_id}', function ($id, $remove_image) {
+        $property_images = property_images::find($remove_image);
+        unlink(public_path('images/properties/' . $property_images->image_path));
+        $property_images->delete();
+
+
+        return redirect('/admin/update-property/' . $id);
+    });
+
+    Route::post('/admin/search-districts', [PropertiesController::class, 'search_districts']);
+    Route::post('/admin/search-neighborhoods', [PropertiesController::class, 'search_neighborhoods']);
 
     Route::get('/admin/delete-property/{id}', [PropertiesController::class, 'delete']);
 
@@ -75,8 +87,11 @@ Route::group(['namespace' => 'admin'], function () {
 
         $category = categories::find($id);
 
-        if(!empty($category))
+        if (!empty($category)) {
             $category->delete();
+            unlink(public_path('images/categories/' . $category['image_path']));
+        }
+
 
         $categories = categories::all();
         return view('/admin/categories', ['categories' => $categories]);
@@ -109,26 +124,37 @@ Route::group(['namespace' => 'admin'], function () {
 
     Route::get('/admin/delete-agent/{id}', [AgentsController::class, 'delete_agent']);
 
-    Route::get('/admin/customer-feedbacks',[CustomerFeedbackController::class, 'index']);
-    Route::get('/admin/create-customer-feedback',[CustomerFeedbackController::class, 'create_customer_feedback']);
-    Route::post('/admin/create-customer-feedback',[CustomerFeedbackController::class, 'create_customer_feedback_post']);
+    Route::get('/admin/customer-feedbacks', [CustomerFeedbackController::class, 'index']);
+    Route::get('/admin/create-customer-feedback', [CustomerFeedbackController::class, 'create_customer_feedback']);
+    Route::post('/admin/create-customer-feedback', [CustomerFeedbackController::class, 'create_customer_feedback_post']);
+
+    Route::get('/admin/update-customer-feedback/{id}', [CustomerFeedbackController::class, 'update_customer_feedback']);
+    Route::post('/admin/update-customer-feedback', [CustomerFeedbackController::class, 'update_customer_feedback_post']);
+
+    Route::get('/admin/delete-customer-feedback/{id}', [PropertiesController::class, 'delete_customer_feedback']);
 
 
+    Route::get('/admin/create-featured-property', [FeaturedPropertiesController::class, 'index']);
+    Route::post('/admin/create-featured-property', [FeaturedPropertiesController::class, 'create_featured_property_post']);
 
 
-    Route::get('/admin/footer',[FooterController::class, 'index']);
-    Route::post('/admin/footer',[FooterController::class, 'footer']);
+    Route::get('/admin/footer', [FooterController::class, 'index']);
+    Route::post('/admin/footer', [FooterController::class, 'footer']);
 
-    Route::get('/admin/useful-links',[FooterController::class, 'useful_links']);
-    Route::post('/admin/useful-links',[FooterController::class, 'useful_links_post']);
+    Route::get('/admin/useful-links', [FooterController::class, 'useful_links']);
+    Route::post('/admin/useful-links', [FooterController::class, 'useful_links_post']);
 
 
     Route::get('/admin/social-media', [SocialMediaController::class, 'index']);
     Route::post('/admin/social-media', [SocialMediaController::class, 'social_media_icons_update']);
 
     Route::get('/admin/references', [ReferencesController::class, 'index']);
-    Route::get('/admin/seo-options', [SEOController::class, 'index']);
+    /*Route::get('/admin/seo-options', [SEOController::class, 'index']);*/
     Route::get('/admin/footer', [FooterController::class, 'index']);
+
+
+    Route::get('/admin/contact-and-map', [ContactAndMapController::class, 'index']);
+    Route::post('/admin/contact-and-map', [ContactAndMapController::class, 'update']);
 
 });
 
@@ -137,6 +163,8 @@ Route::group(['namespace' => 'frontend'], function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/anasayfa', [HomeController::class, 'index']);
+    Route::get('/danismanlarimiz',[HomeController::class, 'agents']);
+    Route::get('/iletisim',[HomeController::class, 'contact']);
 
 });
 
@@ -149,6 +177,6 @@ Route::get('/', function () {
 Auth::routes();
 
 
-    Route::get('/',[HomeController::class,'index']);
-    Route::get('/anasayfa',[HomeController::class,'index']);
+Route::get('/', [HomeController::class, 'index']);
+Route::get('/anasayfa', [HomeController::class, 'index']);
 

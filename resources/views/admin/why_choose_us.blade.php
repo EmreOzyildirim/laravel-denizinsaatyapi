@@ -37,7 +37,7 @@
             <!-- /.modal-dialog -->
         </div>
     @endif
-    <form method="post" class="form-horizontal">
+    <form method="post" class="form-horizontal" enctype="multipart/form-data">
         @csrf
         <div class="col-md-12">
             <div class="box box-default">
@@ -51,8 +51,8 @@
                     <div class="form-group">
                         <label for="logo" class="col-sm-2 control-label">Arkaplan Resmi</label>
                         <div class="col-sm-10">
-                            <img src="" width="180px">
-                            <input type="file" class="form-control" id="background_image" placeholder="Arkaplan Resmi">
+                            <img src="{{ '/images/chooseus/'.$why_choose_us['bg_image_path'] }}" width="50%" style="margin:20px 0px;">
+                            <input type="file" name="background_image" class="form-control" id="background_image" placeholder="Arkaplan Resmi">
                         </div>
                     </div>
                     <div class="form-group">

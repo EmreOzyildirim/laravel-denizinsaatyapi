@@ -40,7 +40,7 @@
                         </tr>
                         @foreach($categories as $item)
                             <tr>
-                                <td><img src="{{$item['image_path']}}" width="100px" alt="testo"></td>
+                                <td><img src="{{ empty($item['image_path']) ?: '/images/categories/'.$item['image_path'] }}" width="100px" alt="testo"></td>
                                 <td>{{$item['name']}}</td>
                                 <td>{{$item['url']}}</td>
                                 <td>

@@ -144,7 +144,7 @@ desired effect
                 <i class="fa fa-angle-left pull-right"></i>
               </span>
                     </a>
-                    <ul class="treeview-menu">
+                    <ul class="treeview-menu"{{Request::path()=='admin/categories' ? ' style=display:block':''}}{{Request::path()=='admin/create-category' ? ' style=display:block':''}}>
                         <li class="{{ Request::path()=='admin/categories' ? 'active' : '' }}"><a
                                 href="/admin/categories">Kategoriler</a></li>
                         <li class="{{ Request::path()=='admin/create-category' ? 'active' : '' }}"><a
@@ -194,7 +194,7 @@ desired effect
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                     </a>
-                    <ul class="treeview-menu" {{ Request::path()=='admin/customer-feedbacks' ? ' style="display:block;"':'' }}{{ Request::path()=='admin/customer-feedbacks' ? ' style="display:block;"':'' }}>
+                    <ul class="treeview-menu" {{ Request::path()=='admin/customer-feedbacks' ? ' style=display:block;':'' }}{{ Request::path()=='admin/create-customer-feedback' ? ' style=display:block;':'' }}>
                         <li class="{{ Request::path()=='admin/customer-feedbacks' ? ' active' : '' }} "><a href="/admin/customer-feedbacks">
                                 Müşteri Görüşleri</a></li>
                         <li class="{{ Request::path()=='admin/create-customer-feedback' ? ' active' : '' }}"><a
@@ -203,8 +203,8 @@ desired effect
                 </li>
                 <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
                 <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
-                <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a>
-                </li>
+                <li><a href="/admin/contact-and-map"><i class="fa fa-link"></i> <span>İletişim ve Harita</span></a></li>
+                <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a></li>
                 <li class="treeview{{ Request::path()=='admin/footer' ? ' menu-open':'' }}{{ Request::path()=='admin/insert-useful-links' ? ' menu-open':'' }}">
                     <a href="#">
                         <i class="fa fa-link"></i> <span>Footer</span>
@@ -262,7 +262,6 @@ desired effect
                     <div class="small-box bg-yellow">
                         <div class="inner">
                             <h3>4</h3>
-
                             <p>Danışman</p>
                         </div>
                         <div class="icon">
@@ -278,7 +277,6 @@ desired effect
                     <div class="small-box bg-red">
                         <div class="inner">
                             <h3>7</h3>
-
                             <p>İlan Kategorisi</p>
                         </div>
                         <div class="icon">
@@ -300,7 +298,6 @@ desired effect
         <!-- /.content -->
     </div>
     <!-- /.content-wrapper -->
-
     <!-- Main Footer -->
     <footer class="main-footer">
         <!-- To the right -->
@@ -316,9 +313,7 @@ desired effect
     <div class="control-sidebar-bg"></div>
 </div>
 <!-- ./wrapper -->
-
 <!-- REQUIRED JS SCRIPTS -->
-
 <!-- jQuery 3 -->
 <script src="/backend/bower_components/jquery/dist/jquery.min.js"></script>
 <!-- Bootstrap 3.3.7 -->

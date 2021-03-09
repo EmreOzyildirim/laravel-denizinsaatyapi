@@ -13,17 +13,20 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form id="ajaxform" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <form action="/admin/create-category" class="form-horizontal" method="POST" enctype="multipart/form-data">
                 @csrf
-                <div class="box-body"><!----
+                <div class="box-body">
                     <div class="form-group">
-                        <label for="logo" class="col-sm-2 control-label">Logo</label>
+                        <label for="category_image" class="col-sm-2 control-label">Kategori Resmi Seçin</label>
                         <div class="col-sm-10">
-                            <img src="" width="180px">
-                            <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
+                            <input type="file" name="category_image" class="form-control" id="category_image"
+                                   placeholder="Kategori Resmi" required>
+                            <img src="" name="category_image" alt="Kategori resmi" style="margin-top:20px;" onchange="previewFile(this)" width="180px">
+                            @error('category_image')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
-                    </div>---->
-
+                    </div>
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Kategori Adı</label>
 
@@ -31,6 +34,9 @@
                             <input type="text" name="name" class="form-control" id="name"
                                    value=""
                                    placeholder="Kategori adını girin">
+                            @error('name')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -40,12 +46,15 @@
                             <input type="text" name="url" class="form-control" id="url"
                                    value=""
                                    placeholder="https://www.denizinsaatyapi.com sonrasında görünecek dizini girin">
+                            @error('url')
+                            <span class="text-danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button class="btn btn-default save-data">Kaydet</button>
+                    <button class="btn btn-default" type="submit">Kaydet</button>
                 </div>
                 <!-- /.box-footer -->
             </form>
@@ -95,5 +104,18 @@
 
 @endsection
 @section('js')
+    <script>
+        function previewFile(input) {
+            var file = $("input[type=file]").get(0).files[0];
+            if (file) {
 
+                var reader = new FileReader();
+                reader.onload = function () {
+
+                    ('#previewImg').attr('src', reader.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
+    </script>
 @endsection

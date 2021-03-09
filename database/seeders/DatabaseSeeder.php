@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\contact_and_map;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -33,7 +34,7 @@ class DatabaseSeeder extends Seeder
         $this->call(customer_feedbacks_table_seeder::class);
         $this->call(footer_table_seeder::class);
         $this->call(footer_links_table_seeder::class);
+        $this->call(contact_and_map_table_seeder::class);
         $this->call(neighborhoods_table_seeder::class);
-        $this->call(street_and_avenues_table_seeder::class);
     }
 }

@@ -13,17 +13,20 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form id="ajaxform" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <form action="/admin/update-category" class="form-horizontal" method="POST" enctype="multipart/form-data">
                 @csrf
                 <input type="text" name="id" value="{{$category['id']}}" hidden>
-                <div class="box-body"><!----
+                <div class="box-body">
                     <div class="form-group">
-                        <label for="logo" class="col-sm-2 control-label">Logo</label>
+                        <label for="category_image" class="col-sm-2 control-label">Kategori Resmi</label>
                         <div class="col-sm-10">
-                            <img src="" width="180px">
-                            <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
+                            <img src="{{ empty($category['image_path']) ?: '/images/categories/'.$category['image_path'] }}" width="180px" style="margin-bottom:20px;">
+                            <input type="file" name="category_image" class="form-control" id="category_image" placeholder="category_image">
+                            @error('category_image')
+                            <span class="danger">{{$message}}</span>
+                            @enderror
                         </div>
-                    </div>---->
+                    </div>
 
                     <div class="form-group">
                         <label for="name" class="col-sm-2 control-label">Kategori Adı</label>
@@ -32,6 +35,9 @@
                             <input type="text" name="name" class="form-control" id="name"
                                    value="{{$category['name']}}"
                                    placeholder="Kategori adını girin">
+                            @error('name')
+                            <span class="danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                     <div class="form-group">
@@ -41,14 +47,15 @@
                             <input type="text" name="url" class="form-control" id="url"
                                    value="{{$category['url']}}"
                                    placeholder="https://www.denizinsaatyapi.com sonrasında görünecek dizini girin">
+                            @error('url')
+                            <span class="danger">{{$message}}</span>
+                            @enderror
                         </div>
                     </div>
                 </div>
-                <!-- /.box-body -->
                 <div class="box-footer">
-                    <button class="btn btn-default save-data">Kaydet</button>
+                    <button class="btn btn-default" type="submit">Kaydet</button>
                 </div>
-                <!-- /.box-footer -->
             </form>
         </div>
     </div>
@@ -101,36 +108,25 @@
 @endsection
 @section('js')
     <script>
-
-        $(".save-data").click(function (event) {
-            event.preventDefault();
-
-            let id = $("input[name=id]").val();
-            let image_path = 'image_path_to_be_added';
-            let name = $("input[name=name]").val();
-            let url = $("input[name=url]").val();
-            let _token = $("input[name=_token]").attr('value');
-
-            $.ajax({
-                url: "/admin/update-category",
-                type: "POST",
-                data: {
-                    id: id,
-                    image_path: image_path,
-                    name: name,
-                    url: url,
-                    _token: _token
-                },
-                success: function (response) {
-                    console.log(response);
-                    if (response) {
-                        $('.modal-success').removeClass('hidden').fadeIn();
-                        $('.modal-success').delay(2000).fadeOut();
-                        $('.callout-success').append(response.message);
-                    }
-                }
-            });
+        $.ready(function (){
+            $('.modal-success').removeClass('hidden').fadeIn();
+            $('.modal-success').delay(2000).fadeOut();
+            $('.callout-success').append(response.message);
         });
+
+
+        function previewFile(input) {
+            var file = $("input[type=file]").get(0).files[0];
+            if (file) {
+
+                var reader = new FileReader();
+                reader.onload = function () {
+
+                    ('#previewImg').attr('src', reader.result);
+                }
+                reader.readAsDataURL(file);
+            }
+        }
 
     </script>
 @endsection

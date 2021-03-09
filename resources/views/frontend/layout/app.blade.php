@@ -4,31 +4,32 @@
 <head>
     <!---og tags starts--->
     <meta property="og:locale" content="tr_TR"/>
-    @section('og_tags')
+@section('og_tags')
     <!---og tags ends--->
-    <meta charset="UTF-8"/>
-    <meta name="description" content="Deniz İnşaat & Yapı ile hayalinizdeki gayrimenkul'e ulaşın! Deniz gayrimenkul."/>
-    <meta name="keywords" content="deniz inşaat yapı, deniz gayrimenkul, deniz inşaat"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>@yield('page_title')</title>
+        <meta charset="UTF-8"/>
+        <meta name="description"
+              content="Deniz İnşaat & Yapı ile hayalinizdeki gayrimenkul'e ulaşın! Deniz gayrimenkul."/>
+        <meta name="keywords" content="deniz inşaat yapı, deniz gayrimenkul, deniz inşaat"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+        <title>@yield('page_title')</title>
 
-    <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
-          rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
+        <!-- Google Font -->
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
+              rel="stylesheet"/>
+        <link href="https://fonts.googleapis.com/css?family=Lato:400,700,900&display=swap" rel="stylesheet">
 
-    <!-- Css Styles -->
-    <link rel="stylesheet" href="/frontend/css/bootstrap.min.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/font-awesome.min.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/elegant-icons.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/jquery-ui.min.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/nice-select.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/owl.carousel.min.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/magnific-popup.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/slicknav.min.css?v=2" type="text/css"/>
-    <link rel="stylesheet" href="/frontend/css/style.css?v=2" type="text/css"/>
-    @yield('css')
+        <!-- Css Styles -->
+        <link rel="stylesheet" href="/frontend/css/bootstrap.min.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/font-awesome.min.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/elegant-icons.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/jquery-ui.min.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/nice-select.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/owl.carousel.min.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/magnific-popup.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/slicknav.min.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/style.css?v=2" type="text/css"/>
+        @yield('css')
 </head>
 
 <body>
@@ -44,8 +45,8 @@
         <span class="icon_close"></span>
     </div>
     <div class="logo">
-        <a href="./index.html">
-            <img src="/frontend//frontend/img/logo.png" alt=""/>
+        <a href="/">
+            <img src="/frontend//frontend/img/logo.png" alt="Deniz Gayrimenkul & İnşaat logosu"/>
         </a>
     </div>
     <div id="mobile-menu-wrap"></div>
@@ -83,7 +84,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo">
-                        <a href="./index.html"><img src="/frontend/img/logo.png" alt=""></a>
+                        <a href="/"><img src="{{$page_header['logo_path']}}" alt="Deniz Gayrimenkul logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -107,20 +108,20 @@
                 <div class="col-lg-9">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="./index.html">Home</a></li>
-                            <li><a href="#">Properties</a>
-                                <ul class="dropdown">
-                                    <li><a href="./property.html">Property Grid</a></li>
-                                    <li><a href="./profile.html">Property List</a></li>
-                                    <li><a href="./property-details.html">Property Detail</a></li>
-                                    <li><a href="./property-comparison.html">Property Comperison</a></li>
-                                    <li><a href="./property-submit.html">Property Submit</a></li>
-                                </ul>
+                            <li class="active"><a href="/">Anasayfa</a></li>
+                            <li><a href="/ilanlar">İlanlar</a>
+                                <!---- <ul class="dropdown">
+                                     <li><a href="./property.html">Property Grid</a></li>
+                                     <li><a href="./profile.html">Property List</a></li>
+                                     <li><a href="./property-details.html">Property Detail</a></li>
+                                     <li><a href="./property-comparison.html">Property Comperison</a></li>
+                                     <li><a href="./property-submit.html">Property Submit</a></li>
+                                 </ul>---->
                             </li>
-                            <li><a href="./agents.html">Agents</a></li>
-                            <li><a href="./about.html">About</a></li>
-                            <li><a href="./blog.html">Blog</a></li>
-                            <li><a href="./contact.html">Contact</a></li>
+                            <li><a href="/danismanlarimiz">Danışmanlarımız</a></li>
+                            <li><a href="/hakkimizda">Kimiz Biz?</a></li>
+                            <li><a href="/referanslar">Referanslar</a></li>
+                            <li><a href="/iletisim">İletişim</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -158,62 +159,47 @@
             <div class="col-lg-4 col-md-6">
                 <div class="fs-about">
                     <div class="fs-logo">
-                        <a href="#">
-                            <img src="/frontend/img/f-logo.png" alt="">
+                        <a href="https://denizinsaatyapi.com/">
+                            <img src="{{$page_header['logo_path']}}" alt="Deniz Gayrimenkul logosu">
                         </a>
                     </div>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                        labore et dolore magna aliqua ut aliquip ex ea</p>
-                    <div class="fs-social">
-                        <a href="#"><i class="fa fa-facebook"></i></a>
-                        <a href="#"><i class="fa fa-twitter"></i></a>
-                        <a href="#"><i class="fa fa-youtube-play"></i></a>
-                        <a href="#"><i class="fa fa-instagram"></i></a>
-                        <a href="#"><i class="fa fa-pinterest-p"></i></a>
-                    </div>
+                    <p>{{$footer['footer']["short_description"]}}</p>
+                    @if($footer['footer']['social_media_icons']==1)
+                        <div class="fs-social">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-youtube-play"></i></a>
+                            <a href="#"><i class="fa fa-instagram"></i></a>
+                            <a href="#"><i class="fa fa-pinterest-p"></i></a>
+                        </div>
+                    @endif
                 </div>
             </div>
-            <div class="col-lg-2 col-sm-6">
+            <div class="col-lg-4 col-sm-8">
                 <div class="fs-widget">
-                    <h5>Help</h5>
+                    <h5>Faydalı Linkler</h5>
                     <ul>
-                        <li><a href="#">Privacy Policy</a></li>
-                        <li><a href="#">Contact Support</a></li>
-                        <li><a href="#">Knowledgebase</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">FAQs</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="col-lg-2 col-sm-6">
-                <div class="fs-widget">
-                    <h5>Links</h5>
-                    <ul>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Create Property</a></li>
-                        <li><a href="#">My Properties</a></li>
-                        <li><a href="#">Register</a></li>
-                        <li><a href="#">Login</a></li>
+                        @foreach($footer['footer_links'] as $link)
+                            <li><a href="{{$link['url']}}">{{$link['name']}}</a></li>
+                        @endforeach
                     </ul>
                 </div>
             </div>
             <div class="col-lg-4 col-md-6">
                 <div class="fs-widget">
-                    <h5>Newsletter</h5>
-                    <p>Deserunt mollit anim id est laborum.</p>
+                    <h5>İlan Bülteni</h5>
+                    <p>Fırsat ilanlardan ilk önce siz haberdar olun!</p>
                     <form action="#" class="subscribe-form">
                         <input type="text" placeholder="Email">
-                        <button type="submit" class="site-btn">Subscribe</button>
+                        <button type="submit" class="site-btn">Katıl</button>
                     </form>
                 </div>
             </div>
         </div>
         <div class="copyright-text">
             <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                Copyright &copy;<script>document.write(new Date().getFullYear());</script>
-                All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a
-                    href="https://colorlib.com" target="_blank">Colorlib</a>
-                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            {{$footer['footer']["copy_text"]}}
+            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
         </div>
     </div>
 </footer>

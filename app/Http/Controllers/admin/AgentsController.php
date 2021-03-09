@@ -5,6 +5,7 @@ namespace App\Http\Controllers\admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\agents;
+use Illuminate\Support\Facades\DB;
 
 class AgentsController extends Controller
 {
@@ -15,7 +16,7 @@ class AgentsController extends Controller
 
     public function index()
     {
-        $agents = agents::all();
+        $agents = DB::table('agents')->orderByDesc('id')->get();
         return view('.admin.agents', ['agents' => $agents]);
     }
 

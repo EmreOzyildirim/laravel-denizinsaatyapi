@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 
 class WhyChooseUsController extends Controller
 {
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -31,16 +32,35 @@ class WhyChooseUsController extends Controller
     public function update(Request $request)
     {
 
-        $data = $request->validate([
+        $request->validate([
             '_token' => 'required',
+            'background_image' => 'required',
             'title' => 'required|max:255',
             'description' => 'required|max:255'
         ]);
-
         $why_choose_us = why_choose_us::find(1);
 
-        $why_choose_us['title'] = $data['title'];
-        $why_choose_us['description'] = $data['description'];
+        if (!empty($request->background_image)) {
+
+            //remove the old image if it exists.
+            if (file_exists(public_path('images/chooseus/') . $why_choose_us->bg_image_path)) {
+                unlink(public_path('images/chooseus/' . $why_choose_us->bg_image_path));
+            }
+
+            //save the NEW image
+            $image = $request->file('background_image');
+
+            $image_file_name = strtok($image->getClientOriginalName(), '.');
+            $choose_us_image = $image_file_name . '-' . time() . '.' . $image->extension();
+
+            $image->move(public_path('images/chooseus'), $choose_us_image);
+            $why_choose_us->bg_image_path = $choose_us_image;
+
+        }
+
+
+        $why_choose_us->title = $request->title;
+        $why_choose_us->description = $request->description;
         $why_choose_us->save();
 
         $send = ['status' => true, 'message' => 'Güncelleme işlemi başarıyla gerçekleşti.'];

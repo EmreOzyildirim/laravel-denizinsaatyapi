@@ -14,13 +14,13 @@ use App\Models\agents;
 use App\Models\types;
 use App\Models\districts;
 use App\Models\neighborhoods;
-use DB;
-use phpDocumentor\Reflection\Types\Context;
+use Illuminate\Support\Facades\DB;
 
 class PropertiesController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
@@ -30,6 +30,7 @@ class PropertiesController extends Controller
         $properties = DB::table('properties')
             ->join('agents', 'properties.agent_id', '=', 'agents.id')
             ->select('properties.*', 'agents.name_surname')
+            ->orderByDesc('id')
             ->get();
 
 
@@ -43,10 +44,9 @@ class PropertiesController extends Controller
         $categories = categories::all();
         $types = types::all();
         $statuses = statuses::all();
-
         $provinces = provinces::all();
 
-        return view('.admin.property_create', ['agents' => $agents, 'categories' => $categories, 'types' => $types, 'statuses' => $statuses]);
+        return view('.admin.property_create', ['agents' => $agents, 'categories' => $categories, 'types' => $types, 'statuses' => $statuses, 'provinces' => $provinces]);
     }
 
     public function search_districts(Request $request)
@@ -71,11 +71,6 @@ class PropertiesController extends Controller
     public function search_neighborhoods(Request $request)
     {
 
-        /*$data = $request->validate([
-            '_token' => ['required'],
-            'district_id' => ['required'],
-        ]);*/
-
         $neighborhoods = neighborhoods::where('mahalle_ilcekey', $request['district_id'])->get();
 
         $neighborhood = '';
@@ -92,6 +87,7 @@ class PropertiesController extends Controller
 
         //Featured Image and ALL IMAGES will be added after the image directory.
         $data = $request->validate([
+            'property_images' => ['required'],
             '_token' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
@@ -116,13 +112,38 @@ class PropertiesController extends Controller
         $property->province_id = $data['province_id'];
         $property->district_id = $data['district_id'];
         $property->neighborhood_id = $data['neighborhood_id'];
-        $property->image_path = 'image path to be added';
-        $property->image_alt_text = 'image alt text to be added';
+        $property->image_alt_text = $data['title'];
+        $property->image_path = 'image path to be added.';
         $property->price = $data['price'];
         $property->agent_id = $data['agent'];
         $property->status = $data['status'];
         $property->category_id = $data['category_id'];
         $property->save();
+
+
+        $get_first_image = json_decode(property_images::getFirstPropertyImage($property->id));
+        if ($request->file('property_images')) {
+            $images = $request->file('property_images');
+
+            //upload the property images.
+            foreach ($images as $image) {
+                $image_file_name = strtok($image->getClientOriginalName(), '.');
+                $propert_image = $image_file_name . '-' . time() . '.' . $image->extension();
+                $image->move(public_path('images/properties'), $propert_image);
+
+                $property_images = new property_images();
+                $property_images->property_id = $property->id;
+                $property_images->image_path = $propert_image;
+                $property_images->image_alt_text = $property->title;
+                $property_images->save();
+            }
+            $property_images = json_decode(property_images::getFirstPropertyImage($property->id), true);
+            $find = properties::find($property->id);
+            $find->image_path = $property_images->image_path;
+            $find->save();
+        }
+
+
 
         $property_details = new property_details();
         $property_details->description = $data['description'];
@@ -137,13 +158,6 @@ class PropertiesController extends Controller
         $property_details->garage = $data['garage'];
         $property_details->save();
 
-        $property_images = new property_images();
-        //TODO: image gallery will be updated after the image directory development|
-
-        $properties = DB::table('properties')
-            ->join('agents', 'properties.agent_id', '=', 'agents.id')
-            ->select('properties.*', 'agents.name_surname')
-            ->get();
 
         $send = ['status' => true, 'message' => 'İlan başarıyla oluşturuldu.'];
         return redirect('/admin/properties')->with($send);
@@ -156,18 +170,17 @@ class PropertiesController extends Controller
         if (!empty($id)) {
             $property = properties::find($id);
             $property_details = property_details::where('property_id', $id)->first();
-            $property_images = property_images::select('image_path', 'image_alt_text')->where('property_id', $id)->get();
-
             $agents = agents::all();
             $categories = categories::all();
             $types = types::all();
             $statuses = statuses::all();
+            $property_images = property_images::all();
 
             $provinces = provinces::all();
-            $districts = districts::where('ilce_sehirkey',$property['province_id'])->get();
-            $neighborhoods = neighborhoods::where('mahalle_ilcekey',$property['district_id'])->get();
+            $districts = districts::where('ilce_sehirkey', $property['province_id'])->get();
+            $neighborhoods = neighborhoods::where('mahalle_ilcekey', $property['district_id'])->get();
 
-            return view('/admin/property_update', ['property' => $property, 'details' => $property_details, 'agents' => $agents, 'types' => $types, 'categories' => $categories, 'statuses' => $statuses,'provinces'=>$provinces,'districts'=>$districts,'neighborhoods'=>$neighborhoods]);
+            return view('/admin/property_update', ['property' => $property, 'details' => $property_details, 'property_images' => $property_images, 'agents' => $agents, 'types' => $types, 'categories' => $categories, 'statuses' => $statuses, 'provinces' => $provinces, 'districts' => $districts, 'neighborhoods' => $neighborhoods]);
         }
         return view('/admin/property_update', ['status' => false, 'message' => 'İşlem başarısız']);
     }
@@ -176,8 +189,9 @@ class PropertiesController extends Controller
     public function update_post(Request $request)
     {
 
-        $data = $request->validate([
+        $request->validate([
             'id' => ['required'],
+            'property_images' => ['required'],
             '_token' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
@@ -197,38 +211,48 @@ class PropertiesController extends Controller
         ]);
 
 
-        $property = properties::find($data['id']);
-        $property->title = $data['title'];
-        $property->type = $data['type_id'];
-        $property->province_id = $data['province_id'];
-        $property->district_id = $data['district_id'];
-        $property->neighborhood_id = $data['neighborhood_id'];
-        $property->price = $data['price'];
-        $property->agent_id = $data['agent'];
-        $property->status = $data['status'];
-        $property->category_id = $data['category_id'];
+        $property = properties::find($request->id);
+        $property->title = $request->title;
+        $property->type = $request->type_id;
+        $property->province_id = $request->province_id;
+        $property->district_id = $request->district_id;
+        $property->neighborhood_id = $request->neighborhood_id;
+        $property->price = $request->price;
+        $property->agent_id = $request->agent;
+        $property->status = $request->status;
+        $property->category_id = $request->category_id;
         $property->save();
 
-        property_details::where('property_id', $data['id'])
+        property_details::where('property_id', $request->id)
             ->update([
-                'description' => $data['description'],
-                'type_id' => $data['type_id'],
-                'category_id' => $data['category_id'],
-                'year_built' => $data['year_built'],
-                'agent_id' => $data['agent'],
-                'home_area' => $data['home_area'],
-                'rooms' => $data['rooms'],
-                'bedrooms' => $data['bedrooms'],
-                'garage' => $data['garage']
+                'description' => $request->description,
+                'type_id' => $request->type_id,
+                'category_id' => $request->category_id,
+                'year_built' => $request->year_built,
+                'agent_id' => $request->agent,
+                'home_area' => $request->home_area,
+                'rooms' => $request->rooms,
+                'bedrooms' => $request->bedrooms,
+                'garage' => $request->garage
             ]);
 
-        $property_images = property_images::select('image_path', 'image_alt_text')->where('property_id', $data['id'])->get();
-        $property_details = property_details::where('property_id', $data['id'])->first();
+        if ($request->file('property_images')) {
+            $images = $request->file('property_images');
 
-        $agents = agents::all();
-        $categories = categories::all();
-        $types = types::all();
-        $statuses = statuses::all();
+            //upload the property images.
+            foreach ($images as $image) {
+
+                $image_file_name = strtok($image->getClientOriginalName(), '.');
+                $propert_image = $image_file_name . '-' . time() . '.' . $image->extension();
+                $image->move(public_path('images/properties'), $propert_image);
+
+                $property_images = new property_images();
+                $property_images->property_id = $property->id;
+                $property_images->image_path = $propert_image;
+                $property_images->image_alt_text = $property->title;
+                $property_images->save();
+            }
+        }
 
         $send = ['status' => true, 'message' => 'İlan başarıyla güncellendi.'];
         return redirect('/admin/properties')->with($send);
@@ -237,11 +261,13 @@ class PropertiesController extends Controller
     public function delete($id = null)
     {
 
-        if (!empty($id))
-            $property = properties::find($id);
-        $property->delete();
+        if (!empty($id)) {
+            DB::table('properties')->where('id', '=', $id)->delete();
+            DB::table('property_images')->where('property_id', '=', $id)->delete();
+            DB::table('property_details')->where('property_id', '=', $id)->delete();
+        }
 
-        return view('/admin/properties', ['properties' => properties::all()]);
+        return redirect('/admin/properties')->with(['status' => true, 'message' => 'İlan başarıyla silindi.']);
     }
 
     //property status 1 = yayinda,

@@ -90,21 +90,21 @@
             <div class="row">
                 <div class="col-lg-7">
                     <div class="section-title">
-                        <h4>Where would you rather live?</h4>
+                        <h4>Nerede yaşamayı tercih ederdiniz?</h4>
                     </div>
                 </div>
                 <div class="col-lg-5">
                     <div class="change-btn">
                         <div class="cb-item">
                             <label for="cb-rent" class="active">
-                                For Rent
-                                <input type="radio" id="cb-rent">
+                                Satılık
+                                <input type="radio" id="cb-sale">
                             </label>
                         </div>
                         <div class="cb-item">
                             <label for="cb-sale">
-                                For Sale
-                                <input type="radio" id="cb-sale">
+                                Kiralık
+                                <input type="radio" id="cb-rent">
                             </label>
                         </div>
                     </div>
@@ -113,13 +113,13 @@
             <div class="search-form-content">
                 <form action="#" class="filter-form">
                     <select class="sm-width">
-                        <option value="">Chose The City</option>
+                        <option value="">Şehir seçin</option>
                     </select>
                     <select class="sm-width">
-                        <option value="">Location</option>
+                        <option value="">İl seçin</option>
                     </select>
                     <select class="sm-width">
-                        <option value="">Property Status</option>
+                        <option value="">İlçe seçin</option>
                     </select>
                     <select class="sm-width">
                         <option value="">Property Type</option>
@@ -144,93 +144,8 @@
                         </div>
                         <div id="price-range" class="slider"></div>
                     </div>
-                    <button type="button" class="search-btn sm-width">Search</button>
+                    <button type="button" class="search-btn sm-width">Filtrele</button>
                 </form>
-            </div>
-            <div class="more-option">
-                <div class="accordion" id="accordionExample">
-                    <div class="card">
-                        <div class="card-heading active">
-                            <a data-toggle="collapse" data-target="#collapseOne">
-                                More Search Options
-                            </a>
-                        </div>
-                        <div id="collapseOne" class="collapse" data-parent="#accordionExample">
-                            <div class="card-body">
-                                <div class="mo-list">
-                                    <div class="ml-column">
-                                        <label for="air">Air conditioning
-                                            <input type="checkbox" id="air">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="lundry">Laundry
-                                            <input type="checkbox" id="lundry">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="refrigerator">Refrigerator
-                                            <input type="checkbox" id="refrigerator">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="washer">Washer
-                                            <input type="checkbox" id="washer">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                    <div class="ml-column">
-                                        <label for="barbeque">Barbeque
-                                            <input type="checkbox" id="barbeque">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="lawn">Lawn
-                                            <input type="checkbox" id="lawn">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="sauna">Sauna
-                                            <input type="checkbox" id="sauna">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="wifi">Wifi
-                                            <input type="checkbox" id="wifi">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                    <div class="ml-column">
-                                        <label for="dryer">Dryer
-                                            <input type="checkbox" id="dryer">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="microwave">Microwave
-                                            <input type="checkbox" id="microwave">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="pool">Swimming Pool
-                                            <input type="checkbox" id="pool">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="window">Window Coverings
-                                            <input type="checkbox" id="window">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                    <div class="ml-column last-column">
-                                        <label for="gym">Gym
-                                            <input type="checkbox" id="gym">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="shower">OutdoorShower
-                                            <input type="checkbox" id="shower">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                        <label for="tv">Tv Cable
-                                            <input type="checkbox" id="tv">
-                                            <span class="checkbox"></span>
-                                        </label>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
@@ -268,7 +183,8 @@
                             echo strtolower($class_name);
                         }?>">
                         <div class="property-item">
-                            <div class="pi-pic set-bg" data-setbg="{{$item['property']['image_path']}}">
+                            <div class="pi-pic set-bg"
+                                 data-setbg="{{'images/properties/'.$item['property']['image_path']}}">
                                 <div
                                     class="label {{$item['details']['property_type'] == 1 ? 'c-red' : ''}}">{{$item['details']['property_type'] == 1 ? 'Satılık' : ''}}{{$item['details']['property_type'] == 2 ? 'Kiralık':''}}</div>
                             </div>
@@ -288,8 +204,8 @@
                                 <div class="pi-agent">
                                     <div class="pa-item">
                                         <div class="pa-info">
-                                            <img src="{{$item['property']['image_path']}}"
-                                                 alt="{{$item['property']['image_alt_text']}}" width="100%">
+                                            <img src="{{'images/agents/'.$item['agent']['profile_image']}}"
+                                                 alt="{{$item['agent']['name_surname']}}" width="100%">
                                             <h6>{{$item['agent']['name_surname']}}</h6>
                                         </div>
                                         <div class="pa-text">
@@ -309,7 +225,8 @@
 
     <!-- Chooseus Section Begin -->
 
-    <section class="chooseus-section spad set-bg" data-setbg="{{$why_choose_us['why_choose_us']['bg_image_path']}}">
+    <section class="chooseus-section spad set-bg"
+             data-setbg="{{'images/chooseus/'.$why_choose_us['why_choose_us']['bg_image_path']}}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
@@ -350,17 +267,17 @@
                 <div class="col-lg-4 p-0">
                     <div class="feature-property-left">
                         <div class="section-title">
-                            <h4>Feature PROPERTY</h4>
+                            <h4>Fırsat İlanlar</h4>
                         </div>
                         <ul>
-                            <li>Apartment</li>
-                            <li>House</li>
-                            <li>Office</li>
-                            <li>Hotel</li>
+                            <li>Daire</li>
+                            <li>Ofis</li>
+                            <li>Restoran</li>
+                            <li>Otel</li>
                             <li>Villa</li>
-                            <li>Restaurent</li>
+                            <li>İşyeri</li>
                         </ul>
-                        <a href="#">View all property</a>
+                        <a href="/ilanlar">Tüm ilanları göster</a>
                     </div>
                 </div>
                 <div class="col-lg-8 p-0">
@@ -418,7 +335,8 @@
                     <div class="col-md-4">
                         <div class="ts-item">
                             <div class="ts-text">
-                                <img src="/frontend/img/team/team-1.jpg" alt="">
+                                <img src="{{'images/agents/'.$agent['profile_image']}}"
+                                     alt="{{$agent['name_surname']}}">
                                 <h5>{{$agent['name_surname']}}</h5>
                                 <span>{{$agent['phone_number']}}</span>
                                 <p>{{$agent['description']}}</p>
@@ -439,7 +357,8 @@
     <section class="categories-section">
         <div class="cs-item-list">
             @foreach($categories as $category)
-                <div class="cs-item set-bg" data-setbg="{{$category['image_path']}}">
+                <div class="cs-item set-bg"
+                     data-setbg="{{ empty($category['image_path']) ?: '/images/categories/'.$category['image_path'] }}">
                     <div class="cs-text">
                         <h5>{{$category['name']}}</h5>
                         <span>{{ $category['category_property_count'] }} ilan</span>
@@ -456,126 +375,40 @@
             <div class="row">
                 <div class="col-lg-12">
                     <div class="section-title">
-                        <h4>What our client says?</h4>
+                        <h4>Müşterilerimiz ne diyor?</h4>
                     </div>
                 </div>
             </div>
             <div class="row testimonial-slider owl-carousel">
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <p>Lorem ipsum dolor amet, consectetur adipiscing elit, seiusmod tempor incididunt ut labore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida accumsan lacus vel facilisis.</p>
-                        </div>
-                        <div class="ti-author">
-                            <div class="ta-pic">
-                                <img src="/frontend/img/testimonial-author/ta-1.jpg" alt="">
+                @foreach($customer_feedbacks as $feedback)
+                    <div class="col-lg-6">
+                        <div class="testimonial-item">
+                            <div class="ti-text">
+                                <p>{{$feedback['description']}}</p>
                             </div>
-                            <div class="ta-text">
-                                <h5>Arise Naieh</h5>
-                                <span>Designer</span>
-                                <div class="ta-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
+                            <div class="ti-author">
+                                <div class="ta-pic">
+                                    <img src="{{'images/musteri-yorumlari/'.$feedback['image']}}"
+                                         alt="{{$feedback['name_surname']}}">
+                                </div>
+                                <div class="ta-text">
+                                    <h5>{{$feedback['name_surname']}}</h5>
+                                    <span>{{$feedback['job']}}</span>
+                                    <div class="ta-rating">
+                                        @for($i=0;$i<$feedback['star'];$i++)
+                                            <i class="fa fa-star"></i>
+                                        @endfor
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <p>Lorem ipsum dolor amet, consectetur adipiscing elit, seiusmod tempor incididunt ut labore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida accumsan lacus vel facilisis.</p>
-                        </div>
-                        <div class="ti-author">
-                            <div class="ta-pic">
-                                <img src="/frontend/img/testimonial-author/ta-2.jpg" alt="">
-                            </div>
-                            <div class="ta-text">
-                                <h5>Arise Naieh</h5>
-                                <span>Designer</span>
-                                <div class="ta-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-lg-6">
-                    <div class="testimonial-item">
-                        <div class="ti-text">
-                            <p>Lorem ipsum dolor amet, consectetur adipiscing elit, seiusmod tempor incididunt ut labore
-                                magna aliqua. Quis ipsum suspendisse ultrices gravida accumsan lacus vel facilisis.</p>
-                        </div>
-                        <div class="ti-author">
-                            <div class="ta-pic">
-                                <img src="/frontend/img/testimonial-author/ta-1.jpg" alt="">
-                            </div>
-                            <div class="ta-text">
-                                <h5>Arise Naieh</h5>
-                                <span>Designer</span>
-                                <div class="ta-rating">
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                    <i class="fa fa-star"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!-- Testimonial Section End -->
 
-    <!-- Logo Carousel Begin -->
-    <div class="logo-carousel">
-        <div class="container">
-            <div class="lc-slider owl-carousel">
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="/frontend/img/logo-carousel/lc-1.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="/frontend/img/logo-carousel/lc-2.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="/frontend/img/logo-carousel/lc-3.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="/frontend/img/logo-carousel/lc-4.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="/frontend/img/logo-carousel/lc-5.png" alt="">
-                    </div>
-                </a>
-                <a href="#" class="lc-item">
-                    <div class="lc-item-inner">
-                        <img src="/frontend/img/logo-carousel/lc-6.png" alt="">
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    <!-- Logo Carousel End -->
 
     <!-- Contact Section Begin -->
     <section class="contact-section">
@@ -588,8 +421,8 @@
                                 <i class="fa fa-map-marker"></i>
                             </div>
                             <div class="ci-text">
-                                <h5>Address</h5>
-                                <p>160 Pennsylvania Ave NW, Washington, Castle, PA 16101-5161</p>
+                                <h5>Adresimiz</h5>
+                                <p>{{$contact_and_map['address']}}</p>
                             </div>
                         </div>
                         <div class="ci-item">
@@ -597,10 +430,9 @@
                                 <i class="fa fa-mobile"></i>
                             </div>
                             <div class="ci-text">
-                                <h5>Phone</h5>
+                                <h5>Telefon Numaralarımız</h5>
                                 <ul>
-                                    <li>125-711-811</li>
-                                    <li>125-668-886</li>
+                                    <li>{{$contact_and_map['phone']}}</li>
                                 </ul>
                             </div>
                         </div>
@@ -609,8 +441,8 @@
                                 <i class="fa fa-headphones"></i>
                             </div>
                             <div class="ci-text">
-                                <h5>Support</h5>
-                                <p>Support.aler@gmail.com</p>
+                                <h5>Bilgi</h5>
+                                <p>{{$contact_and_map['mail_address']}}</p>
                             </div>
                         </div>
                     </div>
@@ -618,9 +450,8 @@
             </div>
         </div>
         <div class="cs-map">
-            <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d735515.5813275519!2d-80.41163541934742!3d43.93644386501528!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x882a55bbf3de23d7%3A0x3ada5af229b47375!2sMono%2C%20ON%2C%20Canada!5e0!3m2!1sen!2sbd!4v1583262687289!5m2!1sen!2sbd"
-                height="450" style="border:0;" allowfullscreen=""></iframe>
+            <iframe src="{{$contact_and_map['map_embed']}}" width="600" height="450" style="border:0;"
+                    allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
     <!-- Contact Section End -->

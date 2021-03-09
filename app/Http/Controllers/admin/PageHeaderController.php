@@ -13,17 +13,14 @@ use Illuminate\Database\Eloquent\Model;
 class PageHeaderController extends Controller
 {
 
-    public function __construct(){
+    public function __construct()
+    {
         $this->middleware('auth');
     }
 
     public function index()
     {
-        //standart veri çekme yöntemi.
-        //DB::table('page_header')->get();
-
-        //modelli veri çekme yöntemi.
-        $page_header = page_header::find(1);
+        $page_header = json_decode(page_header::getPageHeader(), true);
         return view('/admin/page_header', $page_header);
     }
 

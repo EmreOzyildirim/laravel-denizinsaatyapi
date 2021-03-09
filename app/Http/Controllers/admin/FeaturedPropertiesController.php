@@ -3,6 +3,11 @@
 namespace App\Http\Controllers\admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\agents;
+use App\Models\categories;
+use App\Models\provinces;
+use App\Models\statuses;
+use App\Models\types;
 use Illuminate\Http\Request;
 
 class FeaturedPropertiesController extends Controller
@@ -13,7 +18,16 @@ class FeaturedPropertiesController extends Controller
 
     public function index()
     {
-        return "FeaturedPropertiesController";
+
+
+        $agents = agents::all();
+        $categories = categories::all();
+        $types = types::all();
+        $statuses = statuses::all();
+
+        $provinces = provinces::all();
+
+        return view('.admin.create_featured_property',['agents' => $agents, 'categories' => $categories, 'types' => $types, 'statuses' => $statuses, 'provinces' => $provinces]);
     }
 
     //property status 1 = yayinda,
