@@ -163,6 +163,9 @@ Route::group(['namespace' => 'frontend'], function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/anasayfa', [HomeController::class, 'index']);
+    Route::get('/home', [HomeController::class, 'index']);
+    Route::get('/ilan-detay/{id}',[HomeController::class, 'property_details']);
+    Route::get('/danisman-ilanlari/{id}',[HomeController::class, 'agents_properties']);
     Route::get('/danismanlarimiz',[HomeController::class, 'agents']);
     Route::get('/iletisim',[HomeController::class, 'contact']);
 

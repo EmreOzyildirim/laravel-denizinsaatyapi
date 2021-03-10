@@ -139,10 +139,9 @@ class PropertiesController extends Controller
             }
             $property_images = json_decode(property_images::getFirstPropertyImage($property->id), true);
             $find = properties::find($property->id);
-            $find->image_path = $property_images->image_path;
+            $find->image_path = $property_images['image_path'];
             $find->save();
         }
-
 
 
         $property_details = new property_details();
@@ -174,7 +173,7 @@ class PropertiesController extends Controller
             $categories = categories::all();
             $types = types::all();
             $statuses = statuses::all();
-            $property_images = property_images::all();
+            $property_images = json_decode(properties::getPropertyImages($id), true);
 
             $provinces = provinces::all();
             $districts = districts::where('ilce_sehirkey', $property['province_id'])->get();
@@ -191,7 +190,6 @@ class PropertiesController extends Controller
 
         $request->validate([
             'id' => ['required'],
-            'property_images' => ['required'],
             '_token' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
@@ -236,23 +234,26 @@ class PropertiesController extends Controller
                 'garage' => $request->garage
             ]);
 
-        if ($request->file('property_images')) {
-            $images = $request->file('property_images');
+        if (!empty($request->property_images)){
+            if ($request->file('property_images')) {
+                $images = $request->file('property_images');
 
-            //upload the property images.
-            foreach ($images as $image) {
+                //upload the property images.
+                foreach ($images as $image) {
 
-                $image_file_name = strtok($image->getClientOriginalName(), '.');
-                $propert_image = $image_file_name . '-' . time() . '.' . $image->extension();
-                $image->move(public_path('images/properties'), $propert_image);
+                    $image_file_name = strtok($image->getClientOriginalName(), '.');
+                    $propert_image = $image_file_name . '-' . time() . '.' . $image->extension();
+                    $image->move(public_path('images/properties'), $propert_image);
 
-                $property_images = new property_images();
-                $property_images->property_id = $property->id;
-                $property_images->image_path = $propert_image;
-                $property_images->image_alt_text = $property->title;
-                $property_images->save();
+                    $property_images = new property_images();
+                    $property_images->property_id = $property->id;
+                    $property_images->image_path = $propert_image;
+                    $property_images->image_alt_text = $property->title;
+                    $property_images->save();
+                }
             }
         }
+
 
         $send = ['status' => true, 'message' => 'İlan başarıyla güncellendi.'];
         return redirect('/admin/properties')->with($send);
@@ -265,6 +266,13 @@ class PropertiesController extends Controller
             DB::table('properties')->where('id', '=', $id)->delete();
             DB::table('property_images')->where('property_id', '=', $id)->delete();
             DB::table('property_details')->where('property_id', '=', $id)->delete();
+
+            $to_be_removed_images = json_decode(property_images::getPropertyImages($id), true);
+            foreach($to_be_removed_images as $image){
+                unlink(public_path('images/properties/'.$image->image_path));
+            }
+
+
         }
 
         return redirect('/admin/properties')->with(['status' => true, 'message' => 'İlan başarıyla silindi.']);

@@ -31,8 +31,8 @@
                                 <div class="row" style="margin: 20px 0px;">
                                     @foreach($property_images as $image)
                                         <div class="col-md-4">
-                                            <img src="{{ '/images/properties/'.$image->image_path }}" width="180px" alt="{{$property->title}}">
-                                            <a href="/admin/update-property/{{$property->id}}/remove_image/{{$image->id}}" class="text-danger text-sm-center">Kaldır</a>
+                                            <img src="{{ '/images/properties/'.$image['image_path'] }}" width="180px" alt="{{$property->title}}">
+                                            <a href="/admin/update-property/{{$property['id']}}/remove_image/{{$image['id']}}" class="text-danger text-sm-center">Kaldır</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -51,7 +51,7 @@
                             <label for="description" class="col-sm-2 control-label">Açıklama</label>
                             <div class="col-md-10">
                             <textarea class="form-control" name="description" rows="10" cols="80"
-                                      id="description">{{$details->description}}</textarea>
+                                      id="description">{{$details['description']}}</textarea>
                                 @error('description')
                                 <span class="text-danger">{{$message}}</span>
                                 @enderror

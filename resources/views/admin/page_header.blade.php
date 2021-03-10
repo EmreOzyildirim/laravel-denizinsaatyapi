@@ -1,7 +1,7 @@
 @extends('admin.layouts.layout')
 
 @section('head')
-    @csrf
+
 @endsection
 @section('content')
     <div class="col-md-12">
@@ -42,13 +42,14 @@
             </div>
             <!-- /.box-header -->
             <!-- form start -->
-            <form id="ajaxform" class="form-horizontal" method="post" enctype="multipart/form-data">
+            <form class="form-horizontal" method="POST" enctype="multipart/form-data">
+                @csrf
                 <div class="box-body">
                     <div class="form-group">
                         <label for="logo" class="col-sm-2 control-label">Logo</label>
                         <div class="col-sm-10">
-                            <img src="" width="180px">
-                            <input type="file" class="form-control" id="logo" placeholder="Logo">
+                            <img src="{{'/images/page_header/'.$logo_path}}" width="180px" style="margin: 20px;">
+                            <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
                         </div>
                     </div>
                     <div class="form-group">
@@ -81,7 +82,7 @@
                 </div>
                 <!-- /.box-body -->
                 <div class="box-footer">
-                    <button class="btn btn-default save-data">Kaydet</button>
+                    <button class="btn btn-default">Kaydet</button>
                 </div>
                 <!-- /.box-footer -->
             </form>
@@ -95,33 +96,5 @@
 
 @endsection
 @section('js')
-    <script>
-        $(".save-data").click(function (event) {
-            event.preventDefault();
 
-            let mail_address = $("input[name=mail_address]").val();
-            let phone_number = $("input[name=phone_number]").val();
-            let call_us_button = $("input[name=call_us_button]").val();
-            let _token = $("input[name=_token]").attr('value');
-
-            $.ajax({
-                url: "/admin/page-header",
-                type: "POST",
-                data: {
-                    mail_address: mail_address,
-                    phone_number: phone_number,
-                    call_us_button: call_us_button,
-                    _token: _token
-                },
-                success: function (response) {
-                    console.log(response);
-                    if (response) {
-                        $('.modal-success').removeClass('hidden').fadeIn();
-                        $('.modal-success').delay(2000).fadeOut();
-                        $('.callout-success').text(response.message);
-                    }
-                },
-            });
-        });
-    </script>
 @endsection

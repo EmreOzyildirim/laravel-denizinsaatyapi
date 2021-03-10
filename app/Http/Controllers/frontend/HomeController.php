@@ -31,7 +31,7 @@ class HomeController extends Controller
 
 
         //get the properties
-        $properties = properties::getProperties();
+        $properties = json_decode(properties::getPropertiesOrderByDesc(), true);
 
         $new_properties = array('properties' => array());
 
@@ -48,7 +48,7 @@ class HomeController extends Controller
                     'bedrooms' => '',
                     'garage' => '',
                     'category_id' => '',
-                    'property_type' => ''
+                    'type_id' => ''
                 ),
                 'agent' => array(
                     'name_surname' => '',
@@ -67,7 +67,7 @@ class HomeController extends Controller
             $item['details']['bedrooms'] = $detail['bedrooms'];
             $item['details']['garage'] = $detail['garage'];
             $item['details']['description'] = $detail['year_built'];
-            $item['details']['property_type'] = $detail['type_id'];
+            $item['details']['type_id'] = $detail['type_id'];
             $item['details']['category_id'] = $detail['category_id'];
 
             //add the agent infos.
@@ -81,8 +81,6 @@ class HomeController extends Controller
             //property item pushes in the properties array.
             array_push($new_properties['properties'], $item);
         }
-
-
 
 
         //why choose us module
@@ -171,6 +169,7 @@ class HomeController extends Controller
             'agents' => agents::all()->take(3),
             'categories' => categories::all()->take(5),
             'why_choose_us' => $why_choose_us,
+            'property_listing' => $new_properties,
             'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
             'customer_feedbacks' => $customer_feedbacks,
             'footer' => $footer
@@ -259,6 +258,88 @@ class HomeController extends Controller
             'footer' => $footer
         ];
         return view('.frontend.agents', $send);
+    }
+
+    public function property_details($id)
+    {
+
+        $property_item = json_decode(properties::getPropertyById($id), true);
+
+        $property = array(
+            'property' => $property_item,
+            'property_details' => json_decode(properties::getPropertyDetails($id), true),
+            'property_images' => json_decode(properties::getPropertyImages($id), true),
+            'property_agent' => json_decode(properties::getPropertyAgent($property_item['agent_id']), true),
+            'office' => json_decode(contact_and_map::getMapEmbed(), true)
+        );
+
+        //send footer
+        $footer = [
+            'footer' => array(
+                'copy_text' => '',
+                'short_description' => '',
+                'social_media_icons' => ''
+            ),
+            'footer_links' => array()
+        ];
+
+        $get_footer = json_decode(footer::getFooter(), true);
+        $footer['footer']['copy_text'] = $get_footer['copy_text'];
+        $footer['footer']['short_description'] = $get_footer['short_description'];
+        $footer['footer']['social_media_icons'] = $get_footer['social_media_icons'];
+
+        $get_footer_links = json_decode(footer_links::getFooterLinks(), true);
+
+        foreach ($get_footer_links as $item) {
+            $link_item = array(
+                'name' => '',
+                'url' => ''
+            );
+            $link_item['name'] = $item['name'];
+            $link_item['url'] = $item['url'];
+
+            array_push($footer['footer_links'], $link_item);
+        }
+
+        //customer feedbacks
+        $customer_feedbacks = array();
+        $get_customer_feedbacks = json_decode(customer_feedbacks::getCustomerFeedbacks(), true);
+        foreach ($get_customer_feedbacks as $item) {
+            $feedback = array(
+                'image' => '',
+                'description' => '',
+                'name_surname' => '',
+                'job' => '',
+                'star' => ''
+            );
+
+            $feedback['image'] = $item['image'];
+            $feedback['description'] = $item['description'];
+            $feedback['name_surname'] = $item['name_surname'];
+            $feedback['job'] = $item['job'];
+            $feedback['star'] = $item['star'];
+
+            array_push($customer_feedbacks, $feedback);
+        }
+
+
+        $send = [
+            //properties added in bottom array_push function
+            'page_header' => json_decode(page_header::getPageHeader(), true),
+            'property' => $property,
+            'social_media_icons' => social_media::find(1),
+            'agents' => agents::all()->take(3),
+            'categories' => categories::all()->take(5),
+            'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
+            'footer' => $footer
+        ];
+        return view('.frontend.property_details', $send);
+    }
+
+    public function agents_properties($agent_id){
+
+        return view('.frontend.agents_properties',[properties::agent]);
+
     }
 
 

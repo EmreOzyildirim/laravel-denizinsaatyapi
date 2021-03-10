@@ -33,15 +33,35 @@ class PageHeaderController extends Controller
             'call_us_button' => 'required'
         ]);
 
+
         //upload the files
         $page_header = page_header::find(1);
 
         $page_header->mail_address = $data['mail_address'];
         $page_header->phone_number = $data['phone_number'];
         $page_header->call_us_button = $data['call_us_button'];
+
+        //save the NEW logo
+        if (!empty($request->logo)) {
+
+            $image = $request->file('logo');
+
+            $image_file_name = strtok($image->getClientOriginalName(), '.');
+            $logo_image = $image_file_name . '-' . time() . '.' . $image->extension();
+
+            $image->move(public_path('images/page_header'), $logo_image);
+
+            //save the new path.
+            $page_header->logo_path = $logo_image;
+
+            //remove the old image
+            $old_image = json_decode(page_header::getPageHeader(), true);
+            unlink(public_path('images/page_header/' . $old_image['logo_path']));
+        }
+
         $page_header->save();
 
-        return view('/admin/page_header', $data);
 
+        return redirect('/admin/page-header')->with(['status'=>true,'message'=>'Sayfa başlığı başarıyla güncellendi.']);
     }
 }

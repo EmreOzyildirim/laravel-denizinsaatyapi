@@ -1,9 +1,8 @@
 @extends('frontend.layout.app')
 
-
 @section('page_title','Deniz Gayrimenkul')
-@section('og_tags')
-
+@section('head_js')
+    <script src="elfsight.js" defer></script>
 @endsection
 
 
@@ -186,13 +185,12 @@
                             <div class="pi-pic set-bg"
                                  data-setbg="{{'images/properties/'.$item['property']['image_path']}}">
                                 <div
-                                    class="label {{$item['details']['property_type'] == 1 ? 'c-red' : ''}}">{{$item['details']['property_type'] == 1 ? 'Satılık' : ''}}{{$item['details']['property_type'] == 2 ? 'Kiralık':''}}</div>
+                                    class="label {{$item['details']['type_id'] == 1 ? 'c-red' : ''}}">{{$item['details']['type_id'] == 1 ? 'Satılık' : ''}}{{$item['details']['type_id'] == 2 ? 'Kiralık':''}}</div>
                             </div>
                             <div class="pi-text">
-                                <a href="#" class="heart-icon"><span class="icon_heart_alt"></span></a>
                                 <div class="pt-price">{{$item['property']['price']}} ₺</div>
                                 <h5>
-                                    <a href="#">{{strlen($item['property']['title'])>33 ? substr($item['property']['title'],0,33).'..' : $item['property']['title']}}</a>
+                                    <a href="/ilan-detay/{{$item['property']['id']}}">{{strlen($item['property']['title'])>33 ? substr($item['property']['title'],0,33).'..' : $item['property']['title']}}</a>
                                 </h5>
                                 <p><span class="icon_pin_alt"></span> testomesto sk.</p>
                                 <ul>
@@ -372,39 +370,7 @@
     <!-- Testimonial Section Begin -->
     <section class="testimonial-section spad">
         <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="section-title">
-                        <h4>Müşterilerimiz ne diyor?</h4>
-                    </div>
-                </div>
-            </div>
-            <div class="row testimonial-slider owl-carousel">
-                @foreach($customer_feedbacks as $feedback)
-                    <div class="col-lg-6">
-                        <div class="testimonial-item">
-                            <div class="ti-text">
-                                <p>{{$feedback['description']}}</p>
-                            </div>
-                            <div class="ti-author">
-                                <div class="ta-pic">
-                                    <img src="{{'images/musteri-yorumlari/'.$feedback['image']}}"
-                                         alt="{{$feedback['name_surname']}}">
-                                </div>
-                                <div class="ta-text">
-                                    <h5>{{$feedback['name_surname']}}</h5>
-                                    <span>{{$feedback['job']}}</span>
-                                    <div class="ta-rating">
-                                        @for($i=0;$i<$feedback['star'];$i++)
-                                            <i class="fa fa-star"></i>
-                                        @endfor
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-            </div>
+
         </div>
     </section>
     <!-- Testimonial Section End -->
@@ -454,8 +420,23 @@
                     allowfullscreen="" loading="lazy"></iframe>
         </div>
     </section>
-    <!-- Contact Section End -->
-
 @endsection
 @section('js')
+    <div id="google-reviews"></div>
+
+    <link rel="stylesheet" href="https://cdn.rawgit.com/stevenmonson/googleReviews/master/google-places.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/stevenmonson/googleReviews@6e8f0d794393ec657dab69eb1421f3a60add23ef/google-places.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDeivU57j-macv2fXXgbhKGM6cqMLmnAFI&signed_in=true&libraries=places"></script>
+
+    <script>
+        jQuery(document).ready(function( $ ) {
+            $("#google-reviews").googlePlaces({
+                placeId: 'ChIJycgaPNTPyhQRVFjIP1iWd0A' //Find placeID @: https://developers.google.com/places/place-id
+                , render: ['reviews']
+                , min_rating: 4
+                , max_rows:4
+            });
+        });
+    </script>
 @endsection

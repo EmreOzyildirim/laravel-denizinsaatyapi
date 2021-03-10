@@ -13,7 +13,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
         <title>@yield('page_title')</title>
-
+        @yield('head_js')
         <!-- Google Font -->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700,800,900&display=swap"
               rel="stylesheet"/>
@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo">
-                        <a href="/"><img src="{{$page_header['logo_path']}}" alt="Deniz Gayrimenkul logo"></a>
+                        <a href="/"><img src="{{'/images/page_header/'.$page_header['logo_path']}}" alt="Deniz Gayrimenkul logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -108,7 +108,7 @@
                 <div class="col-lg-9">
                     <nav class="nav-menu">
                         <ul>
-                            <li class="active"><a href="/">Anasayfa</a></li>
+                            <li {{ Request::path()=='/' ? ' class="active"':'' }}><a href="/">Anasayfa</a></li>
                             <li><a href="/ilanlar">İlanlar</a>
                                 <!---- <ul class="dropdown">
                                      <li><a href="./property.html">Property Grid</a></li>
@@ -118,10 +118,10 @@
                                      <li><a href="./property-submit.html">Property Submit</a></li>
                                  </ul>---->
                             </li>
-                            <li><a href="/danismanlarimiz">Danışmanlarımız</a></li>
-                            <li><a href="/hakkimizda">Kimiz Biz?</a></li>
-                            <li><a href="/referanslar">Referanslar</a></li>
-                            <li><a href="/iletisim">İletişim</a></li>
+                            <li {{ Request::path()=='/danismanlarimiz' ? ' class="active"':'' }}><a href="/danismanlarimiz">Danışmanlarımız</a></li>
+                            <li {{ Request::path()=='/hakkimizda' ? ' class="active"':'' }}><a href="/hakkimizda">Kimiz Biz?</a></li>
+                            <li {{ Request::path()=='/referanslar' ? ' class="active"':'' }}><a href="/referanslar">Referanslar</a></li>
+                            <li {{ Request::path()=='/İletişim' ? ' class="active"':'' }}><a href="/iletisim">İletişim</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -160,7 +160,7 @@
                 <div class="fs-about">
                     <div class="fs-logo">
                         <a href="https://denizinsaatyapi.com/">
-                            <img src="{{$page_header['logo_path']}}" alt="Deniz Gayrimenkul logosu">
+                            <img src="{{'/images/page_header/'.$page_header['logo_path']}}" alt="Deniz Gayrimenkul logosu">
                         </a>
                     </div>
                     <p>{{$footer['footer']["short_description"]}}</p>
