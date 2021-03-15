@@ -138,6 +138,22 @@ desired effect
                             class="fa fa-link"></i> <span>Menü</span></a></li>
                 <li class="{{ Request::path()=='admin/featured-properties' ? 'active' : '' }}"><a
                         href="/admin/featured-properties"><i class="fa fa-link"></i> <span>Gözde İlanlar</span></a></li>
+
+
+                <li class="treeview{{ Request::path()=='admin/about-us' ? ' menu-open' : '' }}{{ Request::path()=='admin/contact' ? ' menu-open' : '' }}">
+                    <a href="#"><i class="fa fa-link"></i> <span>Sayfalar</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu"{{Request::path()=='admin/about-us' ? ' style=display:block':''}}{{Request::path()=='admin/contact' ? ' style=display:block':''}}>
+                        <li class="{{ Request::path()=='admin/about-us' ? 'active' : '' }}"><a
+                                href="/admin/about-us"><i class="fa fa-link"></i> <span>Hakkımızda Sayfası</span></a>
+                        </li>
+                    </ul>
+                </li>
+
+
                 <li class="treeview{{ Request::path()=='admin/categories' ? ' menu-open' : '' }}">
                     <a href="#"><i class="fa fa-link"></i> <span>Kategoriler</span>
                         <span class="pull-right-container">
@@ -195,7 +211,8 @@ desired effect
             </span>
                     </a>
                     <ul class="treeview-menu" {{ Request::path()=='admin/customer-feedbacks' ? ' style=display:block;':'' }}{{ Request::path()=='admin/create-customer-feedback' ? ' style=display:block;':'' }}>
-                        <li class="{{ Request::path()=='admin/customer-feedbacks' ? ' active' : '' }} "><a href="/admin/customer-feedbacks">
+                        <li class="{{ Request::path()=='admin/customer-feedbacks' ? ' active' : '' }} "><a
+                                href="/admin/customer-feedbacks">
                                 Müşteri Görüşleri</a></li>
                         <li class="{{ Request::path()=='admin/create-customer-feedback' ? ' active' : '' }}"><a
                                 href="/admin/create-customer-feedback"> Müşteri Görüşü Ekle</a></li>
@@ -204,7 +221,8 @@ desired effect
                 <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
                 <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
                 <li><a href="/admin/contact-and-map"><i class="fa fa-link"></i> <span>İletişim ve Harita</span></a></li>
-                <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a></li>
+                <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a>
+                </li>
                 <li class="treeview{{ Request::path()=='admin/footer' ? ' menu-open':'' }}{{ Request::path()=='admin/insert-useful-links' ? ' menu-open':'' }}">
                     <a href="#">
                         <i class="fa fa-link"></i> <span>Footer</span>
@@ -246,7 +264,7 @@ desired effect
                     <!-- small box -->
                     <div class="small-box bg-green">
                         <div class="inner">
-                            <h3>13</h3>
+                            <h3>{{$property_count}}</h3>
 
                             <p>Mevcut İlan</p>
                         </div>
@@ -261,7 +279,7 @@ desired effect
                     <!-- small box -->
                     <div class="small-box bg-yellow">
                         <div class="inner">
-                            <h3>4</h3>
+                            <h3>{{$agent_count}}</h3>
                             <p>Danışman</p>
                         </div>
                         <div class="icon">
@@ -276,7 +294,7 @@ desired effect
                     <!-- small box -->
                     <div class="small-box bg-red">
                         <div class="inner">
-                            <h3>7</h3>
+                            <h3>{{$category_count}}</h3>
                             <p>İlan Kategorisi</p>
                         </div>
                         <div class="icon">

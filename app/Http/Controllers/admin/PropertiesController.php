@@ -14,6 +14,7 @@ use App\Models\agents;
 use App\Models\types;
 use App\Models\districts;
 use App\Models\neighborhoods;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PropertiesController extends Controller
@@ -22,6 +23,11 @@ class PropertiesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
     }
 
     public function index()

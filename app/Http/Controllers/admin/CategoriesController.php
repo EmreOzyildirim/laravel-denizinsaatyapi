@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Models\categories;
 use http\Client\Response;
 use Illuminate\Database\QueryException;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class CategoriesController extends Controller
@@ -15,6 +16,11 @@ class CategoriesController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
     }
 
     public function index()

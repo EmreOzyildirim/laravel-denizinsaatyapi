@@ -7,82 +7,37 @@
 
 
 @section('content')
-
     <!-- Hero Section Begin -->
     <section class="hero-section">
         <div class="container">
             <div class="hs-slider owl-carousel">
-                <div class="hs-item set-bg" data-setbg="/frontend/img/hero/hero-1.jpg">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="hc-inner-text">
-                                <div class="hc-text">
-                                    <h4>Balaji Symphony</h4>
-                                    <p><span class="icon_pin_alt"></span> Panvel, Navi Mumbai</p>
-                                    <div class="label">For Rent</div>
-                                    <h5>$ 65.0<span>/month</span></h5>
-                                </div>
-                                <div class="hc-widget">
-                                    <ul>
-                                        <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                        <li><i class="fa fa-bathtub"></i> 03</li>
-                                        <li><i class="fa fa-bed"></i> 05</li>
-                                        <li><i class="fa fa-automobile"></i> 01</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="hs-item set-bg" data-setbg="/frontend/img/hero/hero-2.jpg">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="hc-inner-text">
-                                <div class="hc-text">
-                                    <h4>Balaji Symphony</h4>
-                                    <p><span class="icon_pin_alt"></span> Panvel, Navi Mumbai</p>
-                                    <div class="label">For Rent</div>
-                                    <h5>$ 65.0<span>/month</span></h5>
-                                </div>
-                                <div class="hc-widget">
-                                    <ul>
-                                        <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                        <li><i class="fa fa-bathtub"></i> 03</li>
-                                        <li><i class="fa fa-bed"></i> 05</li>
-                                        <li><i class="fa fa-automobile"></i> 01</li>
-                                    </ul>
+                @foreach($slider_properties as $slider)
+                    <div class="hs-item set-bg" data-setbg="{{asset('images/properties/'.$slider['property']['image_path'])}}">
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="hc-inner-text">
+                                    <div class="hc-text">
+                                        <h4>{{$slider['property']['title']}}</h4>
+                                        <p><span class="icon_pin_alt"></span> {{$slider['property_address']['province']}}/{{$slider['property_address']['district']}}, {{$slider['property_address']['neighborhood']}}</p>
+                                        <div class="label">{{$slider['details']['type']}}</div>
+                                        <h5>{{$slider['property']['price']}} ₺</h5>
+                                    </div>
+                                    <div class="hc-widget">
+                                        <ul>
+                                            <li><i class="fa fa-object-group"></i> {{$slider['details']['home_area']}}</li>
+                                            <li><i class="fa fa-bed"></i> {{$slider['details']['rooms']}}+{{$slider['details']['bedrooms']}}</li>
+                                            <li><i class="fa fa-automobile"></i> {{$slider['details']['garage'] == 1 ? '✓':'×'}}</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="hs-item set-bg" data-setbg="/frontend/img/hero/hero-3.jpg">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="hc-inner-text">
-                                <div class="hc-text">
-                                    <h4>Balaji Symphony</h4>
-                                    <p><span class="icon_pin_alt"></span> Panvel, Navi Mumbai</p>
-                                    <div class="label">For Rent</div>
-                                    <h5>$ 65.0<span>/month</span></h5>
-                                </div>
-                                <div class="hc-widget">
-                                    <ul>
-                                        <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                        <li><i class="fa fa-bathtub"></i> 03</li>
-                                        <li><i class="fa fa-bed"></i> 05</li>
-                                        <li><i class="fa fa-automobile"></i> 01</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>
     <!-- Hero Section End -->
-
     <!-- Search Section Begin -->
     <section class="search-section spad">
         <div class="container">
@@ -120,25 +75,16 @@
                     <select class="sm-width">
                         <option value="">İlçe seçin</option>
                     </select>
-                    <select class="sm-width">
-                        <option value="">Property Type</option>
-                    </select>
-                    <select class="sm-width">
-                        <option value="">No Of Bedrooms</option>
-                    </select>
-                    <select class="sm-width">
-                        <option value="">No Of Bathrooms</option>
-                    </select>
                     <div class="room-size-range-wrap sm-width">
                         <div class="price-text">
-                            <label for="roomsizeRange">Size:</label>
+                            <label for="roomsizeRange">M<sup>2</sup>:</label>
                             <input type="text" id="roomsizeRange" readonly>
                         </div>
                         <div id="roomsize-range" class="slider"></div>
                     </div>
                     <div class="price-range-wrap sm-width">
                         <div class="price-text">
-                            <label for="priceRange">Price:</label>
+                            <label for="priceRange">Fiyat aralığı:</label>
                             <input type="text" id="priceRange" readonly>
                         </div>
                         <div id="price-range" class="slider"></div>
@@ -192,12 +138,15 @@
                                 <h5>
                                     <a href="/ilan-detay/{{$item['property']['id']}}">{{strlen($item['property']['title'])>33 ? substr($item['property']['title'],0,33).'..' : $item['property']['title']}}</a>
                                 </h5>
-                                <p><span class="icon_pin_alt"></span> testomesto sk.</p>
+                                <p><span class="icon_pin_alt"></span> {{$item['property_address']['province']}}
+                                    /{{$item['property_address']['district']}}
+                                    , {{$item['property_address']['neighborhood']}}</p>
                                 <ul>
                                     <li><i class="fa fa-object-group"></i>{{$item['details']['home_area']}}</li>
                                     <li><i class="fa fa-bed"></i>{{$item['details']['bedrooms']}}
                                         +{{$item['details']['rooms']}}</li>
-                                    <li><i class="fa fa-automobile"></i> {{$item['details']['garage']}}</li>
+                                    <li><i class="fa fa-automobile"></i> {{$item['details']['garage'] == 1 ? '✓':'×'}}
+                                    </li>
                                 </ul>
                                 <div class="pi-agent">
                                     <div class="pa-item">
@@ -224,22 +173,23 @@
     <!-- Chooseus Section Begin -->
 
     <section class="chooseus-section spad set-bg"
-             data-setbg="{{'images/chooseus/'.$why_choose_us['why_choose_us']['bg_image_path']}}">
+             data-setbg="{{'/images/chooseus/'.$why_choose_us['bg_image_path']}}">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8">
                     <div class="chooseus-text">
                         <div class="section-title">
-                            <h4>{{$why_choose_us['why_choose_us']['title']}}</h4>
+                            <h4>{{$why_choose_us['title']}}</h4>
                         </div>
-                        <p>{{$why_choose_us['why_choose_us']['description']}}</p>
+                        <p>{{$why_choose_us['description']}}</p>
                     </div>
-                    @if ($why_choose_us['icon_items'])
+                    @if ($why_choose_us_icons)
                         <div class="chooseus-features">
-                            @foreach($why_choose_us['icon_items'] as $icon_item)
+                            @foreach($why_choose_us_icons as $icon_item)
                                 <div class="cf-item">
                                     <div class="cf-pic">
-                                        <img src="{{$icon_item['icon_path']}}" alt="{{$icon_item['title']}}">
+                                        <img src="{{'/images/chooseus/'.$icon_item['icon_path']}}"
+                                             alt="{{$icon_item['title']}}">
                                     </div>
                                     <div class="cf-text">
                                         <h5>{{$icon_item['title']}}</h5>
@@ -288,21 +238,6 @@
                                 <h5>$ 289.0<span>/month</span></h5>
                                 <ul>
                                     <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                    <li><i class="fa fa-bathtub"></i> 03</li>
-                                    <li><i class="fa fa-bed"></i> 05</li>
-                                    <li><i class="fa fa-automobile"></i> 01</li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="fp-item set-bg" data-setbg="img/feature-property/fp-2.jpg">
-                            <div class="fp-text">
-                                <h5 class="title">Home in Merrick Way</h5>
-                                <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                                <div class="label">For Rent</div>
-                                <h5>$ 289.0<span>/month</span></h5>
-                                <ul>
-                                    <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                    <li><i class="fa fa-bathtub"></i> 03</li>
                                     <li><i class="fa fa-bed"></i> 05</li>
                                     <li><i class="fa fa-automobile"></i> 01</li>
                                 </ul>
@@ -370,7 +305,7 @@
     <!-- Testimonial Section Begin -->
     <section class="testimonial-section spad">
         <div class="container">
-
+            <div class="elfsight-app-c917cfe8-5707-498d-aa10-bc9956914760"></div>
         </div>
     </section>
     <!-- Testimonial Section End -->
@@ -426,16 +361,18 @@
 
     <link rel="stylesheet" href="https://cdn.rawgit.com/stevenmonson/googleReviews/master/google-places.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/gh/stevenmonson/googleReviews@6e8f0d794393ec657dab69eb1421f3a60add23ef/google-places.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDeivU57j-macv2fXXgbhKGM6cqMLmnAFI&signed_in=true&libraries=places"></script>
+    <script
+        src="https://cdn.jsdelivr.net/gh/stevenmonson/googleReviews@6e8f0d794393ec657dab69eb1421f3a60add23ef/google-places.js"></script>
+    <script
+        src="https://maps.googleapis.com/maps/api/js?v=3.exp&key=AIzaSyDeivU57j-macv2fXXgbhKGM6cqMLmnAFI&signed_in=true&libraries=places"></script>
 
     <script>
-        jQuery(document).ready(function( $ ) {
+        jQuery(document).ready(function ($) {
             $("#google-reviews").googlePlaces({
                 placeId: 'ChIJycgaPNTPyhQRVFjIP1iWd0A' //Find placeID @: https://developers.google.com/places/place-id
                 , render: ['reviews']
                 , min_rating: 4
-                , max_rows:4
+                , max_rows: 4
             });
         });
     </script>

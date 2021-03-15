@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\admin;
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -16,6 +17,11 @@ class PageHeaderController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
     }
 
     public function index()
@@ -49,14 +55,16 @@ class PageHeaderController extends Controller
             $image_file_name = strtok($image->getClientOriginalName(), '.');
             $logo_image = $image_file_name . '-' . time() . '.' . $image->extension();
 
-            $image->move(public_path('images/page_header'), $logo_image);
+            $image->move(public_path('images/page-header/'), $logo_image);
 
             //save the new path.
             $page_header->logo_path = $logo_image;
 
             //remove the old image
             $old_image = json_decode(page_header::getPageHeader(), true);
-            unlink(public_path('images/page_header/' . $old_image['logo_path']));
+            if (file_exists(public_path('images/page-header/') . $old_image['logo_path'])) {
+                unlink(public_path('images/page-header/' . $old_image['logo_path']));
+            }
         }
 
         $page_header->save();

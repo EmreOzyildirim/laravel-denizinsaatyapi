@@ -4,6 +4,24 @@
 
 @endsection
 @section('content')
+    @if(session('status'))
+    <div class="modal modal-success fade in" id="modal-{{session('status') ? 'success':'danger'}}" style="display: block; padding-right: 17px;">
+        <div class="modal-dialog mt-4">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">×</span></button>
+                    <h4 class="modal-title">{{session('status') ? 'İşlem başarılı':'İşlem başarısız'}}</h4>
+                </div>
+                <div class="modal-body">
+                    <p>{{session('message')}}</p>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    @endif
     <div class="col-md-12">
         <div class="box box-solid">
             <section class="content" style="min-height: 0;">
@@ -17,22 +35,6 @@
             <!-- /.content -->
         </div>
         <!-- /.box -->
-    </div>
-    <div class="modal modal-success fade in hidden" id="modal-success" style="display: block; padding-right: 17px;">
-        <div class="modal-dialog mt-4">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span></button>
-                    <h4 class="modal-title">İşlem başarılı</h4>
-                </div>
-                <div class="modal-body">
-                    <p>Verileriniz başarıyla güncellendi…</p>
-                </div>
-            </div>
-            <!-- /.modal-content -->
-        </div>
-        <!-- /.modal-dialog -->
     </div>
     <!-- logo -->
     <div class="col-md-12">
@@ -48,7 +50,7 @@
                     <div class="form-group">
                         <label for="logo" class="col-sm-2 control-label">Logo</label>
                         <div class="col-sm-10">
-                            <img src="{{'/images/page_header/'.$logo_path}}" width="180px" style="margin: 20px;">
+                            <img src="{{asset('images/page-header/'.$logo_path)}}" width="180px" style="margin: 20px;">
                             <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
                         </div>
                     </div>
@@ -92,9 +94,13 @@
 
 @endsection
 
-@section('css')
-
-@endsection
 @section('js')
+    <script>
+        $(window).ready(function () {
+            setInterval(function () {
+                $('.modal').addClass("hidden")
+            }, 2000);
 
+        });
+    </script>
 @endsection

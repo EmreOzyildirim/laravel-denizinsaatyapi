@@ -6,6 +6,26 @@
 
 
 @section('content')
+    @if(session('message'))
+        <div class="modal d-block" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content bg-success text-white font-weight-bold">
+                    <div class="modal-header">
+                        <h5 class="modal-title">{{session('status') ? 'İşlem başarılı' : 'İşlem başarısız' }}</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{session('message')}}</p>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn text-white" data-dismiss="modal">Tamam</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    @endif
     <!-- Property Details Section Begin -->
     <section class="property-details-section">
         <div class="property-pic-slider owl-carousel">
@@ -45,16 +65,18 @@
                                         class="label{{$property['property_details']['type_id'] == 1 ? ' c-red' : ''}}">{{$property['property_details']['type_id'] == 1 ? 'Satılık' : ''}}{{$property['property_details']['type_id'] == 2 ? 'Kiralık':''}}</div>
                                     <div class="pt-price">{{$property['property']['price']}} ₺</div>
                                     <h3>{{$property['property']['title']}}</h3>
-                                    <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03463</p>
+                                    <p><span class="icon_pin_alt"></span> {{$property['property_address']['province']}}/{{$property['property_address']['district']}}, {{$property['property_address']['neighborhood']}}</p>
                                 </div>
                             </div>
                             <div class="col-lg-2">
-                                    <a href="https://wa.me/?text=https://denizinsaatyapi.com/ilan-detay/{{$property['property_details']['property_id']}}" class="text-sm text-success">Whatsapp'da Paylaş</a>
+                                <a class="btn btn-sm btn-outline-success font-weight-bold"
+                                   href="https://wa.me/?text=https://denizinsaatyapi.com/ilan-detay/{{$property['property_details']['property_id']}}"
+                                   class="text-sm text-success">Whatsapp'da Paylaş</a>
                             </div>
                         </div>
                         <div class="pd-widget">
                             <h4>İlan Açıklaması</h4>
-                            {{print_r($property['property_details']['description'])}}
+                            {{$property['property_details']['description']}}
                         </div>
                         <div class="pd-widget">
                             <h4>Ofisimize bekliyoruz</h4>
@@ -75,7 +97,8 @@
                                     <div class="at-title">
                                         <h6>{{$property['property_agent']['name_surname']}}</h6>
                                         <span>{{$property['property_agent']['title']}}</span>
-                                        <a href="/danisman-ilanlari/{{$property['property_agent']['id']}}" class="primary-btn">Diğer ilanları</a>
+                                        <a href="/danisman-ilanlari/{{$property['property_agent']['id']}}"
+                                           class="primary-btn">Diğer ilanları</a>
                                     </div>
                                     <p>{{$property['property_agent']['description']}}</p>
                                     <div class="at-option">
@@ -93,14 +116,21 @@
                         </div>
                         <div class="pd-widget">
                             <h4>İletişim bilgilerinizi yollayın, size ulaşalım.</h4>
-                            <form action="#" class="review-form">
+                            <form action="/send-contact-mail" method="POST" class="cc-form">
+                                @csrf
                                 <div class="group-input">
-                                    <input type="text" placeholder="Adınız">
-                                    <input type="text" placeholder="Telefon Numaranız">
-                                    <input type="text" placeholder="Website (gerekli değil)">
+                                    <input type="text" name="name_surname" placeholder="Ad Soyad">
+                                    <input type="text" name="phone_number" placeholder="Telefon Numaranız">
+                                    <input type="text" name="website" placeholder="Website (gerekli değil)">
                                 </div>
-                                <textarea placeholder="Mesajınız"></textarea>
-                                <button type="submit" class="site-btn">Gönder!</button>
+                                <textarea name="message" placeholder="Mesajınız"></textarea>
+                                <div class="group-input">
+                                    <img src="{{'/'.$random_image}}" class="float-left" alt="Güvenlik sorusu">
+                                    <input type="text" name="random_image" value="{{$random_image}}" hidden>
+                                    <input type="text" name="random_image_answer" class="float-left"
+                                           placeholder="Güvelik yanıtınız">
+                                </div>
+                                <button type="submit" class="site-btn">Gönder</button>
                             </form>
                         </div>
                     </div>
@@ -173,5 +203,12 @@
     <!-- Property Details Section End -->
 @endsection
 @section('js')
+    <script>
+        $(window).ready(function () {
+            setInterval(function () {
+                $('.modal').removeClass("d-block")
+            }, 4000);
 
+        });
+    </script>
 @endsection

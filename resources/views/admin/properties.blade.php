@@ -49,7 +49,7 @@
 
                         @foreach($properties as $item)
                             <tr>
-                                <td><img src="{{$item->image_path}}agent_name" width="75px"
+                                <td><img src="{{asset('images/properties/'.$item->image_path)}}" width="75px"
                                          alt="{{$item->image_alt_text}}">
                                 </td>
                                 <td>{{ strlen($item->title) > 50 ? substr($item->title,'0','50').'...' : $item->title }}</td>

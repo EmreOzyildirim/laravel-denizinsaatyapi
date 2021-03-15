@@ -9,11 +9,17 @@ use App\Models\provinces;
 use App\Models\statuses;
 use App\Models\types;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class FeaturedPropertiesController extends Controller
 {
     public function __construct(){
         $this->middleware('auth');
+
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
     }
 
     public function index()

@@ -44,7 +44,7 @@
                         </tr>
                         @foreach($agents as $item)
                             <tr>
-                                <td><img src="{{$item->profile_image}}" width="75px"></td>
+                                <td><img src="{{asset('images/agents/'.$item->profile_image)}}" width="75px"></td>
                                 <td>{{$item->name_surname}}</td>
                                 <td>{{$item->phone_number}}</td>
                                 <td>{{$item->email}}</td>

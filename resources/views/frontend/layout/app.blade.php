@@ -28,7 +28,7 @@
         <link rel="stylesheet" href="/frontend/css/owl.carousel.min.css?v=2" type="text/css"/>
         <link rel="stylesheet" href="/frontend/css/magnific-popup.css?v=2" type="text/css"/>
         <link rel="stylesheet" href="/frontend/css/slicknav.min.css?v=2" type="text/css"/>
-        <link rel="stylesheet" href="/frontend/css/style.css?v=2" type="text/css"/>
+        <link rel="stylesheet" href="/frontend/css/style.css?v=4" type="text/css"/>
         @yield('css')
 </head>
 
@@ -55,7 +55,7 @@
             <li><i class="icon_mail_alt"></i> {{$page_header['mail_address']}}</li>
             <li><i class="fa fa-mobile-phone"></i> {{$page_header['phone_number']}}</li>
         </ul>
-        <a href="#" class="hw-btn">{{$page_header['call_us_button']}}</a>
+        <a href="tel:{{$page_header['phone_number']}}" class="hw-btn">{{$page_header['call_us_button']}}</a>
     </div>
     <div class="om-social">
         @if($social_media_icons['facebook_url'])
@@ -84,7 +84,7 @@
             <div class="row">
                 <div class="col-lg-2">
                     <div class="logo">
-                        <a href="/"><img src="{{'/images/page_header/'.$page_header['logo_path']}}" alt="Deniz Gayrimenkul logo"></a>
+                        <a href="/"><img src="{{'/images/page-header/'.$page_header['logo_path']}}" alt="Deniz Gayrimenkul logo"></a>
                     </div>
                 </div>
                 <div class="col-lg-10">
@@ -93,7 +93,7 @@
                             <li><i class="icon_mail_alt"></i> {{$page_header['mail_address']}}</li>
                             <li><i class="fa fa-mobile-phone"></i> {{$page_header['phone_number']}}</li>
                         </ul>
-                        <a href="#" class="hw-btn">{{$page_header['call_us_button']}}</a>
+                        <a href="tel:{{$page_header['phone_number']}}" class="hw-btn">{{$page_header['call_us_button']}}</a>
                     </div>
                 </div>
             </div>
@@ -160,10 +160,10 @@
                 <div class="fs-about">
                     <div class="fs-logo">
                         <a href="https://denizinsaatyapi.com/">
-                            <img src="{{'/images/page_header/'.$page_header['logo_path']}}" alt="Deniz Gayrimenkul logosu">
+                            <img src="{{'/images/page-header/'.$page_header['logo_path']}}" alt="Deniz Gayrimenkul logosu">
                         </a>
                     </div>
-                    <p>{{$footer['footer']["short_description"]}}</p>
+                    <p>{{$footer['footer']['short_description']}}</p>
                     @if($footer['footer']['social_media_icons']==1)
                         <div class="fs-social">
                             <a href="#"><i class="fa fa-facebook"></i></a>
@@ -179,7 +179,7 @@
                 <div class="fs-widget">
                     <h5>Faydalı Linkler</h5>
                     <ul>
-                        @foreach($footer['footer_links'] as $link)
+                        @foreach($footer_links as $link)
                             <li><a href="{{$link['url']}}">{{$link['name']}}</a></li>
                         @endforeach
                     </ul>

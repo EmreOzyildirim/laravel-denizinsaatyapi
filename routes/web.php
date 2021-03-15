@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\frontend\HomeController;
 
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\PageController;
 use App\Http\Controllers\admin\AdminController;
 use App\Http\Controllers\admin\PageHeaderController;
@@ -14,10 +15,14 @@ use App\Http\Controllers\admin\WhyChooseUsController;
 use App\Http\Controllers\admin\AgentsController;
 use App\Http\Controllers\admin\CustomerFeedbackController;
 use App\Http\Controllers\admin\ReferencesController;
+use App\Http\Controllers\admin\ContactController;
+
 /*use App\Http\Controllers\admin\SEOController;*/
+
 use App\Http\Controllers\admin\SocialMediaController;
 use App\Http\Controllers\admin\FooterController;
 use App\Http\Controllers\admin\ContactAndMapController;
+use App\Http\Controllers\admin\AboutUsController;
 
 use App\Models\categories;
 use App\Models\properties;
@@ -38,6 +43,27 @@ use App\Models\agents;
 //file manager
 Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
     \UniSharp\LaravelFilemanager\Lfm::routes();
+});
+//login admin redirect
+Route::get('/admin', function () {
+    header('Location:/admin/index');
+    exit();
+});
+
+//send the property_coount, agent_count, category_count
+View::composer(['/admin/*'], function ($view){
+
+    $property_count = count(properties::getProperties());
+    $category_count = count(json_decode(categories::getCategories(),true));
+    $agent_count = count(json_decode(agents::getAgents(),true));
+
+    $view->with('property_count',$property_count);
+    $view->with('category_count',$category_count);
+    $view->with('agent_count',$agent_count);
+
+
+
+
 });
 
 //Admin Panel Routes
@@ -152,9 +178,13 @@ Route::group(['namespace' => 'admin'], function () {
     /*Route::get('/admin/seo-options', [SEOController::class, 'index']);*/
     Route::get('/admin/footer', [FooterController::class, 'index']);
 
+    Route::get('/admin/about-us', [AboutUsController::class, 'index']);
+    Route::post('/admin/update-about-us', [AboutUsController::class, 'update_post']);
+
 
     Route::get('/admin/contact-and-map', [ContactAndMapController::class, 'index']);
     Route::post('/admin/contact-and-map', [ContactAndMapController::class, 'update']);
+
 
 });
 
@@ -163,22 +193,26 @@ Route::group(['namespace' => 'frontend'], function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/anasayfa', [HomeController::class, 'index']);
-    Route::get('/home', [HomeController::class, 'index']);
-    Route::get('/ilan-detay/{id}',[HomeController::class, 'property_details']);
-    Route::get('/danisman-ilanlari/{id}',[HomeController::class, 'agents_properties']);
-    Route::get('/danismanlarimiz',[HomeController::class, 'agents']);
-    Route::get('/iletisim',[HomeController::class, 'contact']);
+
+    Route::get('/ilan-detay/{id}', [HomeController::class, 'property_details']);
+    Route::get('/danisman-ilanlari/{id}', [HomeController::class, 'agents_properties']);
+
+    Route::get('/hakkimizda', [HomeController::class, 'about_us']);
+
+    Route::get('/danismanlarimiz', [HomeController::class, 'agents']);
+
+    Route::get('/referanslar', [HomeController::class, 'references']);
+
+    Route::get('/iletisim', [HomeController::class, 'contact']);
+    Route::post('/send-contact-mail', [ContactController::class, 'send_form_post']);
+
+    Route::post('/detayli-arama', [HomeController::class, 'search_with_details']);
 
 });
 
-Route::get('/welcome', 'App\Http\Controllers\PageController@index');
-Route::get('/show', 'App\Http\Controllers\PageController@show');
-Route::get('/', function () {
-    return view('welcome');
-});
 
 Auth::routes();
-
+Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/anasayfa', [HomeController::class, 'index']);

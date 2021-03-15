@@ -4,10 +4,13 @@ namespace App\Http\Controllers\frontend;
 
 
 use App\Http\Controllers\Controller;
+use App\Models\about_us;
 use App\Models\customer_feedbacks;
 use App\Models\footer;
 use App\Models\footer_links;
+use App\Models\get_random_validation_image;
 use App\Models\properties;
+use App\Models\references;
 use App\Models\why_choose_us_icon_items;
 use Illuminate\Http\Request;
 use App\Models\page_header;
@@ -16,7 +19,7 @@ use App\Models\agents;
 use App\Models\categories;
 use App\Models\why_choose_us;
 use App\Models\contact_and_map;
-use App\Models\property_details;
+use App\Models\about_us_page;
 use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
@@ -54,9 +57,21 @@ class HomeController extends Controller
                     'name_surname' => '',
                     'profile_image' => '',
                     'phone_number' => ''
+                ),
+                'property_address' => array(
+                    'province' => '',
+                    'district' => '',
+                    'neighborhood' => '',
                 )
             );
 
+            //get property address
+            $address = json_decode(properties::getPropertyAddress($property['id']), true);
+            $item['property_address']['province'] = $address['property_province'];
+            $item['property_address']['district'] = $address['property_district'];
+            $item['property_address']['neighborhood'] = $address['property_neighborhood'];
+
+            //$
             //add the property details
             $detail = json_decode(properties::getPropertyDetails($property['id']), true);
 
@@ -83,63 +98,6 @@ class HomeController extends Controller
         }
 
 
-        //why choose us module
-        $why_choose_us_header = json_decode(why_choose_us::getWhyChooseUs(), true);
-
-        $why_choose_us = array(
-            'why_choose_us' => array(
-                'title' => $why_choose_us_header['title'],
-                'description' => $why_choose_us_header['description'],
-                'bg_image_path' => $why_choose_us_header['bg_image_path']
-            ),
-            'icon_items' => array()
-        );
-
-        $items = json_decode(why_choose_us_icon_items::getWhyChooseUsIcons(), true);
-
-        foreach ($items as $item) {
-
-            $icon_item = array(
-                'icon_path' => '',
-                'title' => '',
-                'description' => ''
-            );
-
-            $icon_item['icon_path'] = $item['icon_path'];
-            $icon_item['title'] = $item['title'];
-            $icon_item['description'] = $item['description'];
-
-            array_push($why_choose_us['icon_items'], $icon_item);
-        }
-
-        //send footer
-        $footer = [
-            'footer' => array(
-                'copy_text' => '',
-                'short_description' => '',
-                'social_media_icons' => ''
-            ),
-            'footer_links' => array()
-        ];
-
-        $get_footer = json_decode(footer::getFooter(), true);
-        $footer['footer']['copy_text'] = $get_footer['copy_text'];
-        $footer['footer']['short_description'] = $get_footer['short_description'];
-        $footer['footer']['social_media_icons'] = $get_footer['social_media_icons'];
-
-        $get_footer_links = json_decode(footer_links::getFooterLinks(), true);
-
-        foreach ($get_footer_links as $item) {
-            $link_item = array(
-                'name' => '',
-                'url' => ''
-            );
-            $link_item['name'] = $item['name'];
-            $link_item['url'] = $item['url'];
-
-            array_push($footer['footer_links'], $link_item);
-        }
-
         //customer feedbacks
         $customer_feedbacks = array();
         $get_customer_feedbacks = json_decode(customer_feedbacks::getCustomerFeedbacks(), true);
@@ -165,54 +123,31 @@ class HomeController extends Controller
         $send = [
             //properties added in bottom array_push function
             'page_header' => json_decode(page_header::getPageHeader(), true),
+            'slider_properties' => json_decode(properties::getSliderProperties(), true),
             'social_media_icons' => social_media::find(1),
             'agents' => agents::all()->take(3),
             'categories' => categories::all()->take(5),
-            'why_choose_us' => $why_choose_us,
+            'why_choose_us' => json_decode(why_choose_us::getWhyChooseUs(), true),
+            'why_choose_us_icons' => json_decode(why_choose_us_icon_items::getWhyChooseUsIcons(), true),
             'property_listing' => $new_properties,
             'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
             'customer_feedbacks' => $customer_feedbacks,
-            'footer' => $footer
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true)
         ];
         return view('.frontend.home', $send);
     }
 
     public function contact()
     {
-        //send footer
-        $footer = [
-            'footer' => array(
-                'copy_text' => '',
-                'short_description' => '',
-                'social_media_icons' => ''
-            ),
-            'footer_links' => array()
-        ];
-
-        $get_footer = json_decode(footer::getFooter(), true);
-        $footer['footer']['copy_text'] = $get_footer['copy_text'];
-        $footer['footer']['short_description'] = $get_footer['short_description'];
-        $footer['footer']['social_media_icons'] = $get_footer['social_media_icons'];
-
-        $get_footer_links = json_decode(footer_links::getFooterLinks(), true);
-
-        foreach ($get_footer_links as $item) {
-            $link_item = array(
-                'name' => '',
-                'url' => ''
-            );
-            $link_item['name'] = $item['name'];
-            $link_item['url'] = $item['url'];
-
-            array_push($footer['footer_links'], $link_item);
-        }
-
         $send = [
             //properties added in bottom array_push function
             'page_header' => json_decode(page_header::getPageHeader(), true),
+            'random_image' => get_random_validation_image::random_pic(),
             'social_media_icons' => social_media::find(1),
             'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
-            'footer' => $footer
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true)
         ];
         return view('.frontend.contact', $send);
     }
@@ -220,86 +155,38 @@ class HomeController extends Controller
     public function agents()
     {
 
-        $agents = json_decode(agents::getAgents(), true);
-        //send footer
-        $footer = [
-            'footer' => array(
-                'copy_text' => '',
-                'short_description' => '',
-                'social_media_icons' => ''
-            ),
-            'footer_links' => array()
-        ];
-
-        $get_footer = json_decode(footer::getFooter(), true);
-        $footer['footer']['copy_text'] = $get_footer['copy_text'];
-        $footer['footer']['short_description'] = $get_footer['short_description'];
-        $footer['footer']['social_media_icons'] = $get_footer['social_media_icons'];
-
-        $get_footer_links = json_decode(footer_links::getFooterLinks(), true);
-
-        foreach ($get_footer_links as $item) {
-            $link_item = array(
-                'name' => '',
-                'url' => ''
-            );
-            $link_item['name'] = $item['name'];
-            $link_item['url'] = $item['url'];
-
-            array_push($footer['footer_links'], $link_item);
-        }
-
         $send = [
             //properties added in bottom array_push function
             'page_header' => json_decode(page_header::getPageHeader(), true),
+            'agents' => json_decode(agents::getAgentsWithCount(), true),
             'social_media_icons' => social_media::find(1),
             'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
-            'agents' => $agents,
-            'footer' => $footer
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true)
         ];
         return view('.frontend.agents', $send);
     }
 
     public function property_details($id)
     {
-
         $property_item = json_decode(properties::getPropertyById($id), true);
+
 
         $property = array(
             'property' => $property_item,
             'property_details' => json_decode(properties::getPropertyDetails($id), true),
+            'property_address' => array('province' => '', 'district' => '', 'neighborhood' => ''),
             'property_images' => json_decode(properties::getPropertyImages($id), true),
             'property_agent' => json_decode(properties::getPropertyAgent($property_item['agent_id']), true),
             'office' => json_decode(contact_and_map::getMapEmbed(), true)
         );
 
-        //send footer
-        $footer = [
-            'footer' => array(
-                'copy_text' => '',
-                'short_description' => '',
-                'social_media_icons' => ''
-            ),
-            'footer_links' => array()
-        ];
 
-        $get_footer = json_decode(footer::getFooter(), true);
-        $footer['footer']['copy_text'] = $get_footer['copy_text'];
-        $footer['footer']['short_description'] = $get_footer['short_description'];
-        $footer['footer']['social_media_icons'] = $get_footer['social_media_icons'];
-
-        $get_footer_links = json_decode(footer_links::getFooterLinks(), true);
-
-        foreach ($get_footer_links as $item) {
-            $link_item = array(
-                'name' => '',
-                'url' => ''
-            );
-            $link_item['name'] = $item['name'];
-            $link_item['url'] = $item['url'];
-
-            array_push($footer['footer_links'], $link_item);
-        }
+        //get property address
+        $address = json_decode(properties::getPropertyAddress($id), true);
+        $property['property_address']['province'] = $address['property_province'];
+        $property['property_address']['district'] = $address['property_district'];
+        $property['property_address']['neighborhood'] = $address['property_neighborhood'];
 
         //customer feedbacks
         $customer_feedbacks = array();
@@ -326,20 +213,76 @@ class HomeController extends Controller
         $send = [
             //properties added in bottom array_push function
             'page_header' => json_decode(page_header::getPageHeader(), true),
+            'random_image' => get_random_validation_image::random_pic(),
             'property' => $property,
             'social_media_icons' => social_media::find(1),
             'agents' => agents::all()->take(3),
             'categories' => categories::all()->take(5),
             'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
-            'footer' => $footer
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true)
         ];
         return view('.frontend.property_details', $send);
     }
 
-    public function agents_properties($agent_id){
+    public function agents_properties($agent_id)
+    {
 
-        return view('.frontend.agents_properties',[properties::agent]);
+        $send = [
+            'agent' => json_decode(agents::getAgentById($agent_id)),
+            'properties' => properties::getPropertiesByAgent($agent_id),
+            'social_media_icons' => json_decode(social_media::getSocialMedia(), true),
+            'page_header' => json_decode(page_header::getPageHeader(), true),
+            'footer' => json_decode(footer::getFooter(), true)
+        ];
 
+        return view('.frontend.agents_properties', $send);
+
+    }
+
+    public function about_us()
+    {
+
+        $send = [
+            'page_header' => json_decode(page_header::getPageHeader(), true),
+            'about_us' => json_decode(about_us_page::getAboutUs(), true),
+            'social_media_icons' => json_decode(social_media::getSocialMedia(), true),
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true),
+            'why_choose_us_icons' => json_decode(why_choose_us_icon_items::getWhyChooseUsIcons(), true)
+        ];
+        return view('.frontend.about_us', $send);
+    }
+
+    public function search_with_details(Request $request)
+    {
+
+        $request->validate([
+            'type' => ['required'],
+            'province_id' => ['required'],
+            'district_id' => ['required'],
+            'neighborhood_id' => ['required'],
+            'home_area' => ['required'],
+            'price' => ['required']
+        ]);
+
+        return view('.admin.properties');
+        //todo homepage property filtering to be completed.
+    }
+
+    public function references()
+    {
+
+        $references = json_decode(references::getReferences(), true);
+
+
+        $send = array(
+            'page_header' => json_decode(page_header::getPageHeader(), true),
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true),
+            'social_media_icons' => json_decode(social_media::getSocialMedia(), true)
+        );
+        return view('.frontend.references', $send);
     }
 
 

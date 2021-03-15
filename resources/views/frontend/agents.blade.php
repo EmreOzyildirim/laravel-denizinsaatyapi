@@ -10,14 +10,14 @@
                 <div class="col-lg-4 col-md-6">
                     <div class="as-item">
                         <div class="as-pic">
-                            <img src="{{'images/agents/'.$agent['profile_image']}}" alt="{{$agent['name_surname']}}">
+                            <img src="{{'images/agents/'.$agent['agent']['profile_image']}}" alt="{{$agent['agent']['name_surname']}}">
                             <div class="rating-point">
                                 4.5
                             </div>
                         </div>
                         <div class="as-text">
                             <div class="at-title">
-                                <h6>{{$agent['name_surname']}}</h6>
+                                <h6>{{$agent['agent']['name_surname']}}</h6>
                                 <div class="rating-star">
                                     <i class="fa fa-star"></i>
                                     <i class="fa fa-star"></i>
@@ -27,9 +27,9 @@
                                 </div>
                             </div>
                             <ul>
-                                <li>İlan Sayısı <span>14</span></li>
-                                <li>Email <span>{{$agent['email']}}</span></li>
-                                <li>Telefon <span>{{$agent['phone_number']}}</span></li>
+                                <li>İlan Sayısı <span>{{$agent['count']}}</span></li>
+                                <li>Email <span>{{$agent['agent']['email']}}</span></li>
+                                <li>Telefon <span>{{$agent['agent']['phone_number']}}</span></li>
                             </ul>
                         </div>
                     </div>

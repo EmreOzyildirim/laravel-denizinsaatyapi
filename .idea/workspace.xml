@@ -23,23 +23,58 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="36a082e0-5b08-4f1b-9a13-8065147e7603" name="Default Changelist" comment="back/front updates">
-      <change afterPath="$PROJECT_DIR$/public/elfsight.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/agents_properties.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/properties.blade.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/resources/views/frontend/property_details.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/about_us.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/contact_form_from_site_table_seeder.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/developer_tools/references.sql" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/about-us/deniz-gayrimenkul-vizyon-misyon.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/breadcrumbs/deniz-gayrimenkul-danisman-ilanlari.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/breadcrumbs/deniz-gayrimenkul-hakkimizda.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/references/blog-2.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/references/blog-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/references/blog-4.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/references/blog-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/validation/105.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/validation/13.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/validation/35.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/images/validation/68.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/about_us.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/admin/contact.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/about_us.blade.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/resources/views/frontend/references.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/LoginController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/Auth/RegisterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AdminController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/AgentsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/AgentsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoriesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CategoriesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/CustomerFeedbackController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/CustomerFeedbackController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/FeaturedPropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/FeaturedPropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/FooterController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/FooterController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/MenuController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/MenuController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/PageHeaderController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/PageHeaderController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/PropertiesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/ReferencesController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/ReferencesController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/SocialMediaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/SocialMediaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/admin/WhyChooseUsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/admin/WhyChooseUsController.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/frontend/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/frontend/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/developer_tools/property_images.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/property_images.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/developer_tools/property_type.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_12_27_010505_create_property_type_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeders/property_type_table_seeder.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Providers/AuthServiceProvider.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/categories.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/categories.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/page_header.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/page_header.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/properties.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/properties.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/why_choose_us.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/why_choose_us.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/developer_tools/why_choose_us_icon_items.sql" beforeDir="false" afterPath="$PROJECT_DIR$/app/developer_tools/why_choose_us_icon_items.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" beforeDir="false" afterPath="$PROJECT_DIR$/database/seeders/DatabaseSeeder.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/agents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/agents.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/layouts/layout.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/admin/page_header.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/page_header.blade.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/resources/views/admin/property_update.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/property_update.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/admin/properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/admin/properties.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/agents.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/agents.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/agents_properties.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/agents_properties.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/contact.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/contact.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/home.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/views/frontend/layout/app.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/layout/app.blade.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/resources/views/frontend/property_details.blade.php" beforeDir="false" afterPath="$PROJECT_DIR$/resources/views/frontend/property_details.blade.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -179,25 +214,25 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images/agents" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/images/references" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="web-ide.project.structure" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\test-laravel\public\images" />
-      <recent name="C:\xampp\htdocs\test-laravel\public\images\categories" />
-      <recent name="C:\xampp\htdocs\test-laravel\public\backend\know-how" />
-      <recent name="C:\xampp\htdocs\test-laravel\app\Http\Controllers\admin" />
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\deniz-gayrimenkul-laravel\public\images\references" />
+      <recent name="C:\xampp\htdocs\test-laravel\public\images\page-header" />
+      <recent name="C:\xampp\htdocs\test-laravel\public\images\about-us" />
+      <recent name="C:\xampp\htdocs\test-laravel\public\images\validation" />
       <recent name="C:\xampp\htdocs\test-laravel\public\images\breadcrumbs" />
     </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\xampp\htdocs\test-laravel\public\images\agents" />
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\xampp\htdocs\test-laravel\app\Http\Controllers\admin" />
+      <recent name="C:\xampp\htdocs\test-laravel\public\images\about-us" />
+      <recent name="C:\xampp\htdocs\test-laravel\public\images\breadcrumbs" />
+      <recent name="C:\xampp\htdocs\test-laravel\public\images" />
       <recent name="C:\xampp\htdocs\test-laravel\public\images\categories" />
-      <recent name="C:\xampp\htdocs\test-laravel\public\backend\know-how" />
-      <recent name="C:\xampp\htdocs\test-laravel\public\backend\agents-images" />
-      <recent name="C:\xampp\htdocs\test-laravel\public\storage\property_images" />
     </key>
   </component>
   <component name="RunAnythingCache">
@@ -317,7 +352,15 @@
       <workItem from="1615291609846" duration="21979000" />
       <workItem from="1615371402057" duration="15000" />
       <workItem from="1615376485648" duration="27000" />
-      <workItem from="1615380010388" duration="5287000" />
+      <workItem from="1615380010388" duration="24203000" />
+      <workItem from="1615468891682" duration="8393000" />
+      <workItem from="1615484312732" duration="28000" />
+      <workItem from="1615542575598" duration="11841000" />
+      <workItem from="1615569511658" duration="68000" />
+      <workItem from="1615582229892" duration="29375000" />
+      <workItem from="1615646823207" duration="1756000" />
+      <workItem from="1615725056403" duration="10719000" />
+      <workItem from="1615798632171" duration="6376000" />
     </task>
     <task id="LOCAL-00001">
       <created>1609243250029</created>
@@ -382,7 +425,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614607539291</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="back/front updates">
+      <created>1615385403941</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1615385403941</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -420,14 +470,14 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="567" y="234" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1600.860@0.0.1600.860" timestamp="1615057766146" />
-    <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1609031182745">
+    <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog" timestamp="1615471324258">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1609031182745" />
-    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615154866890">
+    <state x="600" y="133" key="#com.intellij.refactoring.rename.AutomaticRenamingDialog/0.0.1600.860@0.0.1600.860" timestamp="1615471324258" />
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1615544966319">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1615154866890" />
+    <state x="530" y="185" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1600.860@0.0.1600.860" timestamp="1615544966319" />
     <state x="587" y="343" key="ComposerInitDialogKey" timestamp="1609265833075">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -444,14 +494,18 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="226" y="0" width="1219" height="860" key="SettingsEditor/0.0.1600.860@0.0.1600.860" timestamp="1609677912851" />
+    <state x="521" y="171" width="540" height="524" key="StructurePopup" timestamp="1615412333519">
+      <screen x="0" y="0" width="1600" height="860" />
+    </state>
+    <state x="521" y="171" width="540" height="524" key="StructurePopup/0.0.1600.860@0.0.1600.860" timestamp="1615412333519" />
     <state width="524" height="445" key="SwitcherDM" timestamp="1611511016499">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state width="524" height="445" key="SwitcherDM/0.0.1600.860@0.0.1600.860" timestamp="1611511016499" />
-    <state x="392" y="163" key="Vcs.Push.Dialog.v2" timestamp="1615202949646">
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2" timestamp="1615385415610">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1615202949646" />
+    <state x="392" y="163" key="Vcs.Push.Dialog.v2/0.0.1600.860@0.0.1600.860" timestamp="1615385415610" />
     <state x="448" y="44" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser" timestamp="1612993422183">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
@@ -464,15 +518,15 @@
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="508" y="40" width="583" height="780" key="find.popup/0.0.1600.860@0.0.1600.860" timestamp="1614201490631" />
-    <state x="456" y="195" width="672" height="677" key="run.anything.popup" timestamp="1615326475010">
+    <state x="456" y="195" width="672" height="677" key="run.anything.popup" timestamp="1615645161053">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860/-1920.-182.1920.1040@0.0.1600.860" timestamp="1610617351147" />
     <state x="456" y="195" key="run.anything.popup/0.0.1600.860/1600.-104.1920.1040@0.0.1600.860" timestamp="1610627706861" />
-    <state x="456" y="195" width="672" height="677" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1615326475010" />
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1615305116640">
+    <state x="456" y="195" width="672" height="677" key="run.anything.popup/0.0.1600.860@0.0.1600.860" timestamp="1615645161053" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup" timestamp="1615411555718">
       <screen x="0" y="0" width="1600" height="860" />
     </state>
-    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1615305116640" />
+    <state x="463" y="180" width="672" height="678" key="search.everywhere.popup/0.0.1600.860@0.0.1600.860" timestamp="1615411555718" />
   </component>
 </project>

@@ -6,20 +6,20 @@ use App\Http\Controllers\Controller;
 use App\Models\why_choose_us;
 use App\Models\why_choose_us_icon_items;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class WhyChooseUsController extends Controller
 {
     public function __construct()
     {
         $this->middleware('auth');
+
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
     }
 
-    protected $icons = [
-        'icon1' => '/backend/know-how/chooseus-icon-1.png',
-        'icon2' => '/backend/know-how/chooseus-icon-2.png',
-        'icon3' => '/backend/know-how/chooseus-icon-3.png',
-        'icon4' => '/backend/know-how/chooseus-icon-4.png',
-    ];
 
     public function index()
     {

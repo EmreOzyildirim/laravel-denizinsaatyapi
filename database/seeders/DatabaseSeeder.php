@@ -23,7 +23,6 @@ class DatabaseSeeder extends Seeder
         $this->call(home_slider_table_seeder::class);
         $this->call(property_details_table_seeder::class);
         $this->call(property_images_table_seeder::class);
-        $this->call(property_type_table_seeder::class);
         $this->call(social_media_table_seeder::class);
         $this->call(page_header_seeder::class);
         $this->call(main_menu_table_seeder::class);
@@ -35,6 +34,9 @@ class DatabaseSeeder extends Seeder
         $this->call(footer_table_seeder::class);
         $this->call(footer_links_table_seeder::class);
         $this->call(contact_and_map_table_seeder::class);
+        $this->call(about_us_table_seeder::class);
+        $this->call(references_table_seeder::class);
+        $this->call(contact_form_from_site_table_seeder::class);
         $this->call(neighborhoods_table_seeder::class);
     }
 }

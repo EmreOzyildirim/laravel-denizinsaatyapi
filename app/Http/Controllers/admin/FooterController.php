@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\footer;
 use App\Models\footer_links;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 
 class FooterController extends Controller
@@ -13,6 +14,11 @@ class FooterController extends Controller
 
     public function __construct(){
         $this->middleware('auth');
+
+        if (!Auth::check()) {
+            return redirect('/login');
+        }
+
     }
 
     public function index()
