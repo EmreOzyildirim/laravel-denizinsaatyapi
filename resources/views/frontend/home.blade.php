@@ -112,35 +112,35 @@
 
                             <li data-filter="all">Tümü</li>
                             @foreach($categories as $category)
-                                <li data-filter=".<?php $name = str_replace(array("İ", "ı", "ğ", "ü", "ş", "ö", "ç"), array("I", "i", "g", "u", "s", "o", "c"), $category['name']);
-                                echo strtolower($name); ?>">{{$category['name']}}</li>
+                                <li data-filter=".<?php $name = str_replace(array("İ", "ı", "ğ", "ü", "ş", "ö", "ç"), array("I", "i", "g", "u", "s", "o", "c"), $category['category']['name']);
+                                echo strtolower($name); ?>">{{$category['category']['name']}}</li>
                             @endforeach
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="row property-filter">
-                @foreach($property_listing['properties'] as $item)
+                @foreach($property_listing as $item)
                     <div class="col-lg-4 col-md-6 mix all <?php
                     foreach ($categories as $category)
-                        if ($item['details']['category_id'] == $category['id']) {
-                            $class_name = str_replace(array("İ", "ı", "ğ", "ü", "ş", "ö", "ç"), array("I", "i", "g", "u", "s", "o", "c"), $category['name']);
+                        if ($item['property']['category_id'] == $category['category']['id']) {
+                            $class_name = str_replace(array("İ", "ı", "ğ", "ü", "ş", "ö", "ç"), array("I", "i", "g", "u", "s", "o", "c"), $category['category']['name']);
                             echo strtolower($class_name);
                         }?>">
                         <div class="property-item">
                             <div class="pi-pic set-bg"
                                  data-setbg="{{'images/properties/'.$item['property']['image_path']}}">
                                 <div
-                                    class="label {{$item['details']['type_id'] == 1 ? 'c-red' : ''}}">{{$item['details']['type_id'] == 1 ? 'Satılık' : ''}}{{$item['details']['type_id'] == 2 ? 'Kiralık':''}}</div>
+                                    class="label {{$item['property']['type'] == 1 ? 'c-red' : ''}}">{{$item['property']['type'] == 1 ? 'Satılık' : ''}}{{$item['property']['type'] == 2 ? 'Kiralık':''}}</div>
                             </div>
                             <div class="pi-text">
                                 <div class="pt-price">{{$item['property']['price']}} ₺</div>
                                 <h5>
                                     <a href="/ilan-detay/{{$item['property']['id']}}">{{strlen($item['property']['title'])>33 ? substr($item['property']['title'],0,33).'..' : $item['property']['title']}}</a>
                                 </h5>
-                                <p><span class="icon_pin_alt"></span> {{$item['property_address']['province']}}
-                                    /{{$item['property_address']['district']}}
-                                    , {{$item['property_address']['neighborhood']}}</p>
+                                <p><span class="icon_pin_alt"></span> {{$item['property_address']['property_province']}}
+                                    /{{$item['property_address']['property_district']}}
+                                    , {{$item['property_address']['property_neighborhood']}}</p>
                                 <ul>
                                     <li><i class="fa fa-object-group"></i>{{$item['details']['home_area']}}</li>
                                     <li><i class="fa fa-bed"></i>{{$item['details']['bedrooms']}}
@@ -151,7 +151,7 @@
                                 <div class="pi-agent">
                                     <div class="pa-item">
                                         <div class="pa-info">
-                                            <img src="{{'images/agents/'.$item['agent']['profile_image']}}"
+                                            <img src="{{asset('images/agents/'.$item['agent']['profile_image'])}}"
                                                  alt="{{$item['agent']['name_surname']}}" width="100%">
                                             <h6>{{$item['agent']['name_surname']}}</h6>
                                         </div>
@@ -291,10 +291,10 @@
         <div class="cs-item-list">
             @foreach($categories as $category)
                 <div class="cs-item set-bg"
-                     data-setbg="{{ empty($category['image_path']) ?: '/images/categories/'.$category['image_path'] }}">
+                     data-setbg="{{ empty($category['category']['image_path']) ?: '/images/categories/'.$category['category']['image_path'] }}">
                     <div class="cs-text">
-                        <h5>{{$category['name']}}</h5>
-                        <span>{{ $category['category_property_count'] }} ilan</span>
+                        <h5>{{$category['category']['name']}}</h5>
+                        <span>{{ $category['category']['category_property_count'] }} ilan</span>
                     </div>
                 </div>
             @endforeach

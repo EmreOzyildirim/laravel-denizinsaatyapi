@@ -16,6 +16,7 @@ use App\Http\Controllers\admin\AgentsController;
 use App\Http\Controllers\admin\CustomerFeedbackController;
 use App\Http\Controllers\admin\ReferencesController;
 use App\Http\Controllers\admin\ContactController;
+use App\Http\Controllers\admin\ContactFormFromSite;
 
 /*use App\Http\Controllers\admin\SEOController;*/
 
@@ -40,10 +41,6 @@ use App\Models\agents;
 |
 */
 
-//file manager
-Route::group(['prefix' => 'laravel-filemanager', 'middleware' => ['web', 'auth']], function () {
-    \UniSharp\LaravelFilemanager\Lfm::routes();
-});
 //login admin redirect
 Route::get('/admin', function () {
     header('Location:/admin/index');
@@ -51,17 +48,15 @@ Route::get('/admin', function () {
 });
 
 //send the property_coount, agent_count, category_count
-View::composer(['/admin/*'], function ($view){
+View::composer(['/admin/*'], function ($view) {
 
-    $property_count = count(properties::getProperties());
-    $category_count = count(json_decode(categories::getCategories(),true));
-    $agent_count = count(json_decode(agents::getAgents(),true));
+    $property_count = json_decode(properties::getPropertyCount(), true);
+    $category_count = json_decode(categories::getCategoryCount(), true);
+    $agent_count = json_decode(agents::getAgentCount(), true);
 
-    $view->with('property_count',$property_count);
-    $view->with('category_count',$category_count);
-    $view->with('agent_count',$agent_count);
-
-
+    $view->with('property_count', $property_count);
+    $view->with('category_count', $category_count);
+    $view->with('agent_count', $agent_count);
 
 
 });
@@ -186,6 +181,8 @@ Route::group(['namespace' => 'admin'], function () {
     Route::post('/admin/contact-and-map', [ContactAndMapController::class, 'update']);
 
 
+    Route::get('/admin/contact-form-from-site', [ContactFormFromSite::class, 'index']);
+
 });
 
 //Frontend Panel Routes
@@ -193,6 +190,8 @@ Route::group(['namespace' => 'frontend'], function () {
 
     Route::get('/', [HomeController::class, 'index']);
     Route::get('/anasayfa', [HomeController::class, 'index']);
+
+    Route::get('/ilanlar', [HomeController::class, 'properties']);
 
     Route::get('/ilan-detay/{id}', [HomeController::class, 'property_details']);
     Route::get('/danisman-ilanlari/{id}', [HomeController::class, 'agents_properties']);
@@ -216,4 +215,3 @@ Route::get('/logout', [LoginController::class, 'logout']);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/anasayfa', [HomeController::class, 'index']);
-

@@ -20,7 +20,9 @@ use App\Models\categories;
 use App\Models\why_choose_us;
 use App\Models\contact_and_map;
 use App\Models\about_us_page;
+use Illuminate\Pagination\Paginator;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Pagination\Factory;
 
 class HomeController extends Controller
 {
@@ -35,88 +37,45 @@ class HomeController extends Controller
 
         //get the properties
         $properties = json_decode(properties::getPropertiesOrderByDesc(), true);
-
         $new_properties = array('properties' => array());
 
-
         foreach ($properties as $property) {
+
+
+            //get property address
+            $address = json_decode(properties::getPropertyAddress($property['id']), true);
+            //add the property details
+            $detail = json_decode(properties::getPropertyDetails($property['id']), true);
+            //add the agent infos.
+            $agent = json_decode(properties::getPropertyAgent($property['agent_id']), true);
+
 
             $item = array(
                 'property' => $property,
                 'details' => array(
-                    'description' => '',
-                    'year_built' => '',
-                    'home_area' => '',
-                    'rooms' => '',
-                    'bedrooms' => '',
-                    'garage' => '',
-                    'category_id' => '',
-                    'type_id' => ''
+                    'description' => $detail['description'],
+                    'year_built' => $detail['year_built'],
+                    'home_area' => $detail['home_area'],
+                    'rooms' => $detail['rooms'],
+                    'bedrooms' => $detail['bedrooms'],
+                    'garage' => $detail['garage'],
+                    'category_id' => $detail['category_id'],
+                    'type_id' => $detail['type_id']
                 ),
                 'agent' => array(
-                    'name_surname' => '',
-                    'profile_image' => '',
-                    'phone_number' => ''
+                    'name_surname' => $agent['name_surname'],
+                    'profile_image' => $agent['profile_image'],
+                    'phone_number' => $agent['phone_number']
                 ),
                 'property_address' => array(
-                    'province' => '',
-                    'district' => '',
-                    'neighborhood' => '',
+                    'province' => $address['property_province'],
+                    'district' => $address['property_district'],
+                    'neighborhood' => $address['property_neighborhood'],
                 )
             );
 
-            //get property address
-            $address = json_decode(properties::getPropertyAddress($property['id']), true);
-            $item['property_address']['province'] = $address['property_province'];
-            $item['property_address']['district'] = $address['property_district'];
-            $item['property_address']['neighborhood'] = $address['property_neighborhood'];
-
-            //$
-            //add the property details
-            $detail = json_decode(properties::getPropertyDetails($property['id']), true);
-
-            $item['details']['description'] = $detail['description'];
-            $item['details']['year_built'] = $detail['year_built'];
-            $item['details']['home_area'] = $detail['home_area'];
-            $item['details']['rooms'] = $detail['rooms'];
-            $item['details']['bedrooms'] = $detail['bedrooms'];
-            $item['details']['garage'] = $detail['garage'];
-            $item['details']['description'] = $detail['year_built'];
-            $item['details']['type_id'] = $detail['type_id'];
-            $item['details']['category_id'] = $detail['category_id'];
-
-            //add the agent infos.
-            $agent = json_decode(properties::getPropertyAgent($property['agent_id']), true);
-
-            $item['agent']['name_surname'] = $agent['name_surname'];
-            $item['agent']['profile_image'] = $agent['profile_image'];
-            $item['agent']['phone_number'] = $agent['phone_number'];
-
-
             //property item pushes in the properties array.
             array_push($new_properties['properties'], $item);
-        }
-
-
-        //customer feedbacks
-        $customer_feedbacks = array();
-        $get_customer_feedbacks = json_decode(customer_feedbacks::getCustomerFeedbacks(), true);
-        foreach ($get_customer_feedbacks as $item) {
-            $feedback = array(
-                'image' => '',
-                'description' => '',
-                'name_surname' => '',
-                'job' => '',
-                'star' => ''
-            );
-
-            $feedback['image'] = $item['image'];
-            $feedback['description'] = $item['description'];
-            $feedback['name_surname'] = $item['name_surname'];
-            $feedback['job'] = $item['job'];
-            $feedback['star'] = $item['star'];
-
-            array_push($customer_feedbacks, $feedback);
         }
 
 
@@ -126,15 +85,16 @@ class HomeController extends Controller
             'slider_properties' => json_decode(properties::getSliderProperties(), true),
             'social_media_icons' => social_media::find(1),
             'agents' => agents::all()->take(3),
-            'categories' => categories::all()->take(5),
+            'categories' => json_decode(categories::getCategories(5), true),
             'why_choose_us' => json_decode(why_choose_us::getWhyChooseUs(), true),
             'why_choose_us_icons' => json_decode(why_choose_us_icon_items::getWhyChooseUsIcons(), true),
-            'property_listing' => $new_properties,
+            'property_listing' => json_decode(properties::getHomeProductsList(6), true),
             'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
-            'customer_feedbacks' => $customer_feedbacks,
+            'customer_feedbacks' => json_decode(customer_feedbacks::getCustomerFeedbacks(), true),
             'footer' => json_decode(footer::getFooter(), true),
             'footer_links' => json_decode(footer_links::getFooterLinks(), true)
         ];
+
         return view('.frontend.home', $send);
     }
 
@@ -165,6 +125,23 @@ class HomeController extends Controller
             'footer_links' => json_decode(footer_links::getFooterLinks(), true)
         ];
         return view('.frontend.agents', $send);
+    }
+
+    public function properties()
+    {
+
+        $send = [
+            //properties added in bottom array_push function
+            'agents' => json_decode(agents::getAgentsWithCount(), true),
+            'page_header' => json_decode(page_header::getPageHeader(), true),
+            'properties' => json_decode(properties::getproperties(), true),
+            'social_media_icons' => social_media::find(1),
+            'contact_and_map' => json_decode(contact_and_map::getContactAndMap(), true),
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true)
+        ];
+
+        return view('.frontend.properties', $send);
     }
 
     public function property_details($id)

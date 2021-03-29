@@ -132,6 +132,7 @@ desired effect
                 <!-- Optionally, you can add icons to the links -->
                 <li class="{{ Request::path()=='admin/index' ? 'active' : '' }}"><a href="/admin/index"><i
                             class="fa fa-link"></i> <span>Admin</span></a></li>
+                <li><a href="/admin/contact-form-from-site"><i class="fa fa-link"></i> <span>Mesajlar</span></a></li>
                 <li class="{{ Request::path()=='admin/page-header' ? 'active' : '' }}"><a href="/admin/page-header"><i
                             class="fa fa-link"></i> <span>Site Başlığı</span></a></li>
                 <li class="{{ Request::path()=='admin/menu' ? 'active' : '' }}"><a href="/admin/menu"><i
@@ -203,24 +204,9 @@ desired effect
                                 href="/admin/create-agent">Danışman Ekle</a></li>
                     </ul>
                 </li>
-                <li class="treeview{{ Request::path()=='admin/customer-feedbacks' ? ' menu-open':'' }}{{ Request::path()=='admin/create-customer-feedback' ? ' menu-open':'' }}">
-                    <a href="#">
-                        <i class="fa fa-link"></i> <span>Müşteri Görüşleri</span>
-                        <span class="pull-right-container">
-              <i class="fa fa-angle-left pull-right"></i>
-            </span>
-                    </a>
-                    <ul class="treeview-menu" {{ Request::path()=='admin/customer-feedbacks' ? ' style=display:block;':'' }}{{ Request::path()=='admin/create-customer-feedback' ? ' style=display:block;':'' }}>
-                        <li class="{{ Request::path()=='admin/customer-feedbacks' ? ' active' : '' }} "><a
-                                href="/admin/customer-feedbacks">
-                                Müşteri Görüşleri</a></li>
-                        <li class="{{ Request::path()=='admin/create-customer-feedback' ? ' active' : '' }}"><a
-                                href="/admin/create-customer-feedback"> Müşteri Görüşü Ekle</a></li>
-                    </ul>
-                </li>
                 <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
                 <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
-                <li><a href="/admin/contact-and-map"><i class="fa fa-link"></i> <span>İletişim ve Harita</span></a></li>
+                <li><a href="/admin/contact-and-map"><i class="fa fa-link"></i> <span>İletişim Sayfası</span></a></li>
                 <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a>
                 </li>
                 <li class="treeview{{ Request::path()=='admin/footer' ? ' menu-open':'' }}{{ Request::path()=='admin/insert-useful-links' ? ' menu-open':'' }}">
