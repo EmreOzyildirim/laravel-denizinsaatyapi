@@ -50,12 +50,9 @@
                                 <td>{{$item->email}}</td>
                                 <td>{{$item->title}}</td>
                                 <td>{{strlen($item->description) > 50 ? substr($item->description,0,50).'..' : $item->description }}</td>
-                                <td><a href="/admin/update-agent/{{$item->id}}"
-                                       class="btn btn-xs btn-primary">Düzenle</a>
-                                    <button type="button" class="btn btn-danger btn-xs" data-toggle="modal"
-                                            data-target="#modal-danger{{$item->id}}">
-                                        Sil
-                                    </button>
+                                <td>
+                                    <a href="/admin/update-agent/{{$item->id}}" class="btn btn-xs btn-primary">Düzenle</a>
+                                    <a href="/admin/delete-agent/{{$item->id}}" class="btn btn-xs btn-danger">Sil</a>
                                 </td>
                             </tr>
 

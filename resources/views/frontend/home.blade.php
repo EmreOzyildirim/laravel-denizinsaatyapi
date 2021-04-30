@@ -203,52 +203,7 @@
             </div>
         </div>
     </section>
-
     <!-- Chooseus Section End -->
-
-
-
-    <!-- Feature Property Section Begin -->
-    <section class="feature-property-section spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 p-0">
-                    <div class="feature-property-left">
-                        <div class="section-title">
-                            <h4>Fırsat İlanlar</h4>
-                        </div>
-                        <ul>
-                            <li>Daire</li>
-                            <li>Ofis</li>
-                            <li>Restoran</li>
-                            <li>Otel</li>
-                            <li>Villa</li>
-                            <li>İşyeri</li>
-                        </ul>
-                        <a href="/ilanlar">Tüm ilanları göster</a>
-                    </div>
-                </div>
-                <div class="col-lg-8 p-0">
-                    <div class="fp-slider owl-carousel">
-                        <div class="fp-item set-bg" data-setbg="img/feature-property/fp-1.jpg">
-                            <div class="fp-text">
-                                <h5 class="title">Home in Merrick Way</h5>
-                                <p><span class="icon_pin_alt"></span> 3 Middle Winchendon Rd, Rindge, NH 03461</p>
-                                <div class="label">For Rent</div>
-                                <h5>$ 289.0<span>/month</span></h5>
-                                <ul>
-                                    <li><i class="fa fa-object-group"></i> 2, 283</li>
-                                    <li><i class="fa fa-bed"></i> 05</li>
-                                    <li><i class="fa fa-automobile"></i> 01</li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Feature Property Section End -->
 
     <!-- Team Section Begin -->
     <section class="team-section spad">
@@ -272,7 +227,7 @@
                                      alt="{{$agent['name_surname']}}">
                                 <h5>{{$agent['name_surname']}}</h5>
                                 <span>{{$agent['phone_number']}}</span>
-                                <p>{{$agent['description']}}</p>
+                                <p>{{strlen($agent['description']) > 102 ? substr($agent['description'],0,102).'...' : $agent['description']}}</p>
                                 <div class="ts-social">
                                     <a href="{{$agent['facebook']}}"><i class="fa fa-facebook"></i></a>
                                     <a href="{{$agent['twitter']}}"><i class="fa fa-twitter"></i></a>

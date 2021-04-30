@@ -57,14 +57,16 @@ class PageHeaderController extends Controller
 
             $image->move(public_path('images/page-header/'), $logo_image);
 
-            //save the new path.
-            $page_header->logo_path = $logo_image;
 
             //remove the old image
             $old_image = json_decode(page_header::getPageHeader(), true);
             if (file_exists(public_path('images/page-header/') . $old_image['logo_path'])) {
                 unlink(public_path('images/page-header/' . $old_image['logo_path']));
             }
+
+            //save the new path.
+            $page_header->logo_path = $logo_image;
+
         }
 
         $page_header->save();

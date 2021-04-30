@@ -32,7 +32,6 @@ class PropertiesController extends Controller
 
     public function index()
     {
-
         $properties = DB::table('properties')
             ->join('agents', 'properties.agent_id', '=', 'agents.id')
             ->select('properties.*', 'agents.name_surname')
@@ -81,7 +80,7 @@ class PropertiesController extends Controller
 
         $neighborhood = '';
         foreach ($neighborhoods as $item) {
-            $neighborhood .= '<option value="' . $item['mahalle_id'] . '">' . $item['mahalle_title'] . '</option>' . PHP_EOL;
+            $neighborhood .= '<option value="' . $item['mahalle_key'] . '">' . $item['mahalle_title'] . '</option>' . PHP_EOL;
         }
 
         print_r($neighborhood);
@@ -91,7 +90,7 @@ class PropertiesController extends Controller
     public function create_property_post(Request $request)
     {
 
-        //Featured Image and ALL IMAGES will be added after the image directory.
+        // Featured Image and ALL IMAGES will be added after the image directory.
         $data = $request->validate([
             'property_images' => ['required'],
             '_token' => ['required'],
@@ -270,13 +269,14 @@ class PropertiesController extends Controller
 
         if (!empty($id)) {
             DB::table('properties')->where('id', '=', $id)->delete();
-            DB::table('property_images')->where('property_id', '=', $id)->delete();
             DB::table('property_details')->where('property_id', '=', $id)->delete();
 
             $to_be_removed_images = json_decode(property_images::getPropertyImages($id), true);
             foreach($to_be_removed_images as $image){
                 unlink(public_path('images/properties/'.$image->image_path));
             }
+
+            DB::table('property_images')->where('property_id', '=', $id)->delete();
 
 
         }

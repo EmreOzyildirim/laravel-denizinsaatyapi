@@ -50,14 +50,9 @@ Route::get('/admin', function () {
 //send the property_coount, agent_count, category_count
 View::composer(['/admin/*'], function ($view) {
 
-    $property_count = json_decode(properties::getPropertyCount(), true);
-    $category_count = json_decode(categories::getCategoryCount(), true);
-    $agent_count = json_decode(agents::getAgentCount(), true);
-
-    $view->with('property_count', $property_count);
-    $view->with('category_count', $category_count);
-    $view->with('agent_count', $agent_count);
-
+    $view->with('property_count', json_decode(properties::getPropertyCount(), true));
+    $view->with('category_count', json_decode(categories::getCategoryCount(), true));
+    $view->with('agent_count', json_decode(agents::getAgentCount(), true));
 
 });
 
@@ -67,7 +62,6 @@ Route::group(['namespace' => 'admin'], function () {
         header('Location:/admin/index');
         exit();
     });
-
 
     Route::get('/admin/mail-send', [PageController::class, 'send_mail']);
     Route::post('/admin/mail-send', [PageController::class, 'send_mail_post']);
@@ -91,7 +85,6 @@ Route::group(['namespace' => 'admin'], function () {
         $property_images = property_images::find($remove_image);
         unlink(public_path('images/properties/' . $property_images->image_path));
         $property_images->delete();
-
 
         return redirect('/admin/update-property/' . $id);
     });
@@ -170,6 +163,13 @@ Route::group(['namespace' => 'admin'], function () {
     Route::post('/admin/social-media', [SocialMediaController::class, 'social_media_icons_update']);
 
     Route::get('/admin/references', [ReferencesController::class, 'index']);
+    Route::get('/admin/create-reference', [ReferencesController::class, 'create']);
+    Route::post('/admin/create-reference', [ReferencesController::class, 'create_post']);
+    Route::get('/admin/reference-details/{id}', [ReferencesController::class, 'details']);
+    Route::get('/admin/delete-reference/{id}', [ReferencesController::class, 'delete']);
+    Route::post('/admin/update-reference-detail', [ReferencesController::class, 'update_reference']);
+
+
     /*Route::get('/admin/seo-options', [SEOController::class, 'index']);*/
     Route::get('/admin/footer', [FooterController::class, 'index']);
 
@@ -182,6 +182,8 @@ Route::group(['namespace' => 'admin'], function () {
 
 
     Route::get('/admin/contact-form-from-site', [ContactFormFromSite::class, 'index']);
+    Route::get('/admin/contact-form-detail/{id}', [ContactFormFromSite::class, 'details']);
+    Route::get('/admin/delete-contact-form/{id}', [ContactFormFromSite::class, 'delete']);
 
 });
 
@@ -201,6 +203,7 @@ Route::group(['namespace' => 'frontend'], function () {
     Route::get('/danismanlarimiz', [HomeController::class, 'agents']);
 
     Route::get('/referanslar', [HomeController::class, 'references']);
+    Route::get('/referans-detay/{id}', [HomeController::class, 'reference_detail']);
 
     Route::get('/iletisim', [HomeController::class, 'contact']);
     Route::post('/send-contact-mail', [ContactController::class, 'send_form_post']);

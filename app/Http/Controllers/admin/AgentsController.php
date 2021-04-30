@@ -28,7 +28,7 @@ class AgentsController extends Controller
 
     public function create_agent()
     {
-        return view('admin.agent_create');
+        return view('.admin.agent_create');
     }
 
     public function create_agent_post(Request $request)
@@ -36,7 +36,7 @@ class AgentsController extends Controller
 
         $data = $request->validate([
             'name_surname' => ['required'],
-            //'profile_image' => ['required'],
+            'profile_image' => ['required'],
             'email' => ['required'],
             'phone_number' => ['required'],
             'title' => ['required'],
@@ -55,6 +55,17 @@ class AgentsController extends Controller
         $agent->description = $data['description'];
         $agent->facebook = $data['facebook'];
         $agent->twitter = $data['twitter'];
+
+
+        if ($request->file('profile_image')){
+            $image = $request->file('profile_image');
+
+            $image_file_name = strtok($image->getClientOriginalName(), '.');
+            $agent_image = $image_file_name . '-' . time() . '.' . $image->extension();
+            $agent->profile_image = $agent_image;
+            $image->move(public_path('images/agents'), $agent_image);
+        }
+
         $agent->save();
 
         $send = ['status' => true, 'message' => 'Danışman başarıyla oluşturuldu.'];
@@ -117,8 +128,11 @@ class AgentsController extends Controller
             $agents = agents::all();
             $agent->delete();
 
+            // remove old image file.
+            unlink(public_path('images/agents/' . $agent->profile_image));
+
             $parameters = ['agents' => $agents, 'status' => true, 'message', 'Danışman başarıyla silindi'];
-            return redirect('admin/agents')
+            return redirect('/admin/agents')
                 ->with($parameters);
 
         } else {

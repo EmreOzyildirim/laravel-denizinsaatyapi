@@ -84,7 +84,7 @@ class HomeController extends Controller
             'page_header' => json_decode(page_header::getPageHeader(), true),
             'slider_properties' => json_decode(properties::getSliderProperties(), true),
             'social_media_icons' => social_media::find(1),
-            'agents' => agents::all()->take(3),
+            'agents' => json_decode(agents::all()->take(3)),
             'categories' => json_decode(categories::getCategories(5), true),
             'why_choose_us' => json_decode(why_choose_us::getWhyChooseUs(), true),
             'why_choose_us_icons' => json_decode(why_choose_us_icon_items::getWhyChooseUsIcons(), true),
@@ -244,22 +244,35 @@ class HomeController extends Controller
         ]);
 
         return view('.admin.properties');
-        //todo homepage property filtering to be completed.
     }
 
     public function references()
     {
-
         $references = json_decode(references::getReferences(), true);
 
 
         $send = array(
             'page_header' => json_decode(page_header::getPageHeader(), true),
+            'references' => json_decode(references::getReferences(),true),
             'footer' => json_decode(footer::getFooter(), true),
             'footer_links' => json_decode(footer_links::getFooterLinks(), true),
             'social_media_icons' => json_decode(social_media::getSocialMedia(), true)
         );
         return view('.frontend.references', $send);
+    }
+
+    public function reference_detail($id){
+
+        $send = array(
+            'page_header' => json_decode(page_header::getPageHeader(), true),
+            'reference_detail' => json_decode(references::getReferenceDetail($id),true),
+            'last_references' => json_decode(references::getLastReferences(3),true),
+            'footer' => json_decode(footer::getFooter(), true),
+            'footer_links' => json_decode(footer_links::getFooterLinks(), true),
+            'social_media_icons' => json_decode(social_media::getSocialMedia(), true)
+        );
+
+        return view('.frontend.reference_detail',$send);
     }
 
 

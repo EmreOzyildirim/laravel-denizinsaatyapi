@@ -39,7 +39,7 @@
 
 
 
-    <form action="/admin/why-choose-us/create-icon-item" method="POST" class="form-horizontal">
+    <form action="/admin/why-choose-us/create-icon-item" method="POST" class="form-horizontal" enctype="multipart/form-data">
         @csrf
         <div class="col-md-12">
             <div class="box box-default">
@@ -53,7 +53,7 @@
                     <div class="form-group">
                         <label for="icon" class="col-sm-2 control-label">Madde ikonu</label>
                         <div class="col-sm-10">
-                            @foreach($icons as $icon)
+                            @foreach($icon_items as $icon)
                                 <div class="radio" style="float:left!important">
                                     <label>
                                         <img src="{{$icon}}" alt="" style="margin: 15px;">

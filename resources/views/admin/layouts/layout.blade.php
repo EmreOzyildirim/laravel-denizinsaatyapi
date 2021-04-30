@@ -204,7 +204,19 @@ desired effect
                                 href="/admin/create-agent">Danışman Ekle</a></li>
                     </ul>
                 </li>
-                <li><a href="/admin/references"><i class="fa fa-link"></i> <span>Referanslar</span></a></li>
+                <li class="treeview{{ Request::path()=='/admin/references' ? ' menu-open' : '' }}">
+                    <a href="#"><i class="fa fa-link"></i> <span>Referanslar</span>
+                        <span class="pull-right-container">
+                <i class="fa fa-angle-left pull-right"></i>
+              </span>
+                    </a>
+                    <ul class="treeview-menu"{{Request::path()=='admin/references' ? ' style=display:block':''}}{{Request::path()=='admin/create-reference' ? ' style=display:block':''}}>
+                        <li class="{{ Request::path()=='admin/references' ? 'active' : '' }}"><a
+                                href="/admin/references">Referanslar</a></li>
+                        <li class="{{ Request::path()=='admin/create-reference' ? 'active' : '' }}"><a
+                                href="/admin/create-reference">Referanslar Ekle</a></li>
+                    </ul>
+                </li>
                 <li><a href="/admin/seo-options"><i class="fa fa-link"></i> <span>SEO Optimizasyonları</span></a></li>
                 <li><a href="/admin/contact-and-map"><i class="fa fa-link"></i> <span>İletişim Sayfası</span></a></li>
                 <li><a href="/admin/social-media"><i class="fa fa-link"></i> <span>Sosyal Medya Hesapları</span></a>

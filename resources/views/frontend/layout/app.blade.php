@@ -2,6 +2,7 @@
 <html lang="tr">
 
 <head>
+    <link rel="icon" type="image/png" href="{{asset('/images/'.'favicon.png')}}"/>
     <!---og tags starts--->
     <meta property="og:locale" content="tr_TR"/>
 @section('og_tags')
@@ -160,6 +161,7 @@
                 <div class="fs-about">
                     <div class="fs-logo">
                         <a href="https://denizinsaatyapi.com/">
+                            <!--- in local '/images/page-header/'--->
                             <img src="{{'/images/page-header/'.$page_header['logo_path']}}" alt="Deniz Gayrimenkul logosu">
                         </a>
                     </div>

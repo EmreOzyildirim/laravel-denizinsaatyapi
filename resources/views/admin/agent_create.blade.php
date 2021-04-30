@@ -13,14 +13,14 @@
         </div>
         <!-- /.box-header -->
         <!-- form start -->
-        <form action="/admin/create-agent" class="form-horizontal" method="post">
+        <form action="/admin/create-agent" class="form-horizontal" method="post" enctype="multipart/form-data">
             @csrf
             <div class="box-body">
                 <div class="form-group">
                     <label for="logo" class="col-sm-2 control-label">Danışman Resmi</label>
                     <div class="col-sm-10">
                         <img src="" width="180px">
-                        <input type="file" class="form-control" id="logo" placeholder="Logo">
+                        <input type="file" class="form-control" id="logo" placeholder="Logo" name="profile_image">
                         @error('logo')
                         <span class="text-danger">{{$message}}</span>
                         @enderror

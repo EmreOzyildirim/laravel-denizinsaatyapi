@@ -40,27 +40,10 @@ class WhyChooseUsController extends Controller
         ]);
         $why_choose_us = why_choose_us::find(1);
 
-        if (!empty($request->background_image)) {
-
-            //remove the old image if it exists.
-            if (file_exists(public_path('images/chooseus/') . $why_choose_us->bg_image_path)) {
-                unlink(public_path('images/chooseus/' . $why_choose_us->bg_image_path));
-            }
-
-            //save the NEW image
-            $image = $request->file('background_image');
-
-            $image_file_name = strtok($image->getClientOriginalName(), '.');
-            $choose_us_image = $image_file_name . '-' . time() . '.' . $image->extension();
-
-            $image->move(public_path('images/chooseus'), $choose_us_image);
-            $why_choose_us->bg_image_path = $choose_us_image;
-
-        }
-
 
         $why_choose_us->title = $request->title;
         $why_choose_us->description = $request->description;
+        $why_choose_us->bg_image_path = $request->icon_path;
         $why_choose_us->save();
 
         $send = ['status' => true, 'message' => 'Güncelleme işlemi başarıyla gerçekleşti.'];
@@ -70,7 +53,10 @@ class WhyChooseUsController extends Controller
     public function why_choose_us_icons()
     {
         $icon_items = why_choose_us_icon_items::all();
-        return view('.admin.why_choose_us_icon_item', ['icons' => $this->icons, 'icon_items' => $icon_items]);
+        return view('.admin.why_choose_us_icon_item', [
+            'icons' => ['chooseus-icon-1.png', 'chooseus-icon-2.png', 'chooseus-icon-3.png', 'chooseus-icon-4.png'],
+            'icon_items' => $icon_items
+            ]);
     }
 
     public function create_icon_item(Request $request)
@@ -84,7 +70,7 @@ class WhyChooseUsController extends Controller
 
         $why_choose_us_icon_items = why_choose_us_icon_items::create([
             'why_choose_us_id' => 1,
-            'icon_path' => 'image to be added',
+            'icon_path' => $request->icon_path,
             'title' => $data['title'],
             'description' => $data['description']
         ]);
@@ -96,7 +82,7 @@ class WhyChooseUsController extends Controller
 
 
         $send = ['status' => true, 'message' => 'Neden Biz? modülü için madde başarıyla oluşturuldu.'];
-        return redirect('.admin.why_choose_us_icons')->with($send);
+        return redirect('/admin/why_choose_us_icons')->with($send);
     }
 
     public function icon_item($id)
