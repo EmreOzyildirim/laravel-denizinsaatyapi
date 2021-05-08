@@ -19,8 +19,9 @@
                 <div class="form-group">
                     <label for="logo" class="col-sm-2 control-label">Danışman Resmi</label>
                     <div class="col-sm-10">
-                        <img src="" width="180px">
-                        <input type="file" class="form-control" id="logo" placeholder="Logo" name="profile_image">
+                        <div id="image_preview"></div>
+                        <img id="agent_image" src="" width="180px">
+                        <input type="file" class="form-control" placeholder="Logo" name="profile_image" id="profile_image">
                         @error('logo')
                         <span class="text-danger">{{$message}}</span>
                         @enderror
@@ -135,5 +136,16 @@ if (strpos($agent_browser, $find_browser) !== false) {
     </style>
 @endsection
 @section('js')
+    <script>
+        //upload the image gallery.............
+        $("#profile_image").change(function () {
+            $('#image_preview').html("");
+            $('#agent_image').hide();
+            var total_file = document.getElementById("profile_image").files.length;
+            for (var i = 0; i < total_file; i++) {
+                $('#image_preview').append("<img src='" + URL.createObjectURL(event.target.files[i]) + "' width=\"200px\" />");
+            }
 
+        });
+    </script>
 @endsection

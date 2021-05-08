@@ -36,7 +36,7 @@ class AgentsController extends Controller
 
         $data = $request->validate([
             'name_surname' => ['required'],
-            'profile_image' => ['required'],
+            'profile_image' => ['required|image'],
             'email' => ['required'],
             'phone_number' => ['required'],
             'title' => ['required'],
@@ -48,7 +48,6 @@ class AgentsController extends Controller
         $agent = new agents();
 
         $agent->name_surname = $data['name_surname'];
-        $agent->profile_image = 'profile image to be added';
         $agent->email = $data['email'];
         $agent->phone_number = $data['phone_number'];
         $agent->title = $data['title'];
@@ -57,7 +56,7 @@ class AgentsController extends Controller
         $agent->twitter = $data['twitter'];
 
 
-        if ($request->file('profile_image')){
+        if ($request->file('profile_image')) {
             $image = $request->file('profile_image');
 
             $image_file_name = strtok($image->getClientOriginalName(), '.');
@@ -89,27 +88,39 @@ class AgentsController extends Controller
 
     public function update_agent_post(Request $request)
     {
-        /*
-                $data = $request->validate([
-                    'id' => 'required',
-                    '_token' => 'required',
-                    'profile_image' => 'required',
-                    'email' => 'required',
-                    'phone_number' => 'required',
-                    'title' => 'required',
-                    'description' => 'required'
-                ]);
-        */
+        $request->validate([
+            'id' => ['required'],
+            '_token' => ['required'],
+            'profile_image' => ['image'],
+            'email' => ['required'],
+            'phone_number' => ['required'],
+            'title' => ['required'],
+            'description' => ['required']
+        ]);
+
         $agent = agents::find($request->id);
 
         $agent->name_surname = $request['name_surname'];
-        $agent->profile_image = 'to be added';
         $agent->email = $request['email'];
         $agent->phone_number = $request['phone_number'];
         $agent->title = $request['title'];
         $agent->description = $request['description'];
         $agent->facebook = $request['facebook'];
         $agent->twitter = $request['twitter'];
+
+        if ($request->file('profile_image')) {
+            $image = $request->file('profile_image');
+
+            // remove old image file if has new image
+            unlink(public_path('images/agents/' . $agent->profile_image));
+
+            $image_file_name = strtok($image->getClientOriginalName(), '.');
+            $agent_image = $image_file_name . '-' . time() . '.' . $image->extension();
+            $agent->profile_image = $agent_image;
+            $image->move(public_path('images/agents'), $agent_image);
+        }
+
+
         $agent->save();
 
         $agents = agents::all();
@@ -130,6 +141,8 @@ class AgentsController extends Controller
 
             // remove old image file.
             unlink(public_path('images/agents/' . $agent->profile_image));
+
+            agents::deleteAgentProperties($id);
 
             $parameters = ['agents' => $agents, 'status' => true, 'message', 'Danışman başarıyla silindi'];
             return redirect('/admin/agents')

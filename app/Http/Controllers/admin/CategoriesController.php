@@ -33,7 +33,7 @@ class CategoriesController extends Controller
     {
 
         $request->validate([
-            'category_image' => ['required'],
+            'category_image' => ['required|image'],
             'name' => ['required'],
             'url' => ['required', 'unique:categories']
         ]);
@@ -82,6 +82,7 @@ class CategoriesController extends Controller
 
         $request->validate([
             '_token' => ['required'],
+            'category_image' => ['image'],
             'id' => ['required'],
             'name' => ['required'],
             'url' => ['required']

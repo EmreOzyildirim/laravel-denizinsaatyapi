@@ -223,14 +223,14 @@
                     <div class="col-md-4">
                         <div class="ts-item">
                             <div class="ts-text">
-                                <img src="{{'images/agents/'.$agent['profile_image']}}"
-                                     alt="{{$agent['name_surname']}}">
-                                <h5>{{$agent['name_surname']}}</h5>
-                                <span>{{$agent['phone_number']}}</span>
-                                <p>{{strlen($agent['description']) > 102 ? substr($agent['description'],0,102).'...' : $agent['description']}}</p>
+                                <img src="{{'images/agents/'.$agent->profile_image}}"
+                                     alt="{{$agent->name_surname}}">
+                                <h5>{{$agent->name_surname}}</h5>
+                                <span>{{$agent->phone_number}}</span>
+                                <p>{{strlen($agent->description) > 102 ? substr($agent->description,0,102).'...' : $agent->description}}</p>
                                 <div class="ts-social">
-                                    <a href="{{$agent['facebook']}}"><i class="fa fa-facebook"></i></a>
-                                    <a href="{{$agent['twitter']}}"><i class="fa fa-twitter"></i></a>
+                                    <a href="{{$agent->facebook}}"><i class="fa fa-facebook"></i></a>
+                                    <a href="{{$agent->twitter}}"><i class="fa fa-twitter"></i></a>
                                 </div>
                             </div>
                         </div>

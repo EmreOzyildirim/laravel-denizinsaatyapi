@@ -14,22 +14,21 @@
                 </div>
                 <!-- /.box-header -->
                 <!-- form start -->
-                <form action="/admin/update-agent" class="form-horizontal" method="POST">
+                <form action="/admin/update-agent" class="form-horizontal" method="POST" enctype="multipart/form-data">
                     @csrf
                     <input type="text" name="id" value="{{$agent['id']}}" hidden>
-                    <div class="box-body"><!----
-                    <div class="form-group">
-                        <label for="logo" class="col-sm-2 control-label">Logo</label>
-                        <div class="col-sm-10">
-                            <img src="" width="180px">
-                            <input type="file" name="logo" class="form-control" id="logo" placeholder="Logo">
-                        </div>
-                    </div>---->
+                    <div class="box-body">
                         <div class="form-group">
                             <label for="agent_image" class="col-sm-2 control-label">Danışman Resmi</label>
-
                             <div class="col-sm-10">
-                                <img src="{{asset('images/agents/'.$agent['profile_image'])}}" width="200px" alt="">
+                                <div id="image_preview"></div>
+                                <img id="agent_image" src="{{asset('images/agents/'.$agent['profile_image'])}}" width="200px" alt="{{$agent['name_surname']}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-sm-2"></div>
+                            <div class="col-sm-10">
+                                <input type="file" name="profile_image" class="form-control" id="profile_image" placeholder="Profil Resmi">
                             </div>
                         </div>
                         <div class="form-group">
@@ -72,7 +71,7 @@
                             <label for="twitter" class="col-sm-2 control-label">Twitter Hesabı</label>
 
                             <div class="col-sm-10">
-                                <input type="text" name="facebook" class="form-control" id="twitter"
+                                <input type="text" name="twitter" class="form-control" id="twitter"
                                        value="{{$agent['twitter']}}"
                                        placeholder="Twitter hesabınızı başında domain adı olmadan girin. Örnek: muratkarakaya546">
                             </div>
@@ -128,6 +127,15 @@ if (strpos($agent_browser, $find_browser) !== false) {
 @endsection
 @section('js')
     <script>
+        //upload the image gallery.............
+        $("#profile_image").change(function () {
+            $('#image_preview').html("");
+            $('#agent_image').hide();
+            var total_file = document.getElementById("profile_image").files.length;
+            for (var i = 0; i < total_file; i++) {
+                $('#image_preview').append("<img src='" + URL.createObjectURL(event.target.files[i]) + "' width=\"200px\" />");
+            }
 
+        });
     </script>
 @endsection

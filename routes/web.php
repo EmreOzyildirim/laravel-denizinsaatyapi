@@ -81,13 +81,7 @@ Route::group(['namespace' => 'admin'], function () {
     Route::get('/admin/update-property/{id}', [PropertiesController::class, 'update']);
     Route::post('/admin/update-property', [PropertiesController::class, 'update_post']);
 
-    Route::get('/admin/update-property/{id}/remove_image/{image_id}', function ($id, $remove_image) {
-        $property_images = property_images::find($remove_image);
-        unlink(public_path('images/properties/' . $property_images->image_path));
-        $property_images->delete();
-
-        return redirect('/admin/update-property/' . $id);
-    });
+    Route::get('/admin/update-property/{property_id}/remove-image/{image_id}', [PropertiesController::class, 'remove_property_image']);
 
     Route::post('/admin/search-districts', [PropertiesController::class, 'search_districts']);
     Route::post('/admin/search-neighborhoods', [PropertiesController::class, 'search_neighborhoods']);
@@ -108,7 +102,7 @@ Route::group(['namespace' => 'admin'], function () {
 
 
         $categories = categories::all();
-        return view('/admin/categories', ['categories' => $categories]);
+        return redirect('/admin/categories')->with(['status'=>'true','message'=>'Başarıyla silindi.']);
     });
 
     Route::get('/admin/create-category', [CategoriesController::class, 'create_category']);

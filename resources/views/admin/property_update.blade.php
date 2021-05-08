@@ -6,6 +6,27 @@
 @section('optional_description','Seçtiğiniz ilanı buradan düzenleyebilirsiniz')
 
 @section('content')
+
+    @if(session('message'))
+        <div class="modal modal-{{session('status') ? 'success' : 'danger'}} fade in"
+             id="modal-{{session('status') ? 'success' : 'danger'}}" style="display: block; padding-right: 17px;">
+            <div class="modal-dialog mt-4">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span></button>
+                        <h4 class="modal-title">{{session('status') ? 'İşlem başarılı' : 'İşlem başarısız'}}</h4>
+                    </div>
+                    <div class="modal-body">
+                        <p>{{session('message')}}</p>
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    @endif
+
     <div class="col-md-12">
         <h1 id="testo"></h1>
         <div class="box box-default">
@@ -23,6 +44,7 @@
                         <div class="form-group">
                             <label for="property_images" class="col-sm-2 control-label">İlan Resimleri</label>
                             <div class="col-sm-10">
+                                <div id="image_preview"></div>
                                 <input type="file" name="property_images[]" class="form-control" id="property_images"
                                        placeholder="İlan Resimleri" multiple>
                                 @error('property_images')
@@ -32,7 +54,7 @@
                                     @foreach($property_images as $image)
                                         <div class="col-md-4">
                                             <img src="{{ '/images/properties/'.$image['image_path'] }}" width="180px" alt="{{$property->title}}">
-                                            <a href="/admin/update-property/{{$property['id']}}/remove_image/{{$image['id']}}" class="text-danger text-sm-center">Kaldır</a>
+                                            <a href="/admin/update-property/{{$property['id']}}/remove-image/{{$image['id']}}" class="text-danger text-sm-center images">Kaldır</a>
                                         </div>
                                     @endforeach
                                 </div>
@@ -271,6 +293,23 @@
                 }
             });
 
+            //upload the image gallery.............
+            $("#property_images").change(function () {
+                $('#image_preview').html("");
+                $('img.images').hide();
+                var total_file = document.getElementById("property_images").files.length;
+                for (var i = 0; i < total_file; i++) {
+                    $('#image_preview').append("<img src='" + URL.createObjectURL(event.target.files[i]) + "' width=\"200px\" />");
+                }
+
+            });
+
+        });
+
+        $(window).ready(function () {
+            setInterval(function () {
+                $('.modal').addClass("hidden")
+            }, 2000);
 
         });
     </script>

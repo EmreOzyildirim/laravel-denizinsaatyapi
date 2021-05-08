@@ -16,6 +16,7 @@ use App\Models\districts;
 use App\Models\neighborhoods;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Intervention\Image\Image;
 
 class PropertiesController extends Controller
 {
@@ -92,7 +93,7 @@ class PropertiesController extends Controller
 
         // Featured Image and ALL IMAGES will be added after the image directory.
         $data = $request->validate([
-            'property_images' => ['required'],
+            'property_images' => ['required|image'],
             '_token' => ['required'],
             'title' => ['required'],
             'description' => ['required'],
@@ -166,7 +167,6 @@ class PropertiesController extends Controller
         $send = ['status' => true, 'message' => 'İlan başarıyla oluşturuldu.'];
         return redirect('/admin/properties')->with($send);
     }
-
 
     public function update($id = null)
     {
@@ -283,6 +283,11 @@ class PropertiesController extends Controller
 
         return redirect('/admin/properties')->with(['status' => true, 'message' => 'İlan başarıyla silindi.']);
     }
+
+    public static function remove_property_image($property_id,$image_id){
+        return property_images::remove_property_image($property_id,$image_id);
+    }
+
 
     //property status 1 = yayinda,
     //property status 2 = satildi,

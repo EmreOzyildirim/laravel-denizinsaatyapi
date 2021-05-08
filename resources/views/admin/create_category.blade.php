@@ -19,9 +19,10 @@
                     <div class="form-group">
                         <label for="category_image" class="col-sm-2 control-label">Kategori Resmi Seçin</label>
                         <div class="col-sm-10">
+                            <div id="image_preview"></div>
+                            <img id="image_category" src="" name="category_image" alt="Kategori resmi" style="margin-top:20px;" onchange="previewFile(this)" width="180px">
                             <input type="file" name="category_image" class="form-control" id="category_image"
                                    placeholder="Kategori Resmi" required>
-                            <img src="" name="category_image" alt="Kategori resmi" style="margin-top:20px;" onchange="previewFile(this)" width="180px">
                             @error('category_image')
                             <span class="text-danger">{{$message}}</span>
                             @enderror
@@ -117,5 +118,15 @@
                 reader.readAsDataURL(file);
             }
         }
+
+        //upload the image gallery.............
+        $("#category_image").change(function () {
+            $('#image_preview').html("");
+            $('#image_category').hide();
+            var total_file = document.getElementById("category_image").files.length;
+            for (var i = 0; i < total_file; i++) {
+                $('#image_preview').append("<img src='" + URL.createObjectURL(event.target.files[i]) + "' width=\"200px\" />");
+            }
+        });
     </script>
 @endsection
